@@ -54,7 +54,10 @@ ROOT_URLCONF = 'amadaa.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [
+            os.path.join(os.path.dirname(os.path.realpath(__file__)),
+                "../templates/"),
+            ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
