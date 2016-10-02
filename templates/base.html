@@ -1,0 +1,20 @@
+{# base template for all others to inherit #}
+<!doctype html>
+
+<html lang="en">
+  <head>
+    <title>{% block title %}{% endblock %} - Amadaa</title>
+  </head>
+
+  <body>
+    <header>
+    </header>
+    
+    {% block body %}
+    {% endblock %}
+    
+    <footer>
+      Copyright &copy; 2016 The Amadaa Team
+    </footer>
+  <body>
+</html>
