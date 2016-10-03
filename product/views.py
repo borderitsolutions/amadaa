@@ -17,3 +17,7 @@ class ProductCategoryCreate(CreateView):
     model = ProductCategory
     fields = ['name']
 
+class ProductCategoryUpdate(UpdateView):
+    model = ProductCategory
+    fields = ['name']
+

@@ -5,7 +5,7 @@
 
   <ol>
     {% for category in product_categories %}
-      <li>{{ category.name }}</li>
+      <li>{{ category.name }} [ <a href="{% url 'product-category-update' category.id %}">edit</a> ]</li>
     {% endfor %}
 
   </ol>
