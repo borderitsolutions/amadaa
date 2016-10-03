@@ -5,7 +5,7 @@ from django.urls import reverse
 # Create your models here.
 
 class ProductCategory(AmadaaModel):
-    name = models.CharField(max_length=100)
+    name = models.CharField(max_length=100, unique=True)
 
     def get_absolute_url(self):
         return reverse('product-category-detail', kwargs={'pk': self.pk})
