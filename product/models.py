@@ -8,5 +8,5 @@ class ProductCategory(AmadaaModel):
     name = models.CharField(max_length=100)
 
     def get_absolute_url(self):
-        return reverse('product-detail', kwargs={'pk': self.pk})
+        return reverse('product-category-detail', kwargs={'pk': self.pk})
 
