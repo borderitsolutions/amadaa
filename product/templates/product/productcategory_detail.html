@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+{% block body %}
+<p><b>Name:</b> {{ product_category }}</p>
+
+<p><a href="{% url 'product-category-update' product_category.id %}">Edit</a></p>
+<p><a href="{% url 'product-category-list' %}">Back to list</a></p>
+
+{% endblock %}

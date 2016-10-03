@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block body %}
+  <h2>Product Categories</h2>
+
+  <ol>
+    {% for category in product_categories %}
+      <li>{{ category.name }} [ <a href="{% url 'product-category-update' category.id %}">edit</a> ] [ <a href="{% url 'product-category-delete' category.id %}">delete</a> ]</li>
+    {% endfor %}
+
+  </ol>
+
+  <p><a href="{% url 'product-category-add' %}">Add product category</a></p>
+{% endblock %}
+

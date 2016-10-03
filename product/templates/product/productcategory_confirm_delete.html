@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block body %}
+<p>You are about to delete the following product category:</p>
+<ol>
+  <li>{{ product_category }}</li>
+</ol>
+
+<p>Are you sure?</p>
+
+<form method="post" action="">
+  {% csrf_token %}
+
+  <input type="submit" value="Yes" name="confirm_delete">
+  <input type="submit" value="No" name="cancel">
+</form>
+{% endblock %}
