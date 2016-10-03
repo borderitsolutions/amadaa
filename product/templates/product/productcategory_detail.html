@@ -1,5 +1,8 @@
 {% extends "base.html" %}
 
 {% block body %}
-<b>Name:</b> {{ product_category }}
+<p><b>Name:</b> {{ product_category }}</p>
+
+<p><a href="{% url 'product-category-list' %}">Back to list</a></p>
+
 {% endblock %}
