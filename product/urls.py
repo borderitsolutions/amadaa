@@ -2,7 +2,8 @@ from django.conf.urls import url
 from product.views import ProductCategoryList, ProductCategoryDetail, ProductCategoryCreate
 
 urlpatterns = [
-    url(r'^category/$', ProductCategoryList.as_view()),
+    url(r'^category/$', ProductCategoryList.as_view(),
+        name='product-category-list'),
     url(r'^category/detail/(?P<pk>[0-9]*)/$', 
         ProductCategoryDetail.as_view(),
         name='product-category-detail'),
