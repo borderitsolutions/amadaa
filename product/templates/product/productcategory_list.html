@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block body %}
+  <h2>Product Categories</h2>
+
+  <ol>
+    {% for category in product_categories %}
+      <li>{{ category.name }}</li>
+    {% endfor %}
+
+  </ol>
+{% endblock %}
+
