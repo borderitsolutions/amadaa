@@ -1,17 +1,30 @@
+{% load staticfiles %}
+<!--This is a comment. Comments are not displayed in the browser-->
 {# base template for all others to inherit #}
 <!doctype html>
 
 <html lang="en">
   <head>
     <title>{% block title %}{% endblock %} - Amadaa</title>
+<<<<<<< HEAD
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+<link rel="stylesheet" href="{% static 'css/login1.css' %}">
+</head>
+=======
     {% block css %}{% endblock %}
     {% block js %}{% endblock %}
   </head>
+>>>>>>> a5bc1933584046db8c0f8118a451097f9d85db9a
 
-  <body>
+  <body><div class="form2">
     <header>
+<<<<<<< HEAD
+	<h2>Login Form </h2>
+=======
       {% block header %}
       {% endblock %}
+>>>>>>> a5bc1933584046db8c0f8118a451097f9d85db9a
     </header>
     
     {% if messages %}
@@ -29,7 +42,12 @@
     {% block body %}{% endblock %}
 
     <footer>
+<<<<<<< HEAD
+      Copyright &copy; 2016 The Amadaa Team
+    </footer></div>
+=======
       {%block footer %}{% endblock %}
     </footer>
+>>>>>>> a5bc1933584046db8c0f8118a451097f9d85db9a
   <body>
 </html>

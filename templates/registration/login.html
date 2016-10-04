@@ -9,27 +9,34 @@
   {% if user.is_authenticated %}
     <p>You don't have access to this page.</p>
   {% else %}
-    <p>Please log in.</p>
+    <p><h5>Please enter your credentials to log in.</h5></p>
   {% endif %}
 {% endif %}
 
+<div class="form1">
 <form method="post" action="{% url 'login' %}">
   {% csrf_token %}
+
+
   <table>
-    <tr>
-      <td>{{ form.username.label_tag }}</td>
+    <tr><div id="label1">
+      <td><div id="label1">{{ form.username.label_tag }}</td></div>
       <td>{{ form.username }}</td>
     </tr>
 
     <tr>
-      <td>{{ form.password.label_tag }}</td>
+      <td><div id="label1">{{ form.password.label_tag }}</td></div>
       <td>{{ form.password }}</td>
     </tr>
   </table>
 
-  <input type="submit" value="Log in">
+  <div id="submit">
+  <input type="submit" value="Log in"></div>
   <input type="hidden" name="next" value="{{ next }}">
 </form>
 
-<p><a href="{% url 'password_reset' %}">Lost password</a></p>
+<div id="passwd">
+<p><a href="{% url 'password_reset' %}">Lost password</a></p></div>
 {% endblock %}
+
+</div>

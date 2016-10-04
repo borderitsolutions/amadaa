@@ -1,0 +1,60 @@
+.form2{
+//margin-top: 150px;
+//padding-left: 40%;
+border:1px solid #6F7D94;
+width:50%;
+height:50%;
+//padding:0 50px 15px;
+//margin-top:20px;
+box-shadow:0 0 15px #6F7D94;
+border-radius:6px;
+float:center;
+}
+
+h2{
+text-align:center;
+color: blue;
+padding:10px 60px 15px;
+}
+
+body{
+margin-top: 150px;
+padding-left: 35%;
+color: #6F7D94;
+//text-align:center;
+//border:1px solid #ccc;
+//width:60%;
+//height:100%;
+//padding:0 50px 15px;
+//margin-top:20px;
+box-shadow:0 0 15px;
+//border-radius:6px;
+float:center;
+}  
+
+div#label1{
+text-align:left;
+padding:10px 50px 10px;
+//float:center;
+}
+
+
+div#submit{
+padding:25px 50px 10px;
+float:center;
+}
+
+
+footer{
+padding:25px 10px 10px;
+text-align:center;
+}
+
+h5{
+text-align:center;
+//padding:0px 10px 0px;
+}
+
+div#passwd{
+padding:25px 50px 10px;
+}
