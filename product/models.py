@@ -13,6 +13,12 @@ class ProductCategory(AmadaaModel):
     def __str__(self):
         return "{}".format(self.name)
 
+class UnitOfMeasurement(AmadaaModel):
+    unit = models.CharField(max_length=30)
+
+    def __str__(self):
+        return "%(self.name)s"
+
 class Product(AmadaaModel):
     name = models.CharField(max_length=100)
     internal_ref = models.CharField(max_length=100, default='')
