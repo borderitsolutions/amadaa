@@ -14,22 +14,20 @@
       {% endblock %}
     </header>
     
-    {% block body %}
-      {% block messages %}
-          {% if messages %}
-            <div id="message-area">
-              <ul class="messages">
-                {% for message in messages %}
-                  <li{% if message.tags %} class="{{ message.tags}}"{% endif %}>
-                    {{ message }}
-                  </li>
-                {% endfor %}
-              </ul>
-            </div>
-          {% endif %}
-      {% endblock %}
-    {% endblock %}
-    
+    {% if messages %}
+      <div id="message-area">
+        <ul class="messages">
+          {% for message in messages %}
+            <li{% if message.tags %} class="{{ message.tags}}"{% endif %}>
+              {{ message }}
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
+    {% endif %}
+
+    {% block body %}{% endblock %}
+
     <footer>
       {%block footer %}{% endblock %}
     </footer>
