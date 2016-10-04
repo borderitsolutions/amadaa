@@ -1,6 +1,9 @@
 {% extends "base.html" %}
 
 {% block body %}
+<h2><div id="title1">Login Form </div></h2>
+
+<div class="errormsg">
 {% if form.errors %}
 <p>Authentication failed. Please try again.</p>
 {% endif %}
@@ -12,6 +15,7 @@
     <p><h5>Please enter your credentials to log in.</h5></p>
   {% endif %}
 {% endif %}
+</div>
 
 <div class="form1">
 <form method="post" action="{% url 'login' %}">
