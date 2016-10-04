@@ -1,6 +1,10 @@
 {# All app templates should inherit from this. #}
 {% extends "base.html" %}
 
+{% block header %}
+  <h1>No Company</h1>
+{% endblock %}
+
 {% block body %}
   {% block action_top %}{% endblock %}
   {% block content %}{% endblock %}
