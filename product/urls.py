@@ -1,7 +1,8 @@
 from django.conf.urls import url
-from product.views import ProductCategoryList, ProductCategoryDetail, ProductCategoryCreate, ProductCategoryUpdate, ProductCategoryDelete, ProductCreate
+from product.views import ProductCategoryList, ProductCategoryDetail, ProductCategoryCreate, ProductCategoryUpdate, ProductCategoryDelete, ProductList, ProductCreate
 
 urlpatterns = [
+    url(r'^$', ProductList.as_view(), name='product-list'),
     url(r'add$', ProductCreate.as_view(), name='product-add'),
 
     url(r'^category/$', ProductCategoryList.as_view(),

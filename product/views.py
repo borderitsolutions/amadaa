@@ -53,7 +53,12 @@ class ProductCategoryDelete(PermissionRequiredMixin, DeleteView):
             messages.success(self.request, self.success_message)
             return super(ProductCategoryDelete, self).delete(request, 
                     *args, **kwargs)
-            
+
+class ProductList(ListView):
+    model = Product
+    context_object_name = 'products'
+
 class ProductCreate(CreateView):
     model = Product
     fields = ['name', 'category']
+
