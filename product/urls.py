@@ -1,8 +1,10 @@
 from django.conf.urls import url
-from product.views import ProductCategoryList, ProductCategoryDetail, ProductCategoryCreate, ProductCategoryUpdate, ProductCategoryDelete, ProductList, ProductCreate
+from product.views import ProductCategoryList, ProductCategoryDetail, ProductCategoryCreate, ProductCategoryUpdate, ProductCategoryDelete, ProductList, ProductDetail, ProductCreate
 
 urlpatterns = [
     url(r'^$', ProductList.as_view(), name='product-list'),
+    url(r'^detail/(?P<pk>[0-9]*)/$', ProductDetail.as_view(),
+        name='product-detail'),
     url(r'add$', ProductCreate.as_view(), name='product-add'),
 
     url(r'^category/$', ProductCategoryList.as_view(),

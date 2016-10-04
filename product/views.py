@@ -58,6 +58,10 @@ class ProductList(ListView):
     model = Product
     context_object_name = 'products'
 
+class ProductDetail(DetailView):
+    model = Product
+    context_object_name = 'product'
+
 class ProductCreate(CreateView):
     model = Product
     fields = ['name', 'category']
