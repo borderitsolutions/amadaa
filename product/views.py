@@ -64,11 +64,11 @@ class ProductDetail(DetailView):
 
 class ProductCreate(CreateView):
     model = Product
-    fields = ['name', 'category']
+    fields = ['name', 'internal_ref', 'category']
 
 class ProductUpdate(UpdateView):
     model = Product
-    fields = ['name', 'category']
+    fields = ['name', 'internal_ref', 'category']
 
 class ProductDelete(DeleteView):
     model = Product
