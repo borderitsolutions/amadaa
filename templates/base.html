@@ -4,17 +4,32 @@
 <html lang="en">
   <head>
     <title>{% block title %}{% endblock %} - Amadaa</title>
+    {% block css %}{% endblock %}
+    {% block js %}{% endblock %}
   </head>
 
   <body>
     <header>
+      {% block header %}
+      {% endblock %}
     </header>
     
-    {% block body %}
-    {% endblock %}
-    
+    {% if messages %}
+      <div id="message-area">
+        <ul class="messages">
+          {% for message in messages %}
+            <li{% if message.tags %} class="{{ message.tags}}"{% endif %}>
+              {{ message }}
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
+    {% endif %}
+
+    {% block body %}{% endblock %}
+
     <footer>
-      Copyright &copy; 2016 The Amadaa Team
+      {%block footer %}{% endblock %}
     </footer>
   <body>
 </html>
