@@ -6,7 +6,7 @@ from django.shortcuts import render
 from django.contrib.auth.mixins import PermissionRequiredMixin
 from django.contrib import messages
 from django.contrib.messages.views import SuccessMessageMixin
-from product.models import ProductCategory
+from product.models import ProductCategory, Product
 
 # Create your views here.
 
@@ -54,3 +54,30 @@ class ProductCategoryDelete(PermissionRequiredMixin, DeleteView):
             return super(ProductCategoryDelete, self).delete(request, 
                     *args, **kwargs)
 
+class ProductList(ListView):
+    model = Product
+    context_object_name = 'products'
+
+class ProductDetail(DetailView):
+    model = Product
+    context_object_name = 'product'
+
+class ProductCreate(CreateView):
+    model = Product
+    fields = ['name', 'category']
+
+class ProductUpdate(UpdateView):
+    model = Product
+    fields = ['name', 'category']
+
+class ProductDelete(DeleteView):
+    model = Product
+    context_object_name = 'product'
+    success_url = reverse_lazy('product-list')
+
+    def post(self, request, *args, **kwargs):
+        if 'cancel' in request.POST:
+            url = self.success_url
+            return HttpResponseRedirect(url)
+        else:
+            return super(ProductDelete, self).delete(request, *args, **kwargs)
