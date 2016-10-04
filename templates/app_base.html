@@ -1,0 +1,8 @@
+{# All app templates should inherit from this. #}
+{% extends "base.html" %}
+
+{% block body %}
+  {% block action_top %}{% endblock %}
+  {% block content %}{% endblock %}
+  {% block action_bottom %}{% endblock %}
+{% endblock %}
