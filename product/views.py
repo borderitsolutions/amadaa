@@ -66,3 +66,18 @@ class ProductCreate(CreateView):
     model = Product
     fields = ['name', 'category']
 
+class ProductUpdate(UpdateView):
+    model = Product
+    fields = ['name', 'category']
+
+class ProductDelete(DeleteView):
+    model = Product
+    context_object_name = 'product'
+    success_url = reverse_lazy('product-list')
+
+    def post(self, request, *args, **kwargs):
+        if 'cancel' in request.POST:
+            url = self.success_url
+            return HttpResponseRedirect(url)
+        else:
+            return super(ProductDelete, self).delete(request, *args, **kwargs)
