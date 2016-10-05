@@ -17,7 +17,7 @@ class UnitOfMeasurement(AmadaaModel):
     unit = models.CharField(max_length=30)
 
     def __str__(self):
-        return "%(self.name)s"
+        return "%(self.unit)s"
 
 class Product(AmadaaModel):
     name = models.CharField(max_length=100)
