@@ -14,7 +14,7 @@ class ProductCategory(AmadaaModel):
         return "{}".format(self.name)
 
 class UnitOfMeasurement(AmadaaModel):
-    unit = models.CharField(max_length=30)
+    unit = models.CharField(max_length=30, unique=True)
 
     def get_absolute_url(self):
         return reverse('uom-list')
