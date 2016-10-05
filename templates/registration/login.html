@@ -1,47 +1,55 @@
 {% extends "base.html" %}
 
+{% load static %}
+
+{% block css %}
+  <link rel="stylesheet" href="{% static 'css/login.css' %}">
+{% endblock %}
+
 {% block body %}
+  <div class="login-container">
+  <h2>
+    <div id="title">Amadaa</div>
+  </h2>
 
-<div class="login-container">
-<h2><div id="title">Amadaa</div></h2>
+  <div class="errormsg">
+    {% if form.errors %}
+      <p>Authentication failed. Please try again.</p>
+    {% endif %}
 
-<div class="errormsg">
-{% if form.errors %}
-<p>Authentication failed. Please try again.</p>
-{% endif %}
+    {% if next %}
+      {% if user.is_authenticated %}
+        <p>You don't have access to this page.</p>
+      {% else %}
+        <p><h5>Please enter your credentials to log in.</h5></p>
+      {% endif %}
+    {% endif %}
+  </div>
 
-{% if next %}
-  {% if user.is_authenticated %}
-    <p>You don't have access to this page.</p>
-  {% else %}
-    <p><h5>Please enter your credentials to log in.</h5></p>
-  {% endif %}
-{% endif %}
-</div>
+  <form method="post" action="{% url 'login' %}">
+    {% csrf_token %}
 
+    <table>
+      <tr>
+        <td><div id="label">{{ form.username.label_tag }}</td></div>
+        <td>{{ form.username }}</td>
+      </tr>
 
-<form method="post" action="{% url 'login' %}">
-  {% csrf_token %}
+      <tr>
+        <td><div id="label">{{ form.password.label_tag }}</td></div>
+        <td>{{ form.password }}</td>
+      </tr>
+    </table>
 
+    <div id="submit">
+      <input type="submit" value="Log in">
+    </div>
+    <input type="hidden" name="next" value="{{ next }}">
+  </form>
 
-  <table>
-    <tr>
-      <td><div id="label">{{ form.username.label_tag }}</td></div>
-      <td>{{ form.username }}</td>
-    </tr>
-
-    <tr>
-      <td><div id="label">{{ form.password.label_tag }}</td></div>
-      <td>{{ form.password }}</td>
-    </tr>
-  </table>
-
-  <div id="submit">
-  <input type="submit" value="Log in"></div>
-  <input type="hidden" name="next" value="{{ next }}">
-</form>
-
-<div id="passwd">
-<p><a href="{% url 'password_reset' %}">Lost password</a></p></div></div>
+  <div id="passwd">
+    <p><a href="{% url 'password_reset' %}">Lost password</a></p>
+  </div>
+  </div> <!-- which div is this closing? -->
 {% endblock %}
 

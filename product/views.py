@@ -6,7 +6,7 @@ from django.shortcuts import render
 from django.contrib.auth.mixins import PermissionRequiredMixin
 from django.contrib import messages
 from django.contrib.messages.views import SuccessMessageMixin
-from product.models import ProductCategory, Product
+from product.models import ProductCategory, UnitOfMeasurement, Product
 
 # Create your views here.
 
@@ -52,6 +52,34 @@ class ProductCategoryDelete(PermissionRequiredMixin, DeleteView):
         else:
             messages.success(self.request, self.success_message)
             return super(ProductCategoryDelete, self).delete(request, 
+                    *args, **kwargs)
+
+class UnitOfMeasurementList(ListView):
+    model = UnitOfMeasurement
+    context_object_name = 'uoms'
+
+class UnitOfMeasurementDetail(DetailView):
+    model = UnitOfMeasurement
+    context_object_name = 'uom'
+
+class UnitOfMeasurementCreate(CreateView):
+    model = UnitOfMeasurement
+    fields = ['unit']
+
+class UnitOfMeasurementUpdate(UpdateView):
+    model = UnitOfMeasurement
+    fields = ['unit']
+
+class UnitOfMeasurementDelete(DeleteView):
+    model = UnitOfMeasurement
+    context_object_name = 'uom'
+    success_url = reverse_lazy('uom-list')
+
+    def post(self, request, *args, **kwargs):
+        if 'cancel' in request.POST:
+            return HttpResponseRedirect(self.success_url)
+        else:
+            return super(UnitOfMeasurementDelete, self).delete(request,
                     *args, **kwargs)
 
 class ProductList(ListView):
