@@ -66,6 +66,10 @@ class UnitOfMeasurementCreate(CreateView):
     model = UnitOfMeasurement
     fields = ['unit']
 
+class UnitOfMeasurementUpdate(UpdateView):
+    model = UnitOfMeasurement
+    fields = ['unit']
+
 class ProductList(ListView):
     model = Product
     context_object_name = 'products'
