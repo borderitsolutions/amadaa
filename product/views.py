@@ -62,6 +62,10 @@ class UnitOfMeasurementDetail(DetailView):
     model = UnitOfMeasurement
     context_object_name = 'uom'
 
+class UnitOfMeasurementCreate(CreateView):
+    model = UnitOfMeasurement
+    fields = ['unit']
+
 class ProductList(ListView):
     model = Product
     context_object_name = 'products'

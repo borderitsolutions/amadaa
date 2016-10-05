@@ -16,6 +16,9 @@ class ProductCategory(AmadaaModel):
 class UnitOfMeasurement(AmadaaModel):
     unit = models.CharField(max_length=30)
 
+    def get_absolute_url(self):
+        return reverse('uom-list')
+
     def __str__(self):
         return "%(self.unit)s"
 

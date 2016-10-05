@@ -5,11 +5,11 @@
 
   {% for uom in uoms %}
     {% if forloop.first %}
-
+      <table>
     {% endif %}
 
     <tr>
-      <td><a href="{% url 'uom-detail' %}">{{ uom.unit }}</a></td>
+      <td><a href="{% url 'uom-detail' uom.id %}">{{ uom.unit }}</a></td>
       <td><a href="#">edit</a></td>
       <td><a href="#">delete</a></td>
     </tr>
@@ -21,5 +21,5 @@
 {% endblock %}
 
 {% block action_bottom %}
-  <p><a href="#">Add Unit of Measurement</a></p>
+  <p><a href="{% url 'uom-add' %}">Add Unit of Measurement</a></p>
 {% endblock %}
