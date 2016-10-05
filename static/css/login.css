@@ -1,32 +1,17 @@
-.form2{
-//margin-top: 150px;
+.login-container{
+margin-top: 100px;
 //padding-left: 40%;
 border:1px solid #6F7D94;
-width:50%;
+width:35%;
 height:50%;
 //padding:0 50px 15px;
-//margin-top:20px;
+margin-left:32%;
 box-shadow:0 0 15px #6F7D94;
 border-radius:30px;
 float:center;
 }
 
-body{
-margin-top: 100px;
-padding-left: 35%;
-color: #6F7D94;
-//text-align:center;
-//border:1px solid #ccc;
-//width:60%;
-//height:100%;
-//padding:0 50px 15px;
-//margin-top:20px;
-//box-shadow:0 0 15px;
-//border-radius:6px;
-float:center;
-}  
-
-div#label1{
+div#label{
 text-align:left;
 padding:10px 50px 10px;
 //float:center;
@@ -42,10 +27,7 @@ padding:25px 50px 10px;
 }
 
 
-footer{
-padding:25px 10px 10px;
-text-align:center;
-}
+
 
 h5{
 text-align:center;
@@ -57,7 +39,7 @@ padding:25px 50px 10px;
 //text-align:center;
 }
 
-div#title1{
+div#title {
 text-align:center;
 color: blue;
 padding:10px 60px 15px;

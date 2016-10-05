@@ -7,11 +7,8 @@
 <html lang="en">
   <head>
     <title>{% block title %}{% endblock %} - Amadaa</title>
-
-    <link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}">
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
-    <link rel="stylesheet" href="{% static 'css/login1.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}">   
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
   </head>
 
     {% block css %}{% endblock %}
@@ -19,7 +16,7 @@
   </head>
 
 
-  <body><div class="form2">
+  <body><div class="base-container">
     <header>
 
       {% block header %}
@@ -38,14 +35,14 @@
           {% endfor %}
         </ul>
       </div>
-    {% endif %}
+    {% endif %}</div>
 
     {% block body %}{% endblock %}
 
     <footer>
 
       Copyright &copy; 2016 The Amadaa Team
-    </footer></div>
+    </footer>
 
       {%block footer %}{% endblock %}
     </footer>
