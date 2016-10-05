@@ -7,44 +7,38 @@
 <html lang="en">
   <head>
     <title>{% block title %}{% endblock %} - Amadaa</title>
-    <link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}">   
-      </head>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}">  
 
     {% block css %}{% endblock %}
     {% block js %}{% endblock %}
   </head>
 
-
-  <body><div class="base-container">
-    <header>
-
-      {% block header %}
-      {% endblock %}
-
-    </header>
+  <body>
+    <div class="base-container">
+      <header>
+        {% block header %}
+        {% endblock %}
+      </header>
     
-
-    {% if messages %}
-      <div id="message-area">
-        <ul class="messages">
-          {% for message in messsages %}
-            <li{% if message.tags %} class="{{ message.tags}}"{% endif %}>
-              {{ message }}
-            </li>
-          {% endfor %}
-        </ul>
-      </div>
-    {% endif %}</div>
+      {% if messages %}
+        <div id="message-area">
+          <ul class="messages">
+            {% for message in messsages %}
+              <li{% if message.tags %} class="{{ message.tags}}"{% endif %}>
+                {{ message }}
+              </li>
+            {% endfor %}
+          </ul>
+        </div>
+      {% endif %}
+    </div>
 
     {% block body %}{% endblock %}
 
     <footer>
-
-      Copyright &copy; 2016 The Amadaa Team
+      {% block footer %}
+        Copyright &copy; 2016 The Amadaa Team
+      {% endblock %}
     </footer>
-
-      {%block footer %}{% endblock %}
-    </footer>
-
   <body>
 </html>
