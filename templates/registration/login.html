@@ -1,7 +1,9 @@
 {% extends "base.html" %}
 
 {% block body %}
-<h2><div id="title1">Login Form </div></h2>
+
+<div class="login-container">
+<h2><div id="title">Amadaa</div></h2>
 
 <div class="errormsg">
 {% if form.errors %}
@@ -17,19 +19,19 @@
 {% endif %}
 </div>
 
-<div class="form1">
+
 <form method="post" action="{% url 'login' %}">
   {% csrf_token %}
 
 
   <table>
-    <tr><div id="label1">
-      <td><div id="label1">{{ form.username.label_tag }}</td></div>
+    <tr>
+      <td><div id="label">{{ form.username.label_tag }}</td></div>
       <td>{{ form.username }}</td>
     </tr>
 
     <tr>
-      <td><div id="label1">{{ form.password.label_tag }}</td></div>
+      <td><div id="label">{{ form.password.label_tag }}</td></div>
       <td>{{ form.password }}</td>
     </tr>
   </table>
@@ -40,7 +42,6 @@
 </form>
 
 <div id="passwd">
-<p><a href="{% url 'password_reset' %}">Lost password</a></p></div>
+<p><a href="{% url 'password_reset' %}">Lost password</a></p></div></div>
 {% endblock %}
 
-</div>
