@@ -58,6 +58,10 @@ class UnitOfMeasurementList(ListView):
     model = UnitOfMeasurement
     context_object_name = 'uoms'
 
+class UnitOfMeasurementDetail(DetailView):
+    model = UnitOfMeasurement
+    context_object_name = 'uom'
+
 class ProductList(ListView):
     model = Product
     context_object_name = 'products'
