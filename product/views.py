@@ -29,7 +29,7 @@ class ProductCategoryCreate(PermissionRequiredMixin, SuccessMessageMixin, Create
 class ProductCategoryUpdate(PermissionRequiredMixin, SuccessMessageMixin, UpdateView):
     model = ProductCategory
     fields = ['name']
-    permission_required = 'product.edit_productcategory'
+    permission_required = 'product.change_productcategory'
     raise_exception = True
     permission_denied_message = "You do not have the permission to modify product categories"
     success_message = "Category %(name)s updated"
