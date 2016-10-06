@@ -13,6 +13,15 @@ class ProductCategory(AmadaaModel):
     def __str__(self):
         return "{}".format(self.name)
 
+class ProductType(AmadaaModel):
+    name = models.CharField(max_length=100, unique=True)
+
+    def get_absolute_url(self):
+        return reverse('product-type-list')
+
+    def __str__(self):
+        return "{}".format(self.name)
+
 class UnitOfMeasurement(AmadaaModel):
     unit = models.CharField(max_length=30, unique=True)
 
