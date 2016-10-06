@@ -70,7 +70,7 @@ class UnitOfMeasurementCreate(SuccessMessageMixin, CreateView):
 class UnitOfMeasurementUpdate(SuccessMessageMixin, UpdateView):
     model = UnitOfMeasurement
     fields = ['unit']
-    success_message = "Unit of measurement %(unit) updated"
+    success_message = "Unit of measurement %(unit)s updated"
 
 class UnitOfMeasurementDelete(DeleteView):
     model = UnitOfMeasurement
