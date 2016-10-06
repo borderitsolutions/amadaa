@@ -58,7 +58,7 @@ class ProductCategoryTestCase(TestCase):
         self.assertEquals(response.status_code, 403)
         self.client.logout()
     
-    def test_allowed_user_add_permissions(self):
+    def test_allowed_user_add_permission(self):
         perm = Permission.objects.get(content_type=self.content_type,
                 codename='add_productcategory')
         self.user.user_permissions.add(perm)
@@ -68,11 +68,26 @@ class ProductCategoryTestCase(TestCase):
         self.assertEquals(response.status_code, 200)
         self.client.logout()
 
-    def test_allowed_user_update_permissions(self):
+    def test_allowed_user_update_permission(self):
+        category = ProductCategory(name='testing')
+        category.save()
         perm = Permission.objects.get(content_type=self.content_type,
                 codename='change_productcategory')
         self.user.user_permissions.add(perm)
         self.user.save()
         self.client.login(username='u', password='p')
-        response = self.client.get('/product/category/update/1/')
+        url = "/product/category/update/{}/".format(category.id)
+        response = self.client.get(url)
         self.assertEquals(response.status_code, 200)
+
+    def test_allowed_user_delete_permission(self):
+        category = ProductCategory(name='to be deleted')
+        category.save()
+        perm = Permission.objects.get(content_type=self.content_type,
+                codename='delete_productcategory')
+        self.user.user_permissions.add(perm)
+        self.user.save()
+        self.client.login(username='u', password='p')
+        url = '/product/category/update/{}'.format(category.id)
+        response = self.client.get(url)
+        self.assertEquals(response.status_code, 301)
