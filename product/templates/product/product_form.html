@@ -1,11 +1,57 @@
 {% extends "app_base.html" %}
 
 {% block content %}
-<form action="" method="post">
-  {% csrf_token %}
 
-  {{ form.as_p }}
-  
-  <input type="submit" value="OK">
-</form>
+<div class="container">
+  <div class="title">
+    <h2>Add Product  <!-- end .header --></h2>
+  </div>
+
+    <div class="addProduct">
+      <form name="productform" method="post" action="">
+        <table width="98%" border="0" align="center" cellpadding="12" cellspacing="15">
+          <tr>
+            <th width="34%" align="left" valign="bottom" scope="col"><label for="productid2"></label>
+              <input name="productid" type="text" class="txtFields" id="productid2" value="Product ID"></th>
+            <th width="34%" align="left" valign="bottom" scope="col">&nbsp;</th>
+            <th width="32%" align="left" valign="bottom" scope="col">&nbsp;</th>
+          </tr>
+          <tr>
+            <td align="left" valign="bottom"><input name="productid2" type="text" class="txtFields" id="productid2" value="Name"></td>
+            <td valign="bottom"><input name="productid4" type="text" class="txtFields" id="productid4" value="Internal Ref."></td>
+            <td valign="bottom"><select name="category" class="list" id="category">
+              <option value="0">Categories</option>
+              <option value="1">Amane</option>
+              <option value="2">Beef</option>
+              <option value="3">By-Catch</option>
+              <option value="4">Chicken</option>
+              <option value="5">Mackerel</option>
+              <option value="6">H/Mac</option>
+              <option value="7">PigFeet </option>
+              <option value="8">Sardine</option>
+              <option value="9">Salmon</option>
+              <option value="10">Tilapia</option>
+            </select></td>
+          </tr>
+          <tr>
+            <td height="67" align="left" valign="bottom"><input name="productid3" type="text" class="txtFields" id="productid3" value="Supplier"></td>
+            <td valign="bottom"><input name="productid5" type="text" class="txtFields" id="productid5" value="Type"></td>
+            <td valign="bottom"><textarea name="productid6" class="txtFields" id="productid6">Description</textarea></td>
+          </tr>
+          <tr>
+            <td align="left" valign="bottom">&nbsp;</td>
+            <td valign="bottom">&nbsp;</td>
+            <td valign="bottom">&nbsp;</td>
+          </tr>
+          <tr>
+            <td align="left" valign="bottom"><input name="addbutton" type="submit" class="button1" id="addbutton" value="Add"></td>
+            <td valign="bottom">&nbsp;</td>
+            <td valign="bottom">&nbsp;</td>
+          </tr>
+        </table>
+      </form>
+    </div>
+
+  <!-- end .container --></div>
+
 {% endblock %}

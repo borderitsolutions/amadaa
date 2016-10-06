@@ -1,0 +1,99 @@
+@charset "utf-8";
+
+.title {
+	font: 100%/1.4 Verdana, Arial, Helvetica, sans-serif;
+	color: white;
+        text-align:center;
+        margin-top: 50px;
+
+}
+
+/* ~~ Element/tag selectors ~~ */ /*
+ul, ol, dl { /* Due to variations between browsers, it's best practices to zero padding and margin on lists. For consistency, you can either specify the amounts you want here, or on the list items (LI, DT, DD) they contain. Remember that what you do here will cascade to the .nav list unless you write a more specific selector. */
+	padding: 0;
+	margin: 0;
+}*/
+
+ 
+a img { /* this selector removes the default blue border displayed in some browsers around an image when it is surrounded by a link */
+	border: none;
+}
+/* ~~ Styling for your site's links must remain in this order - including the group of selectors that create the hover effect. ~~ */
+a:link {
+	color: #42413C;
+	text-decoration: underline; /* unless you style your links to look extremely unique, it's best to provide underlines for quick visual identification */
+}
+a:visited {
+	color: #6E6C64;
+	text-decoration: underline;
+}
+a:hover, a:active, a:focus { /* this group of selectors will give a keyboard navigator the same hover experience as the person using a mouse. */
+	text-decoration: none;
+}
+
+/* ~~ this fixed width container surrounds the other divs ~~ */
+.container {
+	width: 100%;
+	//background-color: white;
+	margin: 0 auto; /* the auto value on the sides, coupled with the width, centers the layout */
+}
+
+/*
+
+1) Padding is only placed on the top and/or bottom of the div. The elements within this div have padding on their sides. This saves you from any "box model math". Keep in mind, if you add any side padding or border to the div itself, it will be added to the width you define to create the *total* width. You may also choose to remove the padding on the element in the div and place a second div within it with no width and the padding necessary for your design.
+
+*/
+
+
+.addProduct {
+	height: 350px;
+	width: 70%;
+	margin-top: 20px;
+	margin-right: auto;
+	margin-bottom: 20px;
+	margin-left: auto;
+	//border: thin groove #3333FB;
+	//border-radius: 25px;
+	box-shadow:0 0 15px #0066CC;
+	background-color: white;
+	padding: 0px 0px 10px;	
+}
+
+
+.list {
+	width: 220px;
+	border-bottom-width: 2px;
+	border-top-style: none;
+	border-right-style: none;
+	border-bottom-style: groove;
+	border-left-style: none;
+	border-bottom-color: #0066FF;
+}
+.button1 {
+	height: 35px;
+	width: 80px;
+	border-radius: 10px;							
+	border-bottom-width: 4px;
+	border-top-style: groove;
+	border-right-style: groove;
+	border-bottom-style: groove;
+	border-left-style: groove;
+	border-bottom-color: #06C;
+	border-right-width: 4px;
+	border-left-width: 4px;
+	border-right-color: #06C;
+	border-left-color: #06C;
+}
+
+.txtFields {
+	border-bottom-width: 2px;
+	border-top-style: none;
+	border-right-style: none;
+	border-bottom-style: groove;
+	border-left-style: none;
+	border-top-color: #06F;
+	border-right-color: #06F;
+	border-bottom-color: #06F;
+	border-left-color: #06F;
+	width: 90%;
+}

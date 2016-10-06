@@ -1,7 +1,7 @@
 header {
     margin-left: 5px;
     margin-right: 5px;
-    padding-top: 10px;
+    //padding-top: 10px;
     padding-bottom: 10px;
     background-color: #000080;
     color: #ffff00;
@@ -14,4 +14,13 @@ header {
 footer{
 padding: 20px 0;
 text-align:center;
+color:white
+}
+
+body{
+margin-left: 5px;
+margin-right: 5px;
+//padding-top: 10px;
+background-color: gray;
+//color = #42413C;
 }
