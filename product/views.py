@@ -29,7 +29,7 @@ class ProductCategoryCreate(PermissionRequiredMixin, SuccessMessageMixin, Create
 class ProductCategoryUpdate(PermissionRequiredMixin, SuccessMessageMixin, UpdateView):
     model = ProductCategory
     fields = ['name']
-    permission_required = 'product.edit_productcategory'
+    permission_required = 'product.change_productcategory'
     raise_exception = True
     permission_denied_message = "You do not have the permission to modify product categories"
     success_message = "Category %(name)s updated"
@@ -98,13 +98,13 @@ class ProductDetail(DetailView):
 
 class ProductCreate(SuccessMessageMixin, CreateView):
     model = Product
-    fields = ['name', 'internal_ref', 'category']
-    success_message = "Product %(name) created"
+    fields = ['name', 'internal_ref', 'category', 'description']
+    success_message = "Product %(name)s created"
 
 class ProductUpdate(SuccessMessageMixin, UpdateView):
     model = Product
-    fields = ['name', 'internal_ref', 'category']
-    success_message = "Product %(name) updated"
+    fields = ['name', 'internal_ref', 'category', 'description']
+    success_message = "Product %(name)s updated"
 
 class ProductDelete(DeleteView):
     model = Product
