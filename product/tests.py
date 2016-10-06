@@ -69,10 +69,13 @@ class ProductCategoryTestCase(TestCase):
         self.client.logout()
 
     def test_allowed_user_update_permissions(self):
+        category = ProductCategory(name='testing')
+        category.save()
         perm = Permission.objects.get(content_type=self.content_type,
                 codename='change_productcategory')
         self.user.user_permissions.add(perm)
         self.user.save()
         self.client.login(username='u', password='p')
-        response = self.client.get('/product/category/update/1/')
+        url = "/product/category/update/{}/".format(category.id)
+        response = self.client.get(url)
         self.assertEquals(response.status_code, 200)
