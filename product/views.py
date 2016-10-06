@@ -98,12 +98,12 @@ class ProductDetail(DetailView):
 
 class ProductCreate(SuccessMessageMixin, CreateView):
     model = Product
-    fields = ['name', 'internal_ref', 'category']
+    fields = ['name', 'internal_ref', 'category', 'description']
     success_message = "Product %(name)s created"
 
 class ProductUpdate(SuccessMessageMixin, UpdateView):
     model = Product
-    fields = ['name', 'internal_ref', 'category']
+    fields = ['name', 'internal_ref', 'category', 'description']
     success_message = "Product %(name)s updated"
 
 class ProductDelete(DeleteView):

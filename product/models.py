@@ -26,6 +26,7 @@ class Product(AmadaaModel):
     name = models.CharField(max_length=100)
     internal_ref = models.CharField(max_length=100, default='')
     category = models.ForeignKey(ProductCategory)
+    description = models.TextField(blank=True, default='')
 
     def get_absolute_url(self):
         return reverse('product-list')
