@@ -65,12 +65,12 @@ class UnitOfMeasurementDetail(DetailView):
 class UnitOfMeasurementCreate(SuccessMessageMixin, CreateView):
     model = UnitOfMeasurement
     fields = ['unit']
-    success_message = "Unit of measurement %(self.unit)s created"
+    success_message = "Unit of measurement %(unit)s created"
 
 class UnitOfMeasurementUpdate(SuccessMessageMixin, UpdateView):
     model = UnitOfMeasurement
     fields = ['unit']
-    success_message = "Unit of measurement %(self.unit) updated"
+    success_message = "Unit of measurement %(unit) updated"
 
 class UnitOfMeasurementDelete(DeleteView):
     model = UnitOfMeasurement
@@ -84,7 +84,7 @@ class UnitOfMeasurementDelete(DeleteView):
             messages.success(self.request, self.cancel_message)
             return HttpResponseRedirect(self.success_url)
         else:
-            messages.succes(self.request, self.success_message)
+            messages.success(self.request, self.success_message)
             return super(UnitOfMeasurementDelete, self).delete(request,
                     *args, **kwargs)
 
@@ -99,12 +99,12 @@ class ProductDetail(DetailView):
 class ProductCreate(SuccessMessageMixin, CreateView):
     model = Product
     fields = ['name', 'internal_ref', 'category']
-    success_message = "Product %(self.name) created"
+    success_message = "Product %(name) created"
 
 class ProductUpdate(SuccessMessageMixin, UpdateView):
     model = Product
     fields = ['name', 'internal_ref', 'category']
-    success_message = "Product %(self.name) updated"
+    success_message = "Product %(name) updated"
 
 class ProductDelete(DeleteView):
     model = Product
