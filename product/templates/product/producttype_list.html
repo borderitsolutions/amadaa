@@ -1,0 +1,25 @@
+{% extends "app_base.html" %}
+
+{% block content %}
+<h2>Product Types</h2>
+
+{% for product_type in product_types %}
+  {% if forloop.first %}
+  <table>
+  {% endif %}
+
+  <tr>
+    <td><a href="{% url 'product-type-detail' product_type.id %}">{{ product_type.name }}</a></td>
+    <td><a href="{% url 'product-type-update' product_type.id %}">edit</a></td>
+    <td><a href="{% url 'product-type-delete' product_type.id %}">delete</a></td>
+  </tr>
+
+  {% if forloop.last %}
+    </table>
+  {% endif %}
+{% endfor %}
+{% endblock %}
+
+{% block action_bottom %}
+<p><a href="{% url 'product-type-add' %}">Add product type</a></p>
+{% endblock %}

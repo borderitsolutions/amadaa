@@ -1,0 +1,9 @@
+{% extends "app_base.html" %}
+
+{% block content %}
+<p><b>Name:</b> {{ product_type.name }}</p>
+{% endblock %}
+
+{% block action_bottom %}
+<p><a href="{% url 'product-type-list' %}">Back to list</a></p>
+{% endblock %}

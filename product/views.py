@@ -6,7 +6,7 @@ from django.shortcuts import render
 from django.contrib.auth.mixins import PermissionRequiredMixin
 from django.contrib import messages
 from django.contrib.messages.views import SuccessMessageMixin
-from product.models import ProductCategory, UnitOfMeasurement, Product
+from product.models import ProductCategory, ProductType, UnitOfMeasurement, Product
 
 # Create your views here.
 
@@ -53,6 +53,40 @@ class ProductCategoryDelete(PermissionRequiredMixin, DeleteView):
             messages.success(self.request, self.success_message)
             return super(ProductCategoryDelete, self).delete(request, 
                     *args, **kwargs)
+
+class ProductTypeList(ListView):
+    model = ProductType
+    context_object_name = 'product_types'
+
+class ProductTypeDetail(DetailView):
+    model = ProductType
+    context_object_name = 'product_types'
+
+class ProductTypeCreate(SuccessMessageMixin, CreateView):
+    model = ProductType
+    fields = ['name']
+    success_message = "Product type %(name)s created"
+
+class ProductTypeUpdate(SuccessMessageMixin, UpdateView):
+    model = ProductType
+    fields = ['name']
+    success_message = "Product type %(name)s updated"
+
+class ProductTypeDelete(DeleteView):
+    model = ProductType
+    context_object_name = 'product_type'
+    success_url = reverse_lazy('product-type-list')
+    success_message = 'Product type deleted'
+    cancel_message = 'Delete cancelled'
+
+    def post(self, request, *args, **kwargs):
+        if 'cancel' in request.POST:
+            messages.success(self.request, self.cancel_message)
+            return HttpResponseRedirect(self.success_url)
+        else:
+            messages.success(self.request, self.success_message)
+            return super(ProductTypeDelete, self).delete(request, *args,
+                    **kwargs)
 
 class UnitOfMeasurementList(ListView):
     model = UnitOfMeasurement
