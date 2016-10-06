@@ -94,22 +94,28 @@ class ProductDetail(DetailView):
     model = Product
     context_object_name = 'product'
 
-class ProductCreate(CreateView):
+class ProductCreate(SuccessMessageMixin, CreateView):
     model = Product
     fields = ['name', 'internal_ref', 'category']
+    success_message = "Product %(self.name) created"
 
-class ProductUpdate(UpdateView):
+class ProductUpdate(SuccessMessageMixin, UpdateView):
     model = Product
     fields = ['name', 'internal_ref', 'category']
+    success_message = "Product %(self.name) updated"
 
 class ProductDelete(DeleteView):
     model = Product
     context_object_name = 'product'
     success_url = reverse_lazy('product-list')
+    success_message = "Product deleted"
+    cancel_message = "Delete cancelled"
 
     def post(self, request, *args, **kwargs):
         if 'cancel' in request.POST:
             url = self.success_url
+            messages.success(self.request, self.cancel_message)
             return HttpResponseRedirect(url)
         else:
+            messages.success(self.request, self.success_message)
             return super(ProductDelete, self).delete(request, *args, **kwargs)
