@@ -62,18 +62,22 @@ class UnitOfMeasurementDetail(DetailView):
     model = UnitOfMeasurement
     context_object_name = 'uom'
 
-class UnitOfMeasurementCreate(CreateView):
+class UnitOfMeasurementCreate(SuccessMessageMixin, CreateView):
     model = UnitOfMeasurement
     fields = ['unit']
+    success_message = "Unit of measurement %(self.unit)s created"
 
-class UnitOfMeasurementUpdate(UpdateView):
+class UnitOfMeasurementUpdate(SuccessMessageMixin, UpdateView):
     model = UnitOfMeasurement
     fields = ['unit']
+    success_message = "Unit of measurement %(self.unit) updated"
 
 class UnitOfMeasurementDelete(DeleteView):
     model = UnitOfMeasurement
     context_object_name = 'uom'
     success_url = reverse_lazy('uom-list')
+    success_message = "Unit of measurement removed"
+    cancel_message = "Delete cancelled"
 
     def post(self, request, *args, **kwargs):
         if 'cancel' in request.POST:
