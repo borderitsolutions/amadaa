@@ -81,8 +81,10 @@ class UnitOfMeasurementDelete(DeleteView):
 
     def post(self, request, *args, **kwargs):
         if 'cancel' in request.POST:
+            messages.success(self.request, self.cancel_message)
             return HttpResponseRedirect(self.success_url)
         else:
+            messages.succes(self.request, self.success_message)
             return super(UnitOfMeasurementDelete, self).delete(request,
                     *args, **kwargs)
 
