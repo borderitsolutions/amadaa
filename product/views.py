@@ -6,7 +6,7 @@ from django.shortcuts import render
 from django.contrib.auth.mixins import PermissionRequiredMixin
 from django.contrib import messages
 from django.contrib.messages.views import SuccessMessageMixin
-from product.models import ProductCategory, Product
+from product.models import ProductCategory, UnitOfMeasurement, Product
 
 # Create your views here.
 
@@ -54,6 +54,40 @@ class ProductCategoryDelete(PermissionRequiredMixin, DeleteView):
             return super(ProductCategoryDelete, self).delete(request, 
                     *args, **kwargs)
 
+class UnitOfMeasurementList(ListView):
+    model = UnitOfMeasurement
+    context_object_name = 'uoms'
+
+class UnitOfMeasurementDetail(DetailView):
+    model = UnitOfMeasurement
+    context_object_name = 'uom'
+
+class UnitOfMeasurementCreate(SuccessMessageMixin, CreateView):
+    model = UnitOfMeasurement
+    fields = ['unit']
+    success_message = "Unit of measurement %(unit)s created"
+
+class UnitOfMeasurementUpdate(SuccessMessageMixin, UpdateView):
+    model = UnitOfMeasurement
+    fields = ['unit']
+    success_message = "Unit of measurement %(unit) updated"
+
+class UnitOfMeasurementDelete(DeleteView):
+    model = UnitOfMeasurement
+    context_object_name = 'uom'
+    success_url = reverse_lazy('uom-list')
+    success_message = "Unit of measurement removed"
+    cancel_message = "Delete cancelled"
+
+    def post(self, request, *args, **kwargs):
+        if 'cancel' in request.POST:
+            messages.success(self.request, self.cancel_message)
+            return HttpResponseRedirect(self.success_url)
+        else:
+            messages.success(self.request, self.success_message)
+            return super(UnitOfMeasurementDelete, self).delete(request,
+                    *args, **kwargs)
+
 class ProductList(ListView):
     model = Product
     context_object_name = 'products'
@@ -62,22 +96,28 @@ class ProductDetail(DetailView):
     model = Product
     context_object_name = 'product'
 
-class ProductCreate(CreateView):
+class ProductCreate(SuccessMessageMixin, CreateView):
     model = Product
     fields = ['name', 'internal_ref', 'category']
+    success_message = "Product %(name) created"
 
-class ProductUpdate(UpdateView):
+class ProductUpdate(SuccessMessageMixin, UpdateView):
     model = Product
     fields = ['name', 'internal_ref', 'category']
+    success_message = "Product %(name) updated"
 
 class ProductDelete(DeleteView):
     model = Product
     context_object_name = 'product'
     success_url = reverse_lazy('product-list')
+    success_message = "Product deleted"
+    cancel_message = "Delete cancelled"
 
     def post(self, request, *args, **kwargs):
         if 'cancel' in request.POST:
             url = self.success_url
+            messages.success(self.request, self.cancel_message)
             return HttpResponseRedirect(url)
         else:
+            messages.success(self.request, self.success_message)
             return super(ProductDelete, self).delete(request, *args, **kwargs)

@@ -10,6 +10,7 @@ header {
     height:30px;
 }
 
+<<<<<<< HEAD
 
 footer{
 padding: 20px 0;
@@ -24,3 +25,9 @@ margin-right: 5px;
 background-color: gray;
 //color = #42413C;
 }
+=======
+footer {
+    padding: 20px 0;
+    text-align:center;
+}
+>>>>>>> d8cd76875dc4483e740159ede13e07006e857161
