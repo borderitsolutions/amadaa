@@ -1,17 +1,3 @@
-<<<<<<< HEAD
-.login-container{
-margin-top: 100px;
-//padding-left: 40%;
-border:1px solid #6F7D94;
-width:35%;
-height:50%;
-//padding:0 50px 15px;
-margin-left:32%;
-box-shadow:0 0 15px #6F7D94;
-border-radius:30px;
-float:center;
-background-color: white;
-=======
 .login-container {
     margin-top: 100px;
     //padding-left: 40%;
@@ -23,7 +9,6 @@ background-color: white;
     box-shadow: 0 0 15px #6F7D94;
     border-radius: 30px;
     float: center;
->>>>>>> d8cd76875dc4483e740159ede13e07006e857161
 }
 
 div#label {

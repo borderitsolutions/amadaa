@@ -7,43 +7,12 @@
 <html lang="en">
   <head>
     <title>{% block title %}{% endblock %} - Amadaa</title>
-<<<<<<< HEAD
-    <link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}">   
-    <link rel="stylesheet" href="{% static 'css/login.css' %}">
-    <link href="{% static 'css/addproduct.css' %}" rel="stylesheet" type="text/css">
-  </head>
-=======
     <link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}">  
->>>>>>> d8cd76875dc4483e740159ede13e07006e857161
 
     {% block css %}{% endblock %}
     {% block js %}{% endblock %}
   </head>
 
-<<<<<<< HEAD
-
-  <body>
-    <header>
-
-      {% block header %}
-      {% endblock %}
-
-    </header>
-    
-<div class="basecontainer">
-
-    {% if messages %}
-      <div id="message-area">
-        <ul class="messages">
-          {% for message in messsages %}
-            <li{% if message.tags %} class="{{ message.tags}}"{% endif %}>
-              {{ message }}
-            </li>
-          {% endfor %}
-        </ul>
-      </div>
-    {% endif %}</div>
-=======
   <body>
     <div class="base-container">
       <header>
@@ -61,7 +30,6 @@
       </ul>
       {% endif %}
     </div>
->>>>>>> d8cd76875dc4483e740159ede13e07006e857161
 
     {% block body %}{% endblock %}
 
