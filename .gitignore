@@ -93,4 +93,4 @@ ENV/
 
 # Some django stuff.
 db.sqlite3
-
+STATIC_ROOT
