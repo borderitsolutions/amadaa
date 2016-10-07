@@ -34,6 +34,7 @@ class UnitOfMeasurement(AmadaaModel):
 class Product(AmadaaModel):
     name = models.CharField(max_length=100)
     internal_ref = models.CharField(max_length=100, default='')
+    product_type = models.ForeignKey(ProductType)
     category = models.ForeignKey(ProductCategory)
     description = models.TextField(blank=True, default='')
 
