@@ -14,3 +14,9 @@ footer {
     padding: 20px 0;
     text-align:center;
 }
+
+input[type='text'], input[type='password'] {
+    border-width: 0 0 2px 0;
+    border-color: #000080;
+    border-style: dotted;
+}
