@@ -2,10 +2,10 @@
 
 {% block content %}
 <p><b>Name:</b> {{ product.name }}</p>
-<p><b>Type:</b> {{ product.type }}</p>
+<p><b>Type:</b> {{ product.product_type }}</p>
 <p><b>Category:</b> {{ product.category }}</p>
 <p><b>Description:</b></p>
-<p>{{ product.description }}</p>
+<p>{{ product.description | safe }}</p>
 {% endblock %}
 
 {% block action_bottom %}

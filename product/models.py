@@ -1,6 +1,7 @@
 from django.db import models
 from amadaa.models import AmadaaModel
 from django.urls import reverse
+from ckeditor.fields import RichTextField
 
 # Create your models here.
 
@@ -36,7 +37,7 @@ class Product(AmadaaModel):
     internal_ref = models.CharField(max_length=100, default='')
     product_type = models.ForeignKey(ProductType, default=0)
     category = models.ForeignKey(ProductCategory)
-    description = models.TextField(blank=True, default='')
+    description = RichTextField(blank=True, default='')
 
     def get_absolute_url(self):
         return reverse('product-list')
