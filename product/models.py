@@ -43,4 +43,4 @@ class Product(AmadaaModel):
         return reverse('product-list')
 
     def __str__(self):
-        return "%(self.name)s"
+        return "{}".format(self.name)
