@@ -1,7 +1,7 @@
 {% extends "app_base.html" %}
 
 {% block content %}
-<p><b>Name:</b> {{ supplier.name }}
+<p><b>Name:</b> {{ supplier.name }}</p>
 
 {% for product in supplier.products.all %}
 {{ product.name }}<br>
