@@ -3,7 +3,7 @@
 {% block content %}
 <p><b>Name:</b> {{ supplier.name }}
 
-{% for product in supplier.products %}
+{% for product in supplier.products.all %}
 {{ product.name }}<br>
 {% endfor %}
 {% endblock %}
