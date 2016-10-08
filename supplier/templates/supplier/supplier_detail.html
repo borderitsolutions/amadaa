@@ -4,7 +4,11 @@
 <p><b>Name:</b> {{ supplier.name }}</p>
 
 {% for product in supplier.products.all %}
-{{ product.name }}<br>
+{% if forloop.first %}
+<h3>Supplied Products</h3>
+{% endif %}
+
+<p>{{ product.name }}</p>
 {% endfor %}
 {% endblock %}
 
