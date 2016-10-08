@@ -1,0 +1,13 @@
+{% extends "app_base.html" %}
+
+{% block content %}
+<p><b>Name:</b> {{ supplier.name }}
+
+{% for product in supplier.products %}
+{{ product.name }}<br>
+{% endfor %}
+{% endblock %}
+
+{% block action_bottom %}
+<p><a href="{% url 'supplier-list' %}">Back to list</a></p>
+{% endblock %}
