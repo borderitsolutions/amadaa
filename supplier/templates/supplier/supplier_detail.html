@@ -1,10 +1,14 @@
 {% extends "app_base.html" %}
 
 {% block content %}
-<p><b>Name:</b> {{ supplier.name }}
+<p><b>Name:</b> {{ supplier.name }}</p>
 
-{% for product in supplier.products %}
-{{ product.name }}<br>
+{% for product in supplier.products.all %}
+{% if forloop.first %}
+<h3>Supplied Products</h3>
+{% endif %}
+
+<p>{{ product.name }}</p>
 {% endfor %}
 {% endblock %}
 
