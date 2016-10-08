@@ -40,7 +40,9 @@ INSTALLED_APPS = [
     'bootstrap3',
     'ckeditor',
     'dashboard',
+    'contact',
     'product',
+    'supplier',
 ]
 
 MIDDLEWARE = [

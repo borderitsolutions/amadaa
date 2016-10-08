@@ -1,0 +1,25 @@
+{% extends "app_base.html" %}
+
+{% block content %}
+<h2>Supplier</h2>
+
+{% for supplier in suppliers %}
+  {% if forloop.first %}
+    <table>
+  {% endif %}
+
+  <tr>
+    <td><a href="{% url 'supplier-detail' supplier.id %}">{{ supplier.name }}</a></td>
+    <td><a href="{% url 'supplier-update' supplier.id %}">edit</a></td>
+    <td><a href="{% url 'supplier-delete' supplier.id %}">delete</a></td>
+  </tr>
+
+  {% if forloop.last %}
+    </table>
+  {% endif %}
+{% endfor %}
+{% endblock %}
+
+{% block action_bottom %}
+<p><a href="{% url 'supplier-add' %}">Add product</a></p>
+{% endblock %}
