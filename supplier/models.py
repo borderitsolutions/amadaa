@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 from contact.models import Organization
 from product.models import Product
 
@@ -6,6 +7,9 @@ from product.models import Product
 
 class Supplier(Organization):
     products = models.ManyToManyField(Product)
+
+    def get_absolute_url(self):
+        return reverse('supplier-list')
 
     def __str__(self):
         return "{}".format(self.name)
