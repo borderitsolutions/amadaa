@@ -9,8 +9,10 @@
   <head>
     <title>{% block title %}{% endblock %} - Amadaa</title>
     <link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}">  
+    {% bootstrap_css %}
     {% block css %}{% endblock %}
     <script type="text/javascript" src="{% static 'js/jquery-3.1.1.min.js' %}">
+    {% boostrap_javascript %}
     </script>
     {% block js %}{% endblock %}
   </head>
