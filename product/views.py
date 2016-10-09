@@ -62,19 +62,28 @@ class ProductTypeDetail(DetailView):
     model = ProductType
     context_object_name = 'product_types'
 
-class ProductTypeCreate(SuccessMessageMixin, CreateView):
+class ProductTypeCreate(PermissionRequiredMixin, SuccessMessageMixin, CreateView):
     model = ProductType
     fields = ['name']
+    permission_required = "product.add_producttype"
+    raise_exception = True
+    permission_denied_message = "You do not have the permission to add product types."
     success_message = "Product type %(name)s created"
 
-class ProductTypeUpdate(SuccessMessageMixin, UpdateView):
+class ProductTypeUpdate(PermissionRequiredMixin, SuccessMessageMixin, UpdateView):
     model = ProductType
     fields = ['name']
+    permission_required = "product.change_producttype"
+    raise_exception = True
+    permission_denied_message = "You do not have the permission to update prodcut types."
     success_message = "Product type %(name)s updated"
 
-class ProductTypeDelete(DeleteView):
+class ProductTypeDelete(PermissionRequiredMixin, DeleteView):
     model = ProductType
     context_object_name = 'product_type'
+    permission_required = "product.delete_producttype"
+    raise_exception = True
+    permission_denied_message = "You do not have the permission to delete product types."
     success_url = reverse_lazy('product-type-list')
     success_message = 'Product type deleted'
     cancel_message = 'Delete cancelled'
@@ -96,19 +105,28 @@ class UnitOfMeasurementDetail(DetailView):
     model = UnitOfMeasurement
     context_object_name = 'uom'
 
-class UnitOfMeasurementCreate(SuccessMessageMixin, CreateView):
+class UnitOfMeasurementCreate(PermissionRequiredMixin, SuccessMessageMixin, CreateView):
     model = UnitOfMeasurement
     fields = ['unit']
+    permission_required = "product.add_unitofmeasurement"
+    raise_exception = True
+    permission_denied_message = "You do not have the permission to add units of measurement."
     success_message = "Unit of measurement %(unit)s created"
 
-class UnitOfMeasurementUpdate(SuccessMessageMixin, UpdateView):
+class UnitOfMeasurementUpdate(PermissionRequiredMixin, SuccessMessageMixin, UpdateView):
     model = UnitOfMeasurement
     fields = ['unit']
+    permission_required = "product.change_unitofmeasurement"
+    raise_exception = True
+    permission_denied_message = "You do not have the permission to change units of measurement."
     success_message = "Unit of measurement %(unit)s updated"
 
-class UnitOfMeasurementDelete(DeleteView):
+class UnitOfMeasurementDelete(PermissionRequiredMixin, DeleteView):
     model = UnitOfMeasurement
     context_object_name = 'uom'
+    permission_required = "product.delete_unitofmeasurement"
+    raise_exception = True
+    permission_denied_message = "You do not have the permission to delete units of measurement."
     success_url = reverse_lazy('uom-list')
     success_message = "Unit of measurement removed"
     cancel_message = "Delete cancelled"
@@ -130,19 +148,28 @@ class ProductDetail(DetailView):
     model = Product
     context_object_name = 'product'
 
-class ProductCreate(SuccessMessageMixin, CreateView):
+class ProductCreate(PermissionRequiredMixin, SuccessMessageMixin, CreateView):
     model = Product
     fields = ['name', 'internal_ref', 'product_type', 'category', 'description']
+    permission_required = "product.add_product"
+    raise_exception = True
+    permsission_denied_message = "You do not have the permission to add products."
     success_message = "Product %(name)s created"
 
-class ProductUpdate(SuccessMessageMixin, UpdateView):
+class ProductUpdate(PermissionRequiredMixin, SuccessMessageMixin, UpdateView):
     model = Product
     fields = ['name', 'internal_ref', 'product_type', 'category', 'description']
+    permission_required = "product.change_product"
+    raise_exception = True
+    permission_denied_message = "You do not have the permission to update products."
     success_message = "Product %(name)s updated"
 
-class ProductDelete(DeleteView):
+class ProductDelete(PermissionRequiredMixin, DeleteView):
     model = Product
     context_object_name = 'product'
+    permission_required = "product.delete_product"
+    raise_exception = True
+    permission_denied_message = "You do not have the permission to delete products."
     success_url = reverse_lazy('product-list')
     success_message = "Product deleted"
     cancel_message = "Delete cancelled"
