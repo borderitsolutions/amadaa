@@ -105,19 +105,28 @@ class UnitOfMeasurementDetail(DetailView):
     model = UnitOfMeasurement
     context_object_name = 'uom'
 
-class UnitOfMeasurementCreate(SuccessMessageMixin, CreateView):
+class UnitOfMeasurementCreate(PermissionRequiredMixin, SuccessMessageMixin, CreateView):
     model = UnitOfMeasurement
     fields = ['unit']
+    permission_required = "product.add_unitofmeasurement"
+    raise_exception = True
+    permission_denied_message = "You do not have the permission to add units of measurement."
     success_message = "Unit of measurement %(unit)s created"
 
-class UnitOfMeasurementUpdate(SuccessMessageMixin, UpdateView):
+class UnitOfMeasurementUpdate(PermissionRequiredMixin, SuccessMessageMixin, UpdateView):
     model = UnitOfMeasurement
     fields = ['unit']
+    permission_required = "product.change_unitofmeasurement"
+    raise_exception = True
+    permission_denied_message = "You do not have the permission to change units of measurement."
     success_message = "Unit of measurement %(unit)s updated"
 
-class UnitOfMeasurementDelete(DeleteView):
+class UnitOfMeasurementDelete(PermissionRequiredMixin, DeleteView):
     model = UnitOfMeasurement
     context_object_name = 'uom'
+    permission_required = "product.delete_unitofmeasurement"
+    raise_exception = True
+    permission_denied_message = "You do not have the permission to delete units of measurement."
     success_url = reverse_lazy('uom-list')
     success_message = "Unit of measurement removed"
     cancel_message = "Delete cancelled"
