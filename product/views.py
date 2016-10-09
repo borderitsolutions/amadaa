@@ -62,9 +62,12 @@ class ProductTypeDetail(DetailView):
     model = ProductType
     context_object_name = 'product_types'
 
-class ProductTypeCreate(SuccessMessageMixin, CreateView):
+class ProductTypeCreate(PermissionRequiredMixin, SuccessMessageMixin, CreateView):
     model = ProductType
     fields = ['name']
+    permission_required = "product.add_producttype"
+    raise_exception = True
+    permission_denied_message = "You do not have the permission to add product types."
     success_message = "Product type %(name)s created"
 
 class ProductTypeUpdate(SuccessMessageMixin, UpdateView):
