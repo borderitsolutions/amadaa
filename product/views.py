@@ -78,7 +78,7 @@ class ProductTypeUpdate(PermissionRequiredMixin, SuccessMessageMixin, UpdateView
     permission_denied_message = "You do not have the permission to update prodcut types."
     success_message = "Product type %(name)s updated"
 
-class ProductTypeDelete(DeleteView):
+class ProductTypeDelete(PermissionRequiredMixin, DeleteView):
     model = ProductType
     context_object_name = 'product_type'
     permission_required = "product.delete_producttype"
