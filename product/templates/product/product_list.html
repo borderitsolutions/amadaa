@@ -1,4 +1,5 @@
 {% extends "app_base.html" %}
+{% load bootstrap3 %}
 
 {% block content %}
   <h2>Products</h2>
@@ -6,13 +7,19 @@
     {% for product in products %}
       {% if forloop.first %}
         <table>
+          <tr>
+            <th>Product name</th>
+            <th>Category</th>
+            <th>Edit</th>
+            <th>Delete</th>
+          </tr>
       {% endif %}
 
       <tr>
         <td><a href="{% url 'product-detail' product.id %}">{{ product.name }}</a></td>
         <td>{{ product.category }}</td>
-        <td><a href="{% url 'product-update' product.id %}">edit</a></td>
-        <td><a href="{% url 'product-delete' product.id %}">delete</a></td>
+        <td><a href="{% url 'product-update' product.id %}">{% bootstrap_icon 'pencil' %}</a></td>
+        <td><a href="{% url 'product-delete' product.id %}">{% bootstrap_icon 'minus' %}</a></td>
       </tr>
 
       {% if forloop.last %}
@@ -22,5 +29,5 @@
 {% endblock %}
 
 {% block action_bottom %}
-  <p><a href="{% url 'product-add' %}">Add product</a></p>
+<p><a href="{% url 'product-add' %}">{% bootstrap_icon 'plus' %}</a></p>
 {% endblock %}
