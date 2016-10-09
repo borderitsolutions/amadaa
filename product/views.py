@@ -73,6 +73,9 @@ class ProductTypeCreate(PermissionRequiredMixin, SuccessMessageMixin, CreateView
 class ProductTypeUpdate(SuccessMessageMixin, UpdateView):
     model = ProductType
     fields = ['name']
+    permission_required = "product.change_producttype"
+    raise_exception = True
+    permission_denied_message = "You do not have the permission to update prodcut types."
     success_message = "Product type %(name)s updated"
 
 class ProductTypeDelete(DeleteView):
