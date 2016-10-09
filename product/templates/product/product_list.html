@@ -7,6 +7,12 @@
     {% for product in products %}
       {% if forloop.first %}
         <table>
+          <tr>
+            <th>Product name</th>
+            <th>Category</th>
+            <th>Edit</th>
+            <th>Delete</th>
+          </tr>
       {% endif %}
 
       <tr>
