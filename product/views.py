@@ -81,6 +81,9 @@ class ProductTypeUpdate(PermissionRequiredMixin, SuccessMessageMixin, UpdateView
 class ProductTypeDelete(DeleteView):
     model = ProductType
     context_object_name = 'product_type'
+    permission_required = "product.delete_producttype"
+    raise_exception = True
+    permission_denied_message = "You do not have the permission to delete product types."
     success_url = reverse_lazy('product-type-list')
     success_message = 'Product type deleted'
     cancel_message = 'Delete cancelled'
