@@ -70,7 +70,7 @@ class ProductTypeCreate(PermissionRequiredMixin, SuccessMessageMixin, CreateView
     permission_denied_message = "You do not have the permission to add product types."
     success_message = "Product type %(name)s created"
 
-class ProductTypeUpdate(SuccessMessageMixin, UpdateView):
+class ProductTypeUpdate(PermissionRequiredMixin, SuccessMessageMixin, UpdateView):
     model = ProductType
     fields = ['name']
     permission_required = "product.change_producttype"
