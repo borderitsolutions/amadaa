@@ -148,19 +148,28 @@ class ProductDetail(DetailView):
     model = Product
     context_object_name = 'product'
 
-class ProductCreate(SuccessMessageMixin, CreateView):
+class ProductCreate(PermissionRequiredMixin, SuccessMessageMixin, CreateView):
     model = Product
     fields = ['name', 'internal_ref', 'product_type', 'category', 'description']
+    permission_required = "product.add_product"
+    raise_exception = True
+    permsission_denied_message = "You do not have the permission to add products."
     success_message = "Product %(name)s created"
 
-class ProductUpdate(SuccessMessageMixin, UpdateView):
+class ProductUpdate(PermissionRequiredMixin, SuccessMessageMixin, UpdateView):
     model = Product
     fields = ['name', 'internal_ref', 'product_type', 'category', 'description']
+    permission_required = "product.change_product"
+    raise_exception = True
+    permission_denied_message = "You do not have the permission to update products."
     success_message = "Product %(name)s updated"
 
-class ProductDelete(DeleteView):
+class ProductDelete(PermissionRequiredMixin, DeleteView):
     model = Product
     context_object_name = 'product'
+    permission_required = "product.delete_product"
+    raise_exception = True
+    permission_denied_message = "You do not have the permission to delete products."
     success_url = reverse_lazy('product-list')
     success_message = "Product deleted"
     cancel_message = "Delete cancelled"
