@@ -7,8 +7,22 @@ from django.contrib.auth.mixins import PermissionRequiredMixin
 from django.contrib import messages
 from django.contrib.messages.views import SuccessMessageMixin
 from product.models import ProductCategory, ProductType, UnitOfMeasurement, Product
+from django.forms import modelformset_factory
 
 # Create your views here.
+
+def manage_product_categories(request):
+    ProductCategoryFormSet = modelformset_factory(ProductCategory,
+            can_delete=True, fields=['name',])
+    if request.method == 'POST':
+        formset = ProductCategoryFormSet(request.POST, request.FILES)
+        if formset.is_valid():
+            formset.save()
+            return HttpResponseRedirect(reverse_lazy('product-list'))
+    else:
+        formset = ProductCategoryFormSet()
+    return render(request, 'product/productcategory_manage.html', 
+            {'formset': formset})
 
 class ProductCategoryList(ListView):
     model = ProductCategory

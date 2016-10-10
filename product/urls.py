@@ -1,5 +1,5 @@
 from django.conf.urls import url
-from product.views import ProductCategoryList, ProductCategoryDetail, ProductCategoryCreate, ProductCategoryUpdate, ProductCategoryDelete, ProductTypeList, ProductTypeDetail, ProductTypeCreate, ProductTypeUpdate, ProductTypeDelete, UnitOfMeasurementList, UnitOfMeasurementDetail, UnitOfMeasurementCreate, UnitOfMeasurementUpdate, UnitOfMeasurementDelete, ProductList, ProductDetail, ProductCreate, ProductUpdate, ProductDelete
+from product.views import manage_product_categories, ProductCategoryList, ProductCategoryDetail, ProductCategoryCreate, ProductCategoryUpdate, ProductCategoryDelete, ProductTypeList, ProductTypeDetail, ProductTypeCreate, ProductTypeUpdate, ProductTypeDelete, UnitOfMeasurementList, UnitOfMeasurementDetail, UnitOfMeasurementCreate, UnitOfMeasurementUpdate, UnitOfMeasurementDelete, ProductList, ProductDetail, ProductCreate, ProductUpdate, ProductDelete
 
 urlpatterns = [
     url(r'^$', ProductList.as_view(), name='product-list'),
@@ -30,8 +30,9 @@ urlpatterns = [
     url(r'uom/delete/(?P<pk>[0-9]*)/$', UnitOfMeasurementDelete.as_view(),
         name='uom-delete'),
 
-    url(r'^category/$', ProductCategoryList.as_view(),
-        name='product-category-list'),
+    #url(r'^category/$', ProductCategoryList.as_view(),
+    #    name='product-category-list'),
+    url(r'category/$', manage_product_categories, name='product-category-list'),
     url(r'^category/detail/(?P<pk>[0-9]*)/$', 
         ProductCategoryDetail.as_view(),
         name='product-category-detail'),
