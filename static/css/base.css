@@ -20,3 +20,24 @@ input[type='text'], input[type='password'] {
     border-color: #000080;
     border-style: dotted;
 }
+
+th {
+    font-weight: bold;
+    text-align: left;
+}
+
+th, td {
+    padding-right: 20px;
+}
+
+.action-bar {
+    margin: 10px;
+    border-width: 1px 0 1px 0;
+    border-color: #c0c0c0;
+    border-style: solid;
+    background-color: #f0f0f0;
+}
+
+.action-bar p {
+    margin: 0;
+}

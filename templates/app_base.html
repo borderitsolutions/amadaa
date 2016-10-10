@@ -6,7 +6,13 @@
 {% endblock %}
 
 {% block body %}
-{% block action_top %}{% endblock %}
+<div class="action-bar">
+  {% block action_top %}{% endblock %}
+</div>
+
 {% block content %}{% endblock %}
-{% block action_bottom %}{% endblock %}
+
+<div class="action-bar">
+  {% block action_bottom %}{% endblock %}
+</div>
 {% endblock %}
