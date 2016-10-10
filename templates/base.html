@@ -14,10 +14,9 @@
     <link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}">  
     {% block css %}{% endblock %}
     {# Javascript #}
-    <script type="text/javascript" src="{% static 'js/jquery-3.1.1.min.js' %}">
-    <script type="text/javascript" src="{% static 'jquery-ui-1.12.1/jquery-ui.min.js' %}">
+    <script type="text/javascript" src="{% static 'js/jquery-3.1.1.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'jquery-ui-1.12.1/jquery-ui.min.js' %}"></script>
     {% bootstrap_javascript %}
-    </script>
     {% block js %}{% endblock %}
   </head>
 
