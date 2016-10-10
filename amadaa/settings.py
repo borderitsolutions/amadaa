@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'bootstrap3',
+    'django_bootstrap_dynamic_formsets',
     'ckeditor',
     'dashboard',
     'contact',
