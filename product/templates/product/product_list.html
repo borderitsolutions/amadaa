@@ -28,6 +28,10 @@
     {% endfor %}
 {% endblock %}
 
+{% block action_top %}
+<p><a href="{% url 'product-add' %}">{% bootstrap_icon 'plus' %}</a></p>
+{% endblock %}
+
 {% block action_bottom %}
 <p><a href="{% url 'product-add' %}">{% bootstrap_icon 'plus' %}</a></p>
 {% endblock %}
