@@ -20,3 +20,12 @@ input[type='text'], input[type='password'] {
     border-color: #000080;
     border-style: dotted;
 }
+
+th {
+    font-weight: bold;
+    text-align: left;
+}
+
+td {
+    margin-right: 20px;
+}
