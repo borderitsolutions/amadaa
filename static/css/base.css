@@ -37,3 +37,7 @@ th, td {
     border-style: solid;
     background-color: #f0f0f0;
 }
+
+.action-bar p {
+    margin: 0;
+}
