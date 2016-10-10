@@ -7,7 +7,7 @@
 <form method="post" action="">
   {% csrf_token %}
 
-  {% bootstrap_dynamic_formset formset can_delete=True %}
+  {% bootstrap_dynamic_formset formset can_delete=True layout="horizontal" %}
 
   <button type="submit" id="form-submit" class="btn btn-success">Submit</button>
 </form>
