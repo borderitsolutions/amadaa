@@ -1,0 +1,8 @@
+{% extends "app_base.html" %}
+
+{% block appmenu %}
+<li><a href="{% url 'product-list' %}">Products</a></li>
+<li><a href="{% url 'product-category-list' %}">Product Categories</a></li>
+<li><a href="{% url 'product-type-list' %}">Product Types</a></li>
+<li><a href="{% url 'uom-list' %}">Units of Measurement</a></li>
+{% endblock %}
