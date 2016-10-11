@@ -37,6 +37,19 @@ def manage_product_types(request):
     return render(request, 'product/producttype_manage.html',
             {'formset': formset})
 
+def manage_units_of_measurement(request):
+    UnitOfMeasurementFormSet = modelformset_factory(UnitOfMeasurement,
+            can_delete=True, fields=['unit',])
+    if request.method == 'POST':
+        formset = UnitOfMeasurementFormSet(request.POST, request.FILES)
+        if formset.is_valid():
+            formset.save()
+            return HttpResponseRedirect(reverse_lazy('product-list'))
+    else:
+        formset = UnitOfMeasurementFormSet()
+    return render(request, 'product/unitofmeasurement_manage.html',
+            {'formset': formset})
+
 class ProductCategoryList(ListView):
     model = ProductCategory
     context_object_name = 'product_categories'

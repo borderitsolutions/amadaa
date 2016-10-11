@@ -1,5 +1,5 @@
 from django.conf.urls import url
-from product.views import manage_product_categories, manage_product_types, UnitOfMeasurementList, UnitOfMeasurementDetail, UnitOfMeasurementCreate, UnitOfMeasurementUpdate, UnitOfMeasurementDelete, ProductList, ProductDetail, ProductCreate, ProductUpdate, ProductDelete
+from product.views import manage_product_categories, manage_product_types, manage_units_of_measurement, ProductList, ProductDetail, ProductCreate, ProductUpdate, ProductDelete
 
 urlpatterns = [
     url(r'^$', ProductList.as_view(), name='product-list'),
@@ -21,15 +21,16 @@ urlpatterns = [
     #url(r'^type/delete/(?P<pk>[0-9]*)/$', ProductTypeDelete.as_view(),
     #    name='product-type-delete'),
 
-    url(r'^uom/$', UnitOfMeasurementList.as_view(),
-        name='uom-list'),
-    url(r'^uom/detail/(?P<pk>[0-9]*)/$', UnitOfMeasurementDetail.as_view(),
-        name='uom-detail'),
-    url(r'^uom/add$', UnitOfMeasurementCreate.as_view(), name='uom-add'),
-    url(r'^uom/update/(?P<pk>[0-9]*)/$', UnitOfMeasurementUpdate.as_view(),
-        name='uom-update'),
-    url(r'uom/delete/(?P<pk>[0-9]*)/$', UnitOfMeasurementDelete.as_view(),
-        name='uom-delete'),
+    url(r'^uom/$', manage_units_of_measurement, name='uom-list'),
+    #url(r'^uom/$', UnitOfMeasurementList.as_view(),
+    #    name='uom-list'),
+    #url(r'^uom/detail/(?P<pk>[0-9]*)/$', UnitOfMeasurementDetail.as_view(),
+    #    name='uom-detail'),
+    #url(r'^uom/add$', UnitOfMeasurementCreate.as_view(), name='uom-add'),
+    #url(r'^uom/update/(?P<pk>[0-9]*)/$', UnitOfMeasurementUpdate.as_view(),
+    #    name='uom-update'),
+    #url(r'uom/delete/(?P<pk>[0-9]*)/$', UnitOfMeasurementDelete.as_view(),
+    #    name='uom-delete'),
 
     #url(r'^category/$', ProductCategoryList.as_view(),
     #    name='product-category-list'),
