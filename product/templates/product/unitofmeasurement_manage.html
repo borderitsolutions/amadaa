@@ -1,5 +1,4 @@
 {% extends "product/product_base.html" %}
-
 {% load bootstrap3 %}
 {% load bootstrap_dynamic_formsets %}
 
@@ -8,7 +7,7 @@
   {% csrf_token %}
 
   <fieldset>
-    <legend>Product Categories</legend>
+    <legend>Units of Measurement</legend>
 
     {% bootstrap_dynamic_formset formset can_delete=True layout="horizontal" %}
 
