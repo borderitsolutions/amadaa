@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'bootstrap3',
     'django_bootstrap_dynamic_formsets',
+    'crispy_forms',
     'ckeditor',
     'dashboard',
     'contact',
@@ -139,3 +140,6 @@ STATICFILES_DIRS = [
 LOGIN_URL = '/login/'
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/login/'
+
+# Django cripsy forms
+CRISPY_TEMPLATE_PACK = 'bootstrap3'
