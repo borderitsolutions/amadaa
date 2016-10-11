@@ -24,6 +24,19 @@ def manage_product_categories(request):
     return render(request, 'product/productcategory_manage.html', 
             {'formset': formset})
 
+def manage_product_types(request):
+    ProductTypeFormSet = modelformset_factory(ProductType,
+            can_delete=True, fields=['name',])
+    if request.method == 'POST':
+        formset = ProductTypeFormSet(request.POST, request.FILES)
+        if formset.is_valid():
+            formset.save()
+            return HttpResponseRedirect(reverse_lazy('product-list'))
+    else:
+        formset = ProductTypeFormSet()
+    return render(request, 'product/producttype_manage.html',
+            {'formset': formset})
+
 class ProductCategoryList(ListView):
     model = ProductCategory
     context_object_name = 'product_categories'

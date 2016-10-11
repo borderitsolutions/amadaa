@@ -1,5 +1,5 @@
 from django.conf.urls import url
-from product.views import manage_product_categories, ProductCategoryList, ProductCategoryDetail, ProductCategoryCreate, ProductCategoryUpdate, ProductCategoryDelete, ProductTypeList, ProductTypeDetail, ProductTypeCreate, ProductTypeUpdate, ProductTypeDelete, UnitOfMeasurementList, UnitOfMeasurementDetail, UnitOfMeasurementCreate, UnitOfMeasurementUpdate, UnitOfMeasurementDelete, ProductList, ProductDetail, ProductCreate, ProductUpdate, ProductDelete
+from product.views import manage_product_categories, manage_product_types, UnitOfMeasurementList, UnitOfMeasurementDetail, UnitOfMeasurementCreate, UnitOfMeasurementUpdate, UnitOfMeasurementDelete, ProductList, ProductDetail, ProductCreate, ProductUpdate, ProductDelete
 
 urlpatterns = [
     url(r'^$', ProductList.as_view(), name='product-list'),
@@ -11,14 +11,15 @@ urlpatterns = [
     url(r'^delete/(?P<pk>[0-9]*)/$', ProductDelete.as_view(),
         name="product-delete"),
 
-    url(r'^type/$', ProductTypeList.as_view(), name='product-type-list'),
-    url(r'^type/detail/(?P<pk>[0-9]*)/$', ProductTypeDetail.as_view(),
-        name='product-type-detail'),
-    url(r'^type/add/$', ProductTypeCreate.as_view(), name='product-type-add'),
-    url(r'^type/update/(?P<pk>[0-9]*)/$', ProductTypeUpdate.as_view(),
-        name='product-type-update'),
-    url(r'^type/delete/(?P<pk>[0-9]*)/$', ProductTypeDelete.as_view(),
-        name='product-type-delete'),
+    url(r'^type/$', manage_product_types, name='product-type-list'),
+    #url(r'^type/$', ProductTypeList.as_view(), name='product-type-list'),
+    #url(r'^type/detail/(?P<pk>[0-9]*)/$', ProductTypeDetail.as_view(),
+    #    name='product-type-detail'),
+    #url(r'^type/add/$', ProductTypeCreate.as_view(), name='product-type-add'),
+    #url(r'^type/update/(?P<pk>[0-9]*)/$', ProductTypeUpdate.as_view(),
+    #    name='product-type-update'),
+    #url(r'^type/delete/(?P<pk>[0-9]*)/$', ProductTypeDelete.as_view(),
+    #    name='product-type-delete'),
 
     url(r'^uom/$', UnitOfMeasurementList.as_view(),
         name='uom-list'),
