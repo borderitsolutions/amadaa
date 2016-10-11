@@ -6,6 +6,15 @@
 {% endblock %}
 
 {% block body %}
+<nav>
+  <ul>
+    {% block appmenu %}{% endblock %}
+  </ul>
+
+  <ul>
+    {% block appsubmenu %}{% endblock %}
+  </ul>
+</nav>
 <div class="action-bar">
   {% block action_top %}{% endblock %}
 </div>
