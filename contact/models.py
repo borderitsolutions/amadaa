@@ -3,14 +3,23 @@ from amadaa.models import AmadaaModel
 
 # Create your models here.
 
-class Person(AmadaaModel):
+class Contact(AmadaaModel):
+    
+    def __str__(self):
+        try:
+            return "{}, {}".format(self.person.last_name, 
+                    self.person.first_name)
+        except:
+            return "{}".format(self.organization.name)
+
+class Person(Contact):
     first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50)
     
     def __str__(self):
         return "{} {}".format(self.first_name, self.last_name)
 
-class Organization(AmadaaModel):
+class Organization(Contact):
     name = models.CharField(max_length=100)
     members = models.ManyToManyField(
             Person,
