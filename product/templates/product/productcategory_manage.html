@@ -7,8 +7,12 @@
 <form method="post" action="">
   {% csrf_token %}
 
-  {% bootstrap_dynamic_formset formset can_delete=True layout="horizontal" %}
+  <fieldset>
+    <legend>Product Categories</legend>
 
-  <button type="submit" id="form-submit" class="btn btn-success">Submit</button>
+    {% bootstrap_dynamic_formset formset can_delete=True layout="horizontal" %}
+
+    <button type="submit" id="form-submit" class="btn btn-success">Submit</button>
+  </fieldset>
 </form>
 {% endblock %}
