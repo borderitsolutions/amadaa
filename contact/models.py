@@ -49,3 +49,18 @@ class PhoneNumber(AmadaaModel):
 
     def __str__(self):
         return "{}".format(self.phone_number)
+
+class WebsiteType(AmadaaModel):
+    website_type = models.CharField(max_length=40)
+
+    def __str__(self):
+        return "{}".format(self.website_type)
+
+class Website(AmadaaModel):
+    contact = models.ForeignKey(Contact)
+    website_type = models.ForeignKey(WebsiteType)
+    url = models.URLField()
+
+    def __str__(self):
+        return "{}".format(self.url)
+
