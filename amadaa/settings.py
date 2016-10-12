@@ -149,3 +149,9 @@ LOGOUT_REDIRECT_URL = '/login/'
 
 # Django cripsy forms
 CRISPY_TEMPLATE_PACK = 'bootstrap3'
+
+# Django-bootstrap3
+BOOTSTRAP3 = {
+    'jquery_url': 'static/js/jquery-3.1.1.min.js',
+    'base_url': '/static/bootstrap-3.3.7-dist/',
+}
