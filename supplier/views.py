@@ -17,11 +17,11 @@ class SupplierDetail(DetailView):
 
 class SupplierCreate(CreateView):
     model = Supplier
-    fields = ['name', 'products']
+    fields = ['name']
 
 class SupplierUpdate(UpdateView):
     model = Supplier
-    fields = ['name', 'products']
+    fields = ['name']
 
 class SupplierDelete(DeleteView):
     success_url = reverse_lazy('supplier-list')
