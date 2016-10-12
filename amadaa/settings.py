@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'acct',
     'contact',
     'product',
+    'inventory',
     'supplier',
     'customer',
     'sales',
