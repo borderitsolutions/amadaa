@@ -60,7 +60,7 @@ class ProductDetail(DetailView):
 
 class ProductCreate(PermissionRequiredMixin, SuccessMessageMixin, CreateView):
     model = Product
-    fields = ['name', 'internal_ref', 'product_type', 'category', 'description']
+    fields = ['name', 'internal_ref', 'item_type', 'category', 'description']
     permission_required = "product.add_product"
     raise_exception = True
     permsission_denied_message = "You do not have the permission to add products."
@@ -68,7 +68,7 @@ class ProductCreate(PermissionRequiredMixin, SuccessMessageMixin, CreateView):
 
 class ProductUpdate(PermissionRequiredMixin, SuccessMessageMixin, UpdateView):
     model = Product
-    fields = ['name', 'internal_ref', 'product_type', 'category', 'description']
+    fields = ['name', 'internal_ref', 'item_type', 'category', 'description']
     permission_required = "product.change_product"
     raise_exception = True
     permission_denied_message = "You do not have the permission to update products."
