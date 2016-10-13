@@ -1,11 +1,10 @@
 from django.db import models
-from amadaa.models import AmadaaModel
 from django.urls import reverse
 from ckeditor.fields import RichTextField
 
 # Create your models here.
 
-class ProductCategory(AmadaaModel):
+class ProductCategory(models.Model):
     name = models.CharField(max_length=100, unique=True)
 
     def get_absolute_url(self):
@@ -14,7 +13,7 @@ class ProductCategory(AmadaaModel):
     def __str__(self):
         return "{}".format(self.name)
 
-class ProductType(AmadaaModel):
+class ProductType(models.Model):
     name = models.CharField(max_length=100, unique=True)
 
     def get_absolute_url(self):
@@ -23,7 +22,7 @@ class ProductType(AmadaaModel):
     def __str__(self):
         return "{}".format(self.name)
 
-class UnitOfMeasurement(AmadaaModel):
+class UnitOfMeasurement(models.Model):
     unit = models.CharField(max_length=30, unique=True)
 
     def get_absolute_url(self):
@@ -32,7 +31,7 @@ class UnitOfMeasurement(AmadaaModel):
     def __str__(self):
         return "%(self.unit)s"
 
-class SellableItem(AmadaaModel):
+class SellableItem(models.Model):
     name = models.CharField(max_length=100)
     internal_ref = models.CharField(max_length=100, default='', blank=True)
     item_type = models.ForeignKey(ProductType, default=0)
