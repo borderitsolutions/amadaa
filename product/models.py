@@ -32,13 +32,17 @@ class UnitOfMeasurement(AmadaaModel):
     def __str__(self):
         return "%(self.unit)s"
 
-class Product(AmadaaModel):
+class SellableItem(AmadaaModel):
     name = models.CharField(max_length=100)
-    internal_ref = models.CharField(max_length=100, default='')
-    product_type = models.ForeignKey(ProductType, default=0)
+    internal_ref = models.CharField(max_length=100, default='', blank=True)
+    item_type = models.ForeignKey(ProductType, default=0)
     category = models.ForeignKey(ProductCategory)
     description = RichTextField(blank=True, default='')
 
+    def __str__(self):
+        return "{}".format(self.name)
+
+class Product(SellableItem):
     def get_absolute_url(self):
         return reverse('product-list')
 

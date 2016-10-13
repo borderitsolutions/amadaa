@@ -6,8 +6,6 @@ from product.models import Product
 # Create your models here.
 
 class Supplier(Organization):
-    products = models.ManyToManyField(Product)
-
     def get_absolute_url(self):
         return reverse('supplier-list')
 
