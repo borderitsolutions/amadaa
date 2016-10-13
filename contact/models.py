@@ -1,10 +1,9 @@
 from django.db import models
-from amadaa.models import AmadaaModel
 from ckeditor.fields import RichTextField
 
 # Create your models here.
 
-class Contact(AmadaaModel):
+class Contact(models.Model):
     def __str__(self):
         try:
             return "{}, {}".format(self.person.last_name, 
@@ -29,20 +28,20 @@ class Organization(Contact):
     def __str__(self):
         return "{}".format(self.name)
 
-class Membership(AmadaaModel):
+class Membership(models.Model):
     organization = models.ForeignKey(Organization)
     person = models.ForeignKey(Person)
 
     def __str__(self):
         return "{} member of {}".format(self.person, self.organization)
 
-class PhoneType(AmadaaModel):
+class PhoneType(models.Model):
     phone_type = models.CharField(max_length=40)
 
     def __str__(self):
         return "{}".format(self.phone_type)
 
-class PhoneNumber(AmadaaModel):
+class PhoneNumber(models.Model):
     contact = models.ForeignKey(Contact)
     phone_type = models.ForeignKey(PhoneType)
     phone_number = models.CharField(max_length=30)
@@ -50,13 +49,13 @@ class PhoneNumber(AmadaaModel):
     def __str__(self):
         return "{}".format(self.phone_number)
 
-class WebsiteType(AmadaaModel):
+class WebsiteType(models.Model):
     website_type = models.CharField(max_length=40)
 
     def __str__(self):
         return "{}".format(self.website_type)
 
-class Website(AmadaaModel):
+class Website(models.Model):
     contact = models.ForeignKey(Contact)
     website_type = models.ForeignKey(WebsiteType)
     url = models.URLField()
