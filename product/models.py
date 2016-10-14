@@ -29,7 +29,7 @@ class UnitOfMeasurement(models.Model):
         return reverse('uom-list')
 
     def __str__(self):
-        return "%(self.unit)s"
+        return "{}".format(self.unit)
 
 class SellableItem(models.Model):
     name = models.CharField(max_length=100)
@@ -42,8 +42,27 @@ class SellableItem(models.Model):
         return "{}".format(self.name)
 
 class Product(SellableItem):
+    purchase_units_of_measurement = models.ManyToManyField(
+            UnitOfMeasurement,
+            through='PurchaseUnitOfMeasurement',
+            through_fields=('product', 'unit_of_measurement'),
+            related_name='purchase_units_of_measurement')
+    sale_units_of_measurement = models.ManyToManyField(
+            UnitOfMeasurement,
+            through='SaleUnitOfMeasurement',
+            through_fields=('product', 'unit_of_measurement'),
+            related_name='sale_units_of_measurement')
+
     def get_absolute_url(self):
         return reverse('product-list')
 
     def __str__(self):
         return "{}".format(self.name)
+
+class PurchaseUnitOfMeasurement(models.Model):
+    product = models.ForeignKey(Product)
+    unit_of_measurement = models.ForeignKey(UnitOfMeasurement)
+
+class SaleUnitOfMeasurement(models.Model):
+    product = models.ForeignKey(Product)
+    unit_of_measurement = models.ForeignKey(UnitOfMeasurement)
