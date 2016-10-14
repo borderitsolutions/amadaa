@@ -42,8 +42,14 @@ class SellableItem(models.Model):
         return "{}".format(self.name)
 
 class Product(SellableItem):
+    purchase_units_of_measurement = models.ManyToManyField(UnitOfMeasurement,
+            related_name='purchase_uoms')
+    sale_units_of_measurement = models.ManyToManyField(UnitOfMeasurement,
+            related_name='sale_uoms')
+
     def get_absolute_url(self):
         return reverse('product-list')
 
     def __str__(self):
         return "{}".format(self.name)
+
