@@ -1,5 +1,5 @@
 .login-container {
-    margin-top: 100px;
+    margin-top: 80px;
     //padding-left: 40%;
     border: 1px solid #6F7D94;
     width: 35%;
@@ -21,7 +21,7 @@ div#submit {
     padding: 25px 50px 10px;
     //padding-left: 42%;
     //width: 80px;
-    //float: center;
+    float: right;
     //border: 1px solid #ccc;
 }
 
@@ -31,7 +31,7 @@ h5 {
 }
 
 div#passwd {
-    padding: 25px 50px 10px;
+    padding: 70px 50px 10px;
     //text-align: center;
 }
 
@@ -44,3 +44,5 @@ div#title {
 .errormsg {
     text-align: center;
 }
+
+
