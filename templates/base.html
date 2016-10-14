@@ -11,9 +11,7 @@
     {# CSS #}
     <link rel="stylesheet" type="text/css" href="{% static 'jquery-ui-1.12.1/jquery-ui.min.css' %}">
     {% bootstrap_css %}
-    <link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}"> 
-    <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}"> 
-    <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap-responsive.css' %}">  
+    <link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}">  
     {% block css %}{% endblock %}
     {# Javascript #}
     <script type="text/javascript" src="{% static 'js/jquery-3.1.1.min.js' %}"></script>
@@ -24,28 +22,10 @@
 
   <body>
     <div class="base-container">
-   <header>
-   <nav class="navbar navbar-inverse navbar-static-top">
-   <div class="navbar-inner">
-   <div class="container-fluid">
-   <a class="brand" href="">Amadaa</a>
-   <u class="nav pull-right">
-   {% if user.is_authenticated %}
-   <li><a>
-    {% block header %}
-    {% endblock %}
-   </a></li>
-   <li class="navbar-text">Welcome, {{ user.username }}</li>
-   <li><a href="">About</a></li>
-   <li><a href="{% url 'logout' %}">Logout</a></li>
-   {% else %}
-   <li><a href="{% url 'login' %}">Login</a></li>
-   {% endif %}
-   </u>
-   </div>
-   </div>
-   </nav>
-   </header>
+      <header>
+        {% block header %}
+        {% endblock %}
+      </header>
     
       {% if messages %}
       <ul class="messages">
