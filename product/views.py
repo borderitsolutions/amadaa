@@ -60,7 +60,8 @@ class ProductDetail(DetailView):
 
 class ProductCreate(PermissionRequiredMixin, SuccessMessageMixin, CreateView):
     model = Product
-    fields = ['name', 'internal_ref', 'item_type', 'category', 'description']
+    fields = ['name', 'internal_ref', 'item_type', 'category', 'description',
+            'purchase_units_of_measurement', 'sale_units_of_measurement']
     permission_required = "product.add_product"
     raise_exception = True
     permsission_denied_message = "You do not have the permission to add products."
