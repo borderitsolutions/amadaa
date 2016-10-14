@@ -44,7 +44,11 @@
    </div>
    </nav>
       </header>
-    
+      <nav>
+        {% block navigation %}
+        {% endblock %}
+      </nav>  
+
       {% if messages %}
       <ul class="messages">
         {% for message in messages %}

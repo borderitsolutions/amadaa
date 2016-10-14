@@ -5,16 +5,16 @@
 No Company
 {% endblock %}
 
-{% block body %}
-<nav>
-  <ul>
-    {% block appmenu %}{% endblock %}
-  </ul>
+{% block navigation %}
+<ul>
+  {% block appmenu %}{% endblock %}
+</ul>
 
-  <ul>
-    {% block appsubmenu %}{% endblock %}
-  </ul>
-</nav>
+<ul>
+  {% block appsubmenu %}{% endblock %}
+</ul>
+{% endblock %}
+
 <div class="action-bar">
   {% block action_top %}{% endblock %}
 </div>
