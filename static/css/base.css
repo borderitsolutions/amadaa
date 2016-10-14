@@ -60,3 +60,7 @@ nav a:hover {
     text-decoration: none;
     color: #7EEFE6;
 }
+
+.navbar {
+    margin-bottom: 0;
+}
