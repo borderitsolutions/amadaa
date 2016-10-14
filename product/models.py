@@ -29,7 +29,7 @@ class UnitOfMeasurement(models.Model):
         return reverse('uom-list')
 
     def __str__(self):
-        return "%(self.unit)s"
+        return "{}".format(self.unit)
 
 class SellableItem(models.Model):
     name = models.CharField(max_length=100)
