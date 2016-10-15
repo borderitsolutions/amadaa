@@ -46,12 +46,14 @@ class Product(SellableItem):
             UnitOfMeasurement,
             through='PurchaseUnitOfMeasurement',
             through_fields=('product', 'unit_of_measurement'),
-            related_name='purchase_units_of_measurement')
+            related_name='purchase_units_of_measurement',
+            blank=True)
     sale_units_of_measurement = models.ManyToManyField(
             UnitOfMeasurement,
             through='SaleUnitOfMeasurement',
             through_fields=('product', 'unit_of_measurement'),
-            related_name='sale_units_of_measurement')
+            related_name='sale_units_of_measurement',
+            blank=True)
 
     def get_absolute_url(self):
         return reverse('product-list')
