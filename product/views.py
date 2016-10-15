@@ -62,40 +62,14 @@ class ProductDetail(DetailView):
 class ProductCreate(PermissionRequiredMixin, SuccessMessageMixin, CreateView):
     model = Product
     form_class = ProductEditForm
-    #fields = ['name', 'internal_ref', 'item_type', 'category', 'description',
-    #        'purchase_units_of_measurement', 'sale_units_of_measurement']
     permission_required = "product.add_product"
     raise_exception = True
     permsission_denied_message = "You do not have the permission to add products."
     success_message = "Product %(name)s created"
 
-    #def form_valid(self, form):
-    #    self.object = form.save(commit=False)
-    #    p = form.cleaned_data.pop('purchase_units_of_measurement')
-    #    s = form.cleaned_data.pop('sale_units_of_measurement')
-    #    self.object.save()
-    #    for uom in p:
-    #        PurchaseUnitOfMeasurement.objects.create(
-    #            product=self.object,
-    #            unit_of_measurement=uom)
-    #        #purchase = PurchaseUnitOfMeasurement()
-    #        #purchase.product = self.object
-    #        #purchase.unit_of_measurement = uom
-    #        #purchase.save()
-    #    for uom in s:
-    #        SaleUnitOfMeasurement.objects.create(
-    #            product=self.object,
-    #            unit_of_measurement=uom)
-    #        #sale = SaleUnitOfMeasurement()
-    #        #sale.product = self.object
-    #        #sale.unit_of_measurement = uom
-    #        #sale.save()
-    #    return super(ModelFormMixin, self).form_valid(form)
-
 class ProductUpdate(PermissionRequiredMixin, SuccessMessageMixin, UpdateView):
     model = Product
     form_class = ProductEditForm
-    #fields = ['name', 'internal_ref', 'item_type', 'category', 'description']
     permission_required = "product.change_product"
     raise_exception = True
     permission_denied_message = "You do not have the permission to update products."
