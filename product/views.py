@@ -3,7 +3,8 @@ from django.views.generic import DetailView, ListView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView, ModelFormMixin
 from django.urls import reverse_lazy
 from django.shortcuts import render
-from django.contrib.auth.mixins import PermissionRequiredMixin
+from django.contrib.auth.decorators import login_required, permission_required
+from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 from django.contrib import messages
 from django.contrib.messages.views import SuccessMessageMixin
 from product.models import ProductCategory, ProductType, UnitOfMeasurement, Product, PurchaseUnitOfMeasurement, SaleUnitOfMeasurement
@@ -12,6 +13,8 @@ from .forms import ProductEditForm
 
 # Create your views here.
 
+@login_required
+@permission_required('products.manage_productcategories')
 def manage_product_categories(request):
     ProductCategoryFormSet = modelformset_factory(ProductCategory,
             can_delete=True, fields=['name',])
@@ -25,6 +28,8 @@ def manage_product_categories(request):
     return render(request, 'product/productcategory_manage.html', 
             {'formset': formset})
 
+@login_required
+@permission_required('products.manage_producttypes')
 def manage_product_types(request):
     ProductTypeFormSet = modelformset_factory(ProductType,
             can_delete=True, fields=['name',])
@@ -38,6 +43,8 @@ def manage_product_types(request):
     return render(request, 'product/producttype_manage.html',
             {'formset': formset})
 
+@login_required
+@permission_required('products.manage_unitsofmeasurement')
 def manage_units_of_measurement(request):
     UnitOfMeasurementFormSet = modelformset_factory(UnitOfMeasurement,
             can_delete=True, fields=['unit',])
@@ -51,56 +58,31 @@ def manage_units_of_measurement(request):
     return render(request, 'product/unitofmeasurement_manage.html',
             {'formset': formset})
 
-class ProductList(ListView):
+class ProductList(LoginRequiredMixin, ListView):
     model = Product
     context_object_name = 'products'
 
-class ProductDetail(DetailView):
+class ProductDetail(LoginRequiredMixin, DetailView):
     model = Product
     context_object_name = 'product'
 
-class ProductCreate(PermissionRequiredMixin, SuccessMessageMixin, CreateView):
+class ProductCreate(LoginRequiredMixin, PermissionRequiredMixin, SuccessMessageMixin, CreateView):
     model = Product
     form_class = ProductEditForm
-    #fields = ['name', 'internal_ref', 'item_type', 'category', 'description',
-    #        'purchase_units_of_measurement', 'sale_units_of_measurement']
     permission_required = "product.add_product"
     raise_exception = True
     permsission_denied_message = "You do not have the permission to add products."
     success_message = "Product %(name)s created"
 
-    #def form_valid(self, form):
-    #    self.object = form.save(commit=False)
-    #    p = form.cleaned_data.pop('purchase_units_of_measurement')
-    #    s = form.cleaned_data.pop('sale_units_of_measurement')
-    #    self.object.save()
-    #    for uom in p:
-    #        PurchaseUnitOfMeasurement.objects.create(
-    #            product=self.object,
-    #            unit_of_measurement=uom)
-    #        #purchase = PurchaseUnitOfMeasurement()
-    #        #purchase.product = self.object
-    #        #purchase.unit_of_measurement = uom
-    #        #purchase.save()
-    #    for uom in s:
-    #        SaleUnitOfMeasurement.objects.create(
-    #            product=self.object,
-    #            unit_of_measurement=uom)
-    #        #sale = SaleUnitOfMeasurement()
-    #        #sale.product = self.object
-    #        #sale.unit_of_measurement = uom
-    #        #sale.save()
-    #    return super(ModelFormMixin, self).form_valid(form)
-
-class ProductUpdate(PermissionRequiredMixin, SuccessMessageMixin, UpdateView):
+class ProductUpdate(LoginRequiredMixin, PermissionRequiredMixin, SuccessMessageMixin, UpdateView):
     model = Product
-    fields = ['name', 'internal_ref', 'item_type', 'category', 'description']
+    form_class = ProductEditForm
     permission_required = "product.change_product"
     raise_exception = True
     permission_denied_message = "You do not have the permission to update products."
     success_message = "Product %(name)s updated"
 
-class ProductDelete(PermissionRequiredMixin, DeleteView):
+class ProductDelete(LoginRequiredMixin, PermissionRequiredMixin, DeleteView):
     model = Product
     context_object_name = 'product'
     permission_required = "product.delete_product"

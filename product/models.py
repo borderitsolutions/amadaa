@@ -7,6 +7,10 @@ from ckeditor.fields import RichTextField
 class ProductCategory(models.Model):
     name = models.CharField(max_length=100, unique=True)
 
+    class Meta:
+        permissions = (
+                ('manage_productcategories', 'Manage product categories'),)
+
     def get_absolute_url(self):
         return reverse('product-category-detail', kwargs={'pk': self.pk})
 
@@ -16,6 +20,10 @@ class ProductCategory(models.Model):
 class ProductType(models.Model):
     name = models.CharField(max_length=100, unique=True)
 
+    class Meta:
+        permissions = (
+                ('manage-producttypes', 'Manage product types'),)
+
     def get_absolute_url(self):
         return reverse('product-type-list')
 
@@ -24,6 +32,10 @@ class ProductType(models.Model):
 
 class UnitOfMeasurement(models.Model):
     unit = models.CharField(max_length=30, unique=True)
+
+    class Meta:
+        permissions = (
+                ('manage-unitsofmeasurement', 'Manage units of measurement'),)
 
     def get_absolute_url(self):
         return reverse('uom-list')
@@ -65,6 +77,12 @@ class PurchaseUnitOfMeasurement(models.Model):
     product = models.ForeignKey(Product)
     unit_of_measurement = models.ForeignKey(UnitOfMeasurement)
 
+    class Meta:
+        unique_together = ('product', 'unit_of_measurement',)
+
 class SaleUnitOfMeasurement(models.Model):
     product = models.ForeignKey(Product)
     unit_of_measurement = models.ForeignKey(UnitOfMeasurement)
+
+    class Meta:
+        unique_together = ('product', 'unit_of_measurement',)

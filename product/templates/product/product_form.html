@@ -1,12 +1,7 @@
-{% extends "app_base.html" %}
+{% extends "product/product_base.html" %}
+{% load crispy_forms_tags %}
+{% crispy product_form product_form.helper %}
 
 {% block content %}
-<form action="" method="post">
-  {% csrf_token %}
-
-  {{ form.media }}
-  {{ form.as_p }}
-  
-  <input type="submit" value="OK">
-</form>
+{% crispy form %}
 {% endblock %}

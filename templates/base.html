@@ -50,13 +50,8 @@
       </header>
        
       {% if messages %}
-      <ul class="messages">
-        {% for message in messages %}
-        <li{% if message.tags %} class="{{ message.tags}}"{% endif %}>
-          Message: {{ message }}
-        </li>
-        {% endfor %}
-      </ul>
+        {% bootstrap_javascript jquery=1 %}
+        {% bootstrap_messages %}
       {% endif %}
     </div>
 
