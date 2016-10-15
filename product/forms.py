@@ -1,7 +1,18 @@
 from django.forms import ModelForm
 from .models import Product, PurchaseUnitOfMeasurement, SaleUnitOfMeasurement
+from crispy_forms.helper import FormHelper
+from crispy_forms.layout import Submit
 
 class ProductEditForm(ModelForm):
+    def __init__(self, *args, **kwargs):
+        super(ProductEditForm, self).__init__(*args, **kwargs)
+        self.helper = FormHelper()
+        self.helper.form_id = 'id-productform'
+        self.helper.form_class = 'blueForms'
+        self.helper.form_method = 'post'
+        self.helper.form_action = ''
+        self.helper.add_input(Submit('submit', 'OK'))
+
     class Meta:
         model = Product
         exclude = []
