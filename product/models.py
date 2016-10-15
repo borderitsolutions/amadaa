@@ -86,3 +86,7 @@ class SaleUnitOfMeasurement(models.Model):
 
     class Meta:
         unique_together = ('product', 'unit_of_measurement',)
+
+class Price(models.Model):
+    product = models.OneToOneField(SaleUnitOfMeasurement)
+    
