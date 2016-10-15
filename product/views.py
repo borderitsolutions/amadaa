@@ -4,7 +4,7 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView, ModelF
 from django.urls import reverse_lazy
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.mixins import PermissionRequiredMixin
+from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 from django.contrib import messages
 from django.contrib.messages.views import SuccessMessageMixin
 from product.models import ProductCategory, ProductType, UnitOfMeasurement, Product, PurchaseUnitOfMeasurement, SaleUnitOfMeasurement
@@ -55,15 +55,15 @@ def manage_units_of_measurement(request):
     return render(request, 'product/unitofmeasurement_manage.html',
             {'formset': formset})
 
-class ProductList(ListView):
+class ProductList(LoginRequiredMixin, ListView):
     model = Product
     context_object_name = 'products'
 
-class ProductDetail(DetailView):
+class ProductDetail(LoginRequiredMixin, DetailView):
     model = Product
     context_object_name = 'product'
 
-class ProductCreate(PermissionRequiredMixin, SuccessMessageMixin, CreateView):
+class ProductCreate(LoginRequiredMixin, PermissionRequiredMixin, SuccessMessageMixin, CreateView):
     model = Product
     form_class = ProductEditForm
     permission_required = "product.add_product"
@@ -71,7 +71,7 @@ class ProductCreate(PermissionRequiredMixin, SuccessMessageMixin, CreateView):
     permsission_denied_message = "You do not have the permission to add products."
     success_message = "Product %(name)s created"
 
-class ProductUpdate(PermissionRequiredMixin, SuccessMessageMixin, UpdateView):
+class ProductUpdate(LoginRequiredMixin, PermissionRequiredMixin, SuccessMessageMixin, UpdateView):
     model = Product
     form_class = ProductEditForm
     permission_required = "product.change_product"
@@ -79,7 +79,7 @@ class ProductUpdate(PermissionRequiredMixin, SuccessMessageMixin, UpdateView):
     permission_denied_message = "You do not have the permission to update products."
     success_message = "Product %(name)s updated"
 
-class ProductDelete(PermissionRequiredMixin, DeleteView):
+class ProductDelete(LoginRequiredMixin, PermissionRequiredMixin, DeleteView):
     model = Product
     context_object_name = 'product'
     permission_required = "product.delete_product"
