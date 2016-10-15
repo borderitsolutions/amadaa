@@ -65,6 +65,12 @@ class PurchaseUnitOfMeasurement(models.Model):
     product = models.ForeignKey(Product)
     unit_of_measurement = models.ForeignKey(UnitOfMeasurement)
 
+    class Meta:
+        unique_together = ('product', 'unit_of_measurement',)
+
 class SaleUnitOfMeasurement(models.Model):
     product = models.ForeignKey(Product)
     unit_of_measurement = models.ForeignKey(UnitOfMeasurement)
+
+    class Meta:
+        unique_together = ('product', 'unit_of_measurement',)
