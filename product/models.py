@@ -7,6 +7,10 @@ from ckeditor.fields import RichTextField
 class ProductCategory(models.Model):
     name = models.CharField(max_length=100, unique=True)
 
+    class Meta:
+        permissions = (
+                ('manage_productcategories', 'Manage product categories'),)
+
     def get_absolute_url(self):
         return reverse('product-category-detail', kwargs={'pk': self.pk})
 
