@@ -3,7 +3,7 @@ from django.views.generic import DetailView, ListView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView, ModelFormMixin
 from django.urls import reverse_lazy
 from django.shortcuts import render
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required, permission_required
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 from django.contrib import messages
 from django.contrib.messages.views import SuccessMessageMixin
@@ -14,6 +14,7 @@ from .forms import ProductEditForm
 # Create your views here.
 
 @login_required
+@permission_required('products.manage_productcategories')
 def manage_product_categories(request):
     ProductCategoryFormSet = modelformset_factory(ProductCategory,
             can_delete=True, fields=['name',])
@@ -28,6 +29,7 @@ def manage_product_categories(request):
             {'formset': formset})
 
 @login_required
+@permission_required('products.manage_producttypes')
 def manage_product_types(request):
     ProductTypeFormSet = modelformset_factory(ProductType,
             can_delete=True, fields=['name',])
@@ -42,6 +44,7 @@ def manage_product_types(request):
             {'formset': formset})
 
 @login_required
+@permission_required('products.manage_unitsofmeasurement')
 def manage_units_of_measurement(request):
     UnitOfMeasurementFormSet = modelformset_factory(UnitOfMeasurement,
             can_delete=True, fields=['unit',])
