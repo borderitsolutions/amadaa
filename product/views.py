@@ -1,13 +1,14 @@
 from django.http import HttpResponseRedirect
 from django.views.generic import DetailView, ListView
-from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView, ModelFormMixin
 from django.urls import reverse_lazy
 from django.shortcuts import render
 from django.contrib.auth.mixins import PermissionRequiredMixin
 from django.contrib import messages
 from django.contrib.messages.views import SuccessMessageMixin
-from product.models import ProductCategory, ProductType, UnitOfMeasurement, Product
+from product.models import ProductCategory, ProductType, UnitOfMeasurement, Product, PurchaseUnitOfMeasurement, SaleUnitOfMeasurement
 from django.forms import modelformset_factory
+from .forms import ProductEditForm
 
 # Create your views here.
 
@@ -60,11 +61,36 @@ class ProductDetail(DetailView):
 
 class ProductCreate(PermissionRequiredMixin, SuccessMessageMixin, CreateView):
     model = Product
-    fields = ['name', 'internal_ref', 'item_type', 'category', 'description']
+    form_class = ProductEditForm
+    #fields = ['name', 'internal_ref', 'item_type', 'category', 'description',
+    #        'purchase_units_of_measurement', 'sale_units_of_measurement']
     permission_required = "product.add_product"
     raise_exception = True
     permsission_denied_message = "You do not have the permission to add products."
     success_message = "Product %(name)s created"
+
+    #def form_valid(self, form):
+    #    self.object = form.save(commit=False)
+    #    p = form.cleaned_data.pop('purchase_units_of_measurement')
+    #    s = form.cleaned_data.pop('sale_units_of_measurement')
+    #    self.object.save()
+    #    for uom in p:
+    #        PurchaseUnitOfMeasurement.objects.create(
+    #            product=self.object,
+    #            unit_of_measurement=uom)
+    #        #purchase = PurchaseUnitOfMeasurement()
+    #        #purchase.product = self.object
+    #        #purchase.unit_of_measurement = uom
+    #        #purchase.save()
+    #    for uom in s:
+    #        SaleUnitOfMeasurement.objects.create(
+    #            product=self.object,
+    #            unit_of_measurement=uom)
+    #        #sale = SaleUnitOfMeasurement()
+    #        #sale.product = self.object
+    #        #sale.unit_of_measurement = uom
+    #        #sale.save()
+    #    return super(ModelFormMixin, self).form_valid(form)
 
 class ProductUpdate(PermissionRequiredMixin, SuccessMessageMixin, UpdateView):
     model = Product
