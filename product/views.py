@@ -100,3 +100,11 @@ class ProductDelete(LoginRequiredMixin, PermissionRequiredMixin, DeleteView):
         else:
             messages.success(self.request, self.success_message)
             return super(ProductDelete, self).delete(request, *args, **kwargs)
+
+def manage_pricelist(request):
+    if request.method == 'POST':
+        pass
+    else:
+        puom = PurchaseUnitOfMeasure.objects.all()
+        return render(request, 'products/pricelist_manage.html',
+                {'puom': puom})
