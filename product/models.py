@@ -1,15 +1,13 @@
 from django.db import models
 from django.urls import reverse
 from ckeditor.fields import RichTextField
+import moneyed
+from djmoney.models.fields import MoneyField
 
 # Create your models here.
 
 class ProductCategory(models.Model):
     name = models.CharField(max_length=100, unique=True)
-
-    class Meta:
-        permissions = (
-                ('manage_productcategories', 'Manage product categories'),)
 
     def get_absolute_url(self):
         return reverse('product-category-detail', kwargs={'pk': self.pk})
@@ -20,10 +18,6 @@ class ProductCategory(models.Model):
 class ProductType(models.Model):
     name = models.CharField(max_length=100, unique=True)
 
-    class Meta:
-        permissions = (
-                ('manage-producttypes', 'Manage product types'),)
-
     def get_absolute_url(self):
         return reverse('product-type-list')
 
@@ -32,10 +26,6 @@ class ProductType(models.Model):
 
 class UnitOfMeasurement(models.Model):
     unit = models.CharField(max_length=30, unique=True)
-
-    class Meta:
-        permissions = (
-                ('manage-unitsofmeasurement', 'Manage units of measurement'),)
 
     def get_absolute_url(self):
         return reverse('uom-list')
@@ -67,6 +57,10 @@ class Product(SellableItem):
             related_name='sale_units_of_measurement',
             blank=True)
 
+    class Meta:
+        permissions = (
+                ('manage-products', 'Manage products'),)
+
     def get_absolute_url(self):
         return reverse('product-list')
 
@@ -89,4 +83,7 @@ class SaleUnitOfMeasurement(models.Model):
 
 class Price(models.Model):
     product = models.OneToOneField(SaleUnitOfMeasurement)
-    
+    price = MoneyField(max_digits=10, decimal_places=2, default_currency='GHS', default=0.0)    
+
+    def __str__(self):
+        return "{}: {}".format(self.product, self.price)

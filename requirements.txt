@@ -3,3 +3,5 @@ django-bootstrap-dynamic-formsets==0.4.5
 django-bootstrap3==7.1.0
 django-ckeditor==5.1.1
 django-crispy-forms==1.6.0
+django-money==0.9.1
+py-moneyed==0.6.0
