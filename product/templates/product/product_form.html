@@ -5,12 +5,13 @@
 {% load static %}
 
 {% block css %}
-<link rel="stylesheet" href="{% static 'css/addProduct.css' %}">
+<link rel="stylesheet" href="{% static 'css/add-product.css' %}">
 {% endblock %}
 
 {% block content %}
 <div class="form-bg1">
-<div class="form-bg2">
-{% crispy form %}
-</div></div>
+  <div class="form-bg2">
+    {% crispy form %}
+  </div>
+</div>
 {% endblock %}

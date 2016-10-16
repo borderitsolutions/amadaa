@@ -23,24 +23,24 @@
   <body>
       <header>
         <nav class="navbar navbar-inverse navbar-static-top">
-        <div class="navbar-inner">
-        <div class="container-fluid">
-        <li><a href="">Amadaa</a></li>
-        <div class="pull-right">
-        {% if user.is_authenticated %}
-        <li><a>
-        {% block header %}
-        {% endblock %}
-        </a></li>
-        <li class="navbar-text">Welcome, {{ user.username }}</li>
-        <li><a href="">About</a></li>
-        <li><a href="{% url 'logout' %}">Logout</a></li>
-        {% else %}
-        <li><a href="{% url 'login' %}">Login</a></li>
-        {% endif %}
-        </div>
-        </div>
-        </div>
+          <div class="navbar-inner">
+            <div class="container-fluid">
+              <li><a href="">Amadaa</a></li>
+              <div class="pull-right">
+                {% if user.is_authenticated %}
+                  <li><a>
+                    {% block header %}
+                    {% endblock %}
+                  </a></li>
+                  <li class="navbar-text">Welcome, {{ user.username }}</li>
+                  <li><a href="">About</a></li>
+                  <li><a href="{% url 'logout' %}">Logout</a></li>
+                  {% else %}
+                  <li><a href="{% url 'login' %}">Login</a></li>
+                  {% endif %}
+              </div>
+            </div>
+          </div>
         </nav>
         <nav>
         {% block navigation %}
@@ -53,19 +53,17 @@
         {% bootstrap_messages %}
       {% endif %}
 
-
     <div class="container-fluid">
-    
-    {% block body %}{% endblock %}
+      {% block body %}{% endblock %}
     </div>
 
 
     <footer class="navbar navbar-inverse navbar-fixed-bottom">
-    <div class="container-fluid">
-      {% block footer %}
-      Copyright &copy; 2016 The Amadaa Team
-      {% endblock %}
-    </div>
+      <div class="container-fluid">
+        {% block footer %}
+        Copyright &copy; 2016 The Amadaa Team
+        {% endblock %}
+      </div>
     </footer>
   <body>
 </html>
