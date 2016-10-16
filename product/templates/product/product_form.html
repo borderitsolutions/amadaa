@@ -2,6 +2,15 @@
 {% load crispy_forms_tags %}
 {% crispy product_form product_form.helper %}
 
+{% load static %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/addProduct.css' %}">
+{% endblock %}
+
 {% block content %}
+<div class="form-bg1">
+<div class="form-bg2">
 {% crispy form %}
+</div></div>
 {% endblock %}

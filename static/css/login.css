@@ -1,38 +1,33 @@
 .login-container {
     margin-top: 80px;
-    //padding-left: 40%;
+    margin-bottom: 80px;
     border: 1px solid #6F7D94;
     width: 35%;
-    height: 50%;
-    //padding: 0 50px 15px;
+    height: 60%;
     margin-left: 32%;
     box-shadow: 0 0 15px #6F7D94;
     border-radius: 30px;
+    background-color: white;
     float: center;
 }
 
 div#label {
     text-align: left;
+    color: black;
     padding: 10px 50px 10px;
-    //float: center;
 }
 
 div#submit {
     padding: 25px 50px 10px;
-    //padding-left: 42%;
-    //width: 80px;
     float: right;
-    //border: 1px solid #ccc;
 }
 
 h5 {
     text-align: center;
-    //padding: 0px 10px 0px;
 }
 
 div#passwd {
     padding: 70px 50px 10px;
-    //text-align: center;
 }
 
 div#title {
