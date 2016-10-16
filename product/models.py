@@ -1,6 +1,8 @@
 from django.db import models
 from django.urls import reverse
 from ckeditor.fields import RichTextField
+import moneyd
+from djmoney.models.fields import MoneyField
 
 # Create your models here.
 
@@ -89,4 +91,7 @@ class SaleUnitOfMeasurement(models.Model):
 
 class Price(models.Model):
     product = models.OneToOneField(SaleUnitOfMeasurement)
-    
+    price = MoneyField(decimal_places=2, default_currency='GHS')    
+
+    def __str__(self):
+        return "{}: {}".format(self.product, self.price)
