@@ -53,5 +53,5 @@ class PricelistForm(ModelForm):
 
     class Meta:
         model = Price
-        fields = ['price']
+        fields = ['price', 'local_price']
 

@@ -87,6 +87,7 @@ class SaleUnitOfMeasurement(models.Model):
 class Price(models.Model):
     product = models.OneToOneField(SaleUnitOfMeasurement)
     price = MoneyField(max_digits=10, decimal_places=2, default_currency='GHS', default=0.0)    
+    local_price = MoneyField(max_digits=10, decimal_places=2, default_currency='GHS', default=0.0)
 
     def __str__(self):
         return "{}: {}".format(self.product, self.price)

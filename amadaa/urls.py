@@ -22,6 +22,7 @@ urlpatterns = [
     url(r'^$', dashboard.views.dashboard, name='dashboard'),
     url(r'^admin/', admin.site.urls),
     url('^', include('django.contrib.auth.urls')),
+    url('^company/', include('company.urls')),
     url('^product/', include('product.urls')),
     url('^supplier/', include('supplier.urls')),
 ]
