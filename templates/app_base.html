@@ -3,7 +3,7 @@
 {% load bootstrap3 %}
 
 {% block header %}
- <nav class="navbar navbar-inverse navbar-static-top">
+ <nav class="navbar navbar-xs navbar-inverse navbar-static-top">
         <div class="navbar-inner">
         <div class="container-fluid">
         <li><a href="">Logo</a></li>
@@ -13,9 +13,9 @@
         <a class="dropdown-toggle appmenu" data-toggle="dropdown">{% bootstrap_icon 'list' %}
         <span class="caret"></span></a>
         <ul class="dropdown-menu">
-          <li><a href="{% url 'logout' %}">Logout</a></li>
-          <li><a href="#">About</a></li>
-          <li><a href="#">Contact</a></li> 
+          <li><a href="{% url 'logout' %}">Logout</a>
+          <a href="#">About</a>
+          <a href="#">Contact</a></li> 
         </ul>
         </li>
         </div>

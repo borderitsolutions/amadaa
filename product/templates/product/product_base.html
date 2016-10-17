@@ -6,12 +6,10 @@
 {% endblock %}
 
 {% block appmenu %}
-<ul class="nav nav-tabs">
 <div class="productbase">
-<li><a href="{% url 'product-list' %}" class="btn btn-success btn1" role="button">Products</a></li>
-<li><a href="{% url 'product-category-list' %}" class="btn btn-info btn1" role="button">Product Categories</a></li>
-<li><a href="{% url 'product-type-list' %}" class="btn btn-warning btn1" role="button">Product Types</a></li>
-<li><a href="{% url 'uom-list' %}" class="btn btn-primary btn1" role="button">Units of Measurement</a></li>
+<a href="{% url 'product-list' %}" class="btn btn-success btn1" role="button">Products</a>
+<a href="{% url 'product-category-list' %}" class="btn btn-info btn1" role="button">Product Categories</a>
+<a href="{% url 'product-type-list' %}" class="btn btn-warning btn1" role="button">Product Types</a>
+<a href="{% url 'uom-list' %}" class="btn btn-primary btn1" role="button">Units of Measurement</a>
 </div>
-</ul>
 {% endblock %}
