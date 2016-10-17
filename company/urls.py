@@ -1,8 +1,6 @@
 from django.conf.urls import url
-from .views import CompanyUpdate
+from .views import CompanyCreateView
 
 urlpatterns = [
-    url(r'^add/$', CompanyCreate.as_view(), name='company-add'),
-    url(r'^update/(?P<pk>[0-9]*)/$', CompanyUpdate.as_view(),
-        name='company-update'),
+    url(r'^add/$', CompanyCreateView.as_view(), name='company-add'),
 ]
