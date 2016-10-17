@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django_bootstrap_dynamic_formsets',
     'crispy_forms',
     'ckeditor',
+    'mptt'
     'dashboard',
     'acct',
     'contact',
