@@ -7,9 +7,9 @@ from django.contrib.auth.decorators import login_required, permission_required
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 from django.contrib import messages
 from django.contrib.messages.views import SuccessMessageMixin
-from product.models import ProductCategory, ProductType, UnitOfMeasurement, Product, PurchaseUnitOfMeasurement, SaleUnitOfMeasurement
+from product.models import ProductCategory, ProductType, UnitOfMeasurement, Product, PurchaseUnitOfMeasurement, SaleUnitOfMeasurement, Price
 from django.forms import modelformset_factory
-from .forms import ProductEditForm
+from .forms import ProductEditForm, PricelistForm
 
 # Create your views here.
 
@@ -102,9 +102,18 @@ class ProductDelete(LoginRequiredMixin, PermissionRequiredMixin, DeleteView):
             return super(ProductDelete, self).delete(request, *args, **kwargs)
 
 def manage_pricelist(request):
+    PriceFormSet = modelformset_factory(Price, form=PricelistForm, extra=0)
     if request.method == 'POST':
-        pass
+        formset = PriceFormSet(request.POST, request.FILES)
+        if formset.is_valid():
+            formset.save()
+            return HttpResponseRedirect(reverse_lazy('product-list'))
     else:
-        puom = PurchaseUnitOfMeasure.objects.all()
-        return render(request, 'products/pricelist_manage.html',
-                {'puom': puom})
+        for uom in SaleUnitOfMeasurement.objects.all():
+            try:
+                Price.objects.create(product=uom, price=0.0)
+            except:
+                pass
+        formset = PriceFormSet()
+    return render(request, 'product/pricelist_manage.html',
+            {'formset': formset})
