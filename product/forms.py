@@ -3,7 +3,6 @@ from django.forms import ModelForm
 from .models import Product, PurchaseUnitOfMeasurement, SaleUnitOfMeasurement, Price
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Layout, Div, Submit
-from djmoney.forms.widgets import MoneyWidget
 
 class ProductEditForm(ModelForm):
     def __init__(self, *args, **kwargs):
