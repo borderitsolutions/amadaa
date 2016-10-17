@@ -111,7 +111,7 @@ def manage_pricelist(request):
     else:
         for uom in SaleUnitOfMeasurement.objects.all():
             try:
-                Price.objects.create(product=uom, price=0.0)
+                Price.objects.create(product=uom, price=0.0, local_price=0.0)
             except:
                 pass
         formset = PriceFormSet()
