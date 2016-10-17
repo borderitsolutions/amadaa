@@ -1,5 +1,5 @@
 from django.conf.urls import url
-from product.views import manage_product_categories, manage_product_types, manage_units_of_measurement, ProductList, ProductDetail, ProductCreate, ProductUpdate, ProductDelete
+from product.views import manage_product_categories, manage_product_types, manage_units_of_measurement, ProductList, ProductDetail, ProductCreate, ProductUpdate, ProductDelete, manage_pricelist
 
 urlpatterns = [
     url(r'^$', ProductList.as_view(), name='product-list'),
@@ -14,4 +14,5 @@ urlpatterns = [
     url(r'^type/$', manage_product_types, name='product-type-list'),
     url(r'^uom/$', manage_units_of_measurement, name='uom-list'),
     url(r'category/$', manage_product_categories, name='product-category-list'),
+    url(r'pricelist/$', manage_pricelist, name="pricelist"),
 ]
