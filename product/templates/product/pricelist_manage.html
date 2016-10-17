@@ -1,0 +1,15 @@
+{% extends "product/product_base.html" %}
+
+{% block content %}
+<form method="post" action="">
+  {% csrf_token %}
+  {{ formset.management_form }}
+  <table>
+    {% for form in formset %}
+    {{ form }}
+    {% endfor %}
+  </table>
+  
+  <input type="submit" value="Done">
+</form>
+{% endblock %}
