@@ -5,10 +5,12 @@
 <link rel="stylesheet" href="{% static 'css/product_base.css' %}">
 {% endblock %}
 
-{% block appmenu %}<div class="productbase">
-<li><a href="{% url 'product-list' %}" class="btn btn-success btn1" role="button">Products</a></li>
-<li><a href="{% url 'product-category-list' %}" class="btn btn-info btn1" role="button">Product Categories</a></li>
-<li><a href="{% url 'product-type-list' %}" class="btn btn-warning btn1" role="button">Product Types</a></li>
-<li><a href="{% url 'uom-list' %}" class="btn btn-primary btn1" role="button">Units of Measurement</a></li>
+{% block appmenu %}
+<div class="productbase">
+  <li><a href="{% url 'product-list' %}" class="btn btn-success btn1" role="button">Products</a></li>
+  <li><a href="{% url 'product-category-list' %}" class="btn btn-info btn1" role="button">Product Categories</a></li>
+  <li><a href="{% url 'product-type-list' %}" class="btn btn-warning btn1" role="button">Product Types</a></li>
+  <li><a href="{% url 'uom-list' %}" class="btn btn-primary btn1" role="button">Units of Measurement</a></li>
+  <li><a href="{% url 'pricelist' %}"  class="btn btn-primary btn1" role="button">Pricelist</a></li>
 </div>
 {% endblock %}

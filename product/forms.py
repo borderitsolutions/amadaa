@@ -1,5 +1,6 @@
+from django import forms
 from django.forms import ModelForm
-from .models import Product, PurchaseUnitOfMeasurement, SaleUnitOfMeasurement
+from .models import Product, PurchaseUnitOfMeasurement, SaleUnitOfMeasurement, Price
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Layout, Div, Submit
 
@@ -43,3 +44,14 @@ class ProductEditForm(ModelForm):
                     unit_of_measurement=s)
 
         return product
+
+class PricelistForm(ModelForm):
+    def __init__(self, *args, **kwargs):
+        super(PricelistForm, self).__init__(*args, **kwargs)
+        if self.instance.id:
+            self.fields['price'].label = self.instance.product
+
+    class Meta:
+        model = Price
+        fields = ['price']
+
