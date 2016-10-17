@@ -81,6 +81,9 @@ class SaleUnitOfMeasurement(models.Model):
     class Meta:
         unique_together = ('product', 'unit_of_measurement',)
 
+    def __str__(self):
+        return "{} ({})".format(self.product, self.unit_of_measurement)
+
 class Price(models.Model):
     product = models.OneToOneField(SaleUnitOfMeasurement)
     price = MoneyField(max_digits=10, decimal_places=2, default_currency='GHS', default=0.0)    
