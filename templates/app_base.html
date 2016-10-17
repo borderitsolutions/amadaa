@@ -1,9 +1,28 @@
 {# All app templates should inherit from this. #}
 {% extends "base.html" %}
-
+{% load bootstrap3 %}
 
 {% block header %}
-No Company
+ <nav class="navbar navbar-inverse navbar-static-top">
+        <div class="navbar-inner">
+        <div class="container-fluid">
+        <li><a href="">Logo</a></li>
+        <div class="pull-right">
+        <li><a href="#">{% bootstrap_icon 'info-sign' %}</a></li>
+        <li class="dropdown">
+        <a class="dropdown-toggle appmenu" data-toggle="dropdown">{% bootstrap_icon 'list' %}
+        <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a href="{% url 'logout' %}">Logout</a></li>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Contact</a></li> 
+        </ul>
+        </li>
+        </div>
+        </div>
+        </div>
+        </nav>
+ 
 {% endblock %}
 
 {% block navigation %}

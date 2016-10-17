@@ -67,8 +67,10 @@ nav a:hover {
 
 .navbar {
     margin-bottom: 0;
+    height:10px !important;
 }
 
 .container-fluid{
-    padding: 0px;
+   // padding: 0px;
 }
+
