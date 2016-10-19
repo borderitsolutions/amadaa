@@ -101,6 +101,7 @@ class ProductDelete(LoginRequiredMixin, PermissionRequiredMixin, DeleteView):
             messages.success(self.request, self.success_message)
             return super(ProductDelete, self).delete(request, *args, **kwargs)
 
+@login_required
 def manage_pricelist(request):
     PriceFormSet = modelformset_factory(Price, form=PricelistForm, extra=0)
     if request.method == 'POST':
