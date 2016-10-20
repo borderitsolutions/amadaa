@@ -15,38 +15,39 @@
 <div class="row">
   <div class="col-lg-3 col-md-6">
     <div class="panel panel-primary">
-     <div class="panel-heading">
+    <a href="{% url 'product-list' %}">
+     <div class="panel-heading ph1">
       {% bootstrap_icon 'briefcase' %}
      </div>
-        <a href="{% url 'product-list' %}">
-         <div class="panel-footer">
-          <span class="pull-middle">Products</span>
-           <div class="clearfix"></div>
-         </div>
-        </a>
+       <div class="panel-footer">
+        <span class="pull-middle">Products</span>
+        <div class="clearfix"></div>
+       </div>
+    </a>
     </div>
   </div>
 
   <div class="col-lg-3 col-md-6">
     <div class="panel panel-success">
-     <div class="panel-heading">
+    <a href="{% url 'supplier-list' %}">
+     <div class="panel-heading ph2">
       {% bootstrap_icon 'grain' %}
      </div>
-        <a href="{% url 'supplier-list' %}">
-         <div class="panel-footer">
-          <span class="pull-middle">Suppliers</span>
-           <div class="clearfix"></div>
-         </div>
-        </a>
+     <div class="panel-footer">
+      <span class="pull-middle">Suppliers</span>
+      <div class="clearfix"></div>
+     </div>
+    </a>
     </div>
   </div>
 
   <div class="col-lg-3 col-md-6">
     <div class="panel panel-info">
-     <div class="panel-heading">
+    <a href="#">
+     <div class="panel-heading ph3">
       {% bootstrap_icon 'indent-left' %}
      </div>
-        <a href="#">
+      
          <div class="panel-footer">
           <span class="middle">Run Reports</span>
            <div class="clearfix"></div>
@@ -57,15 +58,15 @@
 
   <div class="col-lg-3 col-md-6">
     <div class="panel panel-danger">
-     <div class="panel-heading">
+    <a href="#">
+     <div class="panel-heading ph4">
       {% bootstrap_icon 'list' %}
-     </div>
-        <a href="#">
-         <div class="panel-footer">
-          <span class="mid">Manage Inventory</span>
-           <div class="clearfix"></div>
-         </div>
-        </a>
+     </div>      
+      <div class="panel-footer">
+       <span class="mid">Manage Inventory</span>
+       <div class="clearfix"></div>
+      </div>
+    </a>
     </div>
   </div>
 </div>
