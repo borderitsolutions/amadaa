@@ -1,0 +1,43 @@
+.panel-heading {
+ padding-left: 110px
+}
+
+
+.pull-middle{
+ padding: 0px 90px 0px;
+ color: black;
+}
+
+.middle{
+    padding: 0px 80px 0px;
+    color: black;
+}
+
+.mid{
+    padding: 0px 60px 0px;
+    color: black;
+}
+
+.glyphicon.glyphicon-briefcase {
+    font-size: 50px;
+}
+
+.glyphicon.glyphicon-grain{
+    font-size: 50px;
+}
+
+.glyphicon.glyphicon-indent-left{
+    font-size: 50px;
+}
+
+.glyphicon.glyphicon-list{
+    font-size: 50px;
+}
+
+.app{
+ font-weight: bold;
+}
+
+.dashboard{
+  margin: 10px 0px 60px;
+}
