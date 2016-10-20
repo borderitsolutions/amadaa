@@ -1,24 +1,74 @@
 {% extends "app_base.html" %}
+{% load bootstrap3 %}
+
+{% load static %}
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+{% endblock %}
 
 {% block body %}
-<h2>Applications</h2>
+<nav class="navbar navbar-default dashboard">
+<h3 class="app">Applications</h3>
+</nav>
 
-<p>This is a temporary placeholder so that we can test applications and application functionality that is in development. This should go when we get a proper dashboard.</p>
 
-<h3>Products</h3>
+<div class="row">
+  <div class="col-lg-3 col-md-6">
+    <div class="panel panel-primary">
+     <div class="panel-heading">
+      {% bootstrap_icon 'briefcase' %}
+     </div>
+        <a href="{% url 'product-list' %}">
+         <div class="panel-footer">
+          <span class="pull-middle">Products</span>
+           <div class="clearfix"></div>
+         </div>
+        </a>
+    </div>
+  </div>
 
-<ol>
-  <li><a href="{% url 'product-category-list' %}">Product Categories</a></li>
-  <li><a href="{% url 'product-type-list' %}">Product Types</a></li>
-  <li><a href="{% url 'uom-list' %}">Units of Measurement</a></li>
-  <li><a href="{% url 'product-list' %}">Products</a></li>
-</ol>
+  <div class="col-lg-3 col-md-6">
+    <div class="panel panel-success">
+     <div class="panel-heading">
+      {% bootstrap_icon 'grain' %}
+     </div>
+        <a href="{% url 'supplier-list' %}">
+         <div class="panel-footer">
+          <span class="pull-middle">Suppliers</span>
+           <div class="clearfix"></div>
+         </div>
+        </a>
+    </div>
+  </div>
 
-<h3>Supplier</h3>
+  <div class="col-lg-3 col-md-6">
+    <div class="panel panel-info">
+     <div class="panel-heading">
+      {% bootstrap_icon 'indent-left' %}
+     </div>
+        <a href="#">
+         <div class="panel-footer">
+          <span class="middle">Run Reports</span>
+           <div class="clearfix"></div>
+         </div>
+        </a>
+    </div>
+  </div>
 
-<ol>
-  <li><a href="{% url 'supplier-list' %}">Suppliers</a></li>
-</ol>
+  <div class="col-lg-3 col-md-6">
+    <div class="panel panel-danger">
+     <div class="panel-heading">
+      {% bootstrap_icon 'list' %}
+     </div>
+        <a href="#">
+         <div class="panel-footer">
+          <span class="mid">Manage Inventory</span>
+           <div class="clearfix"></div>
+         </div>
+        </a>
+    </div>
+  </div>
+</div>
 
 
 {% endblock %}
