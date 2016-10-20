@@ -76,8 +76,25 @@ nav a:hover {
 
 .navbar-xs { 
     min-height:28px; 
-    height: 28px; 
+    height: 32px; 
 }
 
 
+.glyphicon.glyphicon-info-sign{
+    font-size: 18px;
+}
 
+.glyphicon.glyphicon-menu-hamburger{
+    font-size: 18px;
+}
+
+.img{
+    height: 26px;
+    width: 26px;
+}
+
+
+.img:hover{
+    height: 60px;
+    width: 60px;
+}

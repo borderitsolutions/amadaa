@@ -1,12 +1,14 @@
 {# All app templates should inherit from this. #}
 {% extends "base.html" %}
+{% load static %}
 {% load bootstrap3 %}
 
 {% block header %}
 <nav class="navbar navbar-xs navbar-inverse navbar-fixed-top">
   <div class="navbar-inner">
     <div class="container-fluid">
-      <li><a href="">Logo</a></li>
+      <li><a href="#">
+      <img border="0" alt="Amadaa Logo" src="{% static 'img/logo.jpeg' %}" class="img"></a></li>
       <div class="pull-right">
         <li><a href="#">{% bootstrap_icon 'info-sign' %}</a></li>
         <li class="dropdown">
