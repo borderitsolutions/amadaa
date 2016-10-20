@@ -1,5 +1,21 @@
-.panel-heading {
- padding-left: 110px
+.ph1 {
+ padding-left: 110px;
+ background-color: #428bca;
+}
+
+.ph2 {
+ padding-left: 110px;
+ background-color: #5cb85c;
+}
+
+.ph3 {
+ padding-left: 110px;
+ background-color: #5bc0de;
+}
+
+.ph4 {
+ padding-left: 110px;
+ background-color: #d9534f;
 }
 
 
@@ -20,18 +36,22 @@
 
 .glyphicon.glyphicon-briefcase {
     font-size: 50px;
+    color: white;
 }
 
 .glyphicon.glyphicon-grain{
     font-size: 50px;
+    color: white;
 }
 
 .glyphicon.glyphicon-indent-left{
     font-size: 50px;
+    color: white;
 }
 
 .glyphicon.glyphicon-list{
     font-size: 50px;
+    color: white;
 }
 
 .app{
