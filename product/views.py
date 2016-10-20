@@ -14,7 +14,7 @@ from .forms import ProductEditForm, PricelistForm
 # Create your views here.
 
 @login_required
-@permission_required('products.manage_products')
+@permission_required('products.manage_products', raise_exception=True)
 def manage_product_categories(request):
     ProductCategoryFormSet = modelformset_factory(ProductCategory,
             can_delete=True, fields=['name',])
@@ -29,7 +29,7 @@ def manage_product_categories(request):
             {'formset': formset})
 
 @login_required
-@permission_required('products.manage_products')
+@permission_required('products.manage_products', raise_exception=True)
 def manage_product_types(request):
     ProductTypeFormSet = modelformset_factory(ProductType,
             can_delete=True, fields=['name',])
@@ -44,7 +44,7 @@ def manage_product_types(request):
             {'formset': formset})
 
 @login_required
-@permission_required('products.manage_products')
+@permission_required('products.manage_products', raise_exception=True)
 def manage_units_of_measurement(request):
     UnitOfMeasurementFormSet = modelformset_factory(UnitOfMeasurement,
             can_delete=True, fields=['unit',])
