@@ -13,63 +13,148 @@
 
 
 <div class="row">
-  <div class="col-lg-3 col-md-6">
-    <div class="panel panel-primary">
+  <div class="col-xs-4 col-md-2">
+    <div class="panel panel-info">
     <a href="{% url 'product-list' %}">
-     <div class="panel-heading ph1">
+     <div class="panel-heading app-1">
       {% bootstrap_icon 'briefcase' %}
      </div>
-       <div class="panel-footer">
-        <span class="pull-middle">Products</span>
+       <div class="panel-footer text-center">
+        <span>Products</span>
         <div class="clearfix"></div>
        </div>
     </a>
     </div>
   </div>
 
-  <div class="col-lg-3 col-md-6">
-    <div class="panel panel-success">
+  <div class="col-xs-4 col-md-2">
+    <div class="panel panel-info">
     <a href="{% url 'supplier-list' %}">
-     <div class="panel-heading ph2">
+     <div class="panel-heading app-2">
       {% bootstrap_icon 'grain' %}
      </div>
-     <div class="panel-footer">
-      <span class="pull-middle">Suppliers</span>
+     <div class="panel-footer text-center">
+      <span>Suppliers</span>
       <div class="clearfix"></div>
      </div>
     </a>
     </div>
   </div>
 
-  <div class="col-lg-3 col-md-6">
+  <div class="col-xs-4 col-md-2">
     <div class="panel panel-info">
     <a href="#">
-     <div class="panel-heading ph3">
+     <div class="panel-heading app-3">
       {% bootstrap_icon 'indent-left' %}
-     </div>
-      
-         <div class="panel-footer">
-          <span class="middle">Run Reports</span>
+     </div>     
+         <div class="panel-footer text-center">
+          <span>Run Reports</span>
            <div class="clearfix"></div>
          </div>
         </a>
     </div>
   </div>
 
-  <div class="col-lg-3 col-md-6">
-    <div class="panel panel-danger">
+  <div class="col-xs-4 col-md-2">
+    <div class="panel panel-info">
     <a href="#">
-     <div class="panel-heading ph4">
+     <div class="panel-heading app-4">
       {% bootstrap_icon 'list' %}
      </div>      
-      <div class="panel-footer">
-       <span class="mid">Manage Inventory</span>
+      <div class="panel-footer text-center">
+       <span>Manage Inventory</span>
        <div class="clearfix"></div>
       </div>
     </a>
     </div>
   </div>
+
+  <div class="col-xs-4 col-md-2">
+    <div class="panel panel-info">
+    <a href="#">
+     <div class="panel-heading app-5">
+      {% bootstrap_icon 'user' %}
+     </div>      
+      <div class="panel-footer text-center">
+       <span>Manage Account</span>
+       <div class="clearfix"></div>
+      </div>
+    </a>
+    </div>
+</div>
 </div>
 
+
+<div class="row">
+  <div class="col-xs-4 col-md-2">
+    <div class="panel panel-info">
+    <a href="{% url 'product-list' %}">
+     <div class="panel-heading app-6">
+      {% bootstrap_icon 'shopping-cart' %}
+     </div>
+       <div class="panel-footer text-center">
+        <span>Sales Order</span>
+        <div class="clearfix"></div>
+       </div>
+    </a>
+    </div>
+  </div>
+
+  <div class="col-xs-4 col-md-2">
+    <div class="panel panel-info">
+    <a href="{% url 'supplier-list' %}">
+     <div class="panel-heading app-7">
+      {% bootstrap_icon 'print' %}
+     </div>
+     <div class="panel-footer text-center">
+      <span>Invoice</span>
+      <div class="clearfix"></div>
+     </div>
+    </a>
+    </div>
+  </div>
+
+  <div class="col-xs-4 col-md-2">
+    <div class="panel panel-info">
+    <a href="#">
+     <div class="panel-heading app-8">
+      {% bootstrap_icon 'pawn' %}
+     </div>     
+         <div class="panel-footer text-center">
+          <span>HR</span>
+           <div class="clearfix"></div>
+         </div>
+        </a>
+    </div>
+  </div>
+
+  <div class="col-xs-4 col-md-2">
+    <div class="panel panel-info">
+    <a href="#">
+     <div class="panel-heading app-9">
+      {% bootstrap_icon 'envelope' %}
+     </div>      
+      <div class="panel-footer text-center">
+       <span>Contacts</span>
+       <div class="clearfix"></div>
+      </div>
+    </a>
+    </div>
+  </div>
+
+  <div class="col-xs-4 col-md-2">
+    <div class="panel panel-info">
+    <a href="#">
+     <div class="panel-heading app-10">
+      {% bootstrap_icon 'wrench' %}
+     </div>      
+      <div class="panel-footer text-center">
+       <span>Settings</span>
+       <div class="clearfix"></div>
+      </div>
+    </a>
+    </div>
+</div>
+</div>
 
 {% endblock %}
