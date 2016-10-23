@@ -1,8 +1,9 @@
 
 .productbase {
-    margin-left: 17%;
-  //  padding: 0px 0px 12px;
+  margin-left: 23%;
+  padding: 5px 10px 5px;
   margin-top: 40px;
+  width: 49%;
 }
 
 
@@ -11,4 +12,23 @@
     margin: 5px 0px 5px;
 }
 
+
+.nav-tabs{
+background-color: #C8D3DB;
+}
+ 
+.nav-tabs > li > a{
+border-radius: 5px;
+background-color: white; 
+color: black; 
+border: 1px solid #5bc0de;
+}
+ 
+.nav-tabs > li > a:hover{
+background-color: #3D515F;
+border-radius: 5px; 
+color: #fff; 
+border: 1px solid black;
+}
+ 
 
