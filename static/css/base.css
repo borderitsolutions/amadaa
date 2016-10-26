@@ -57,12 +57,12 @@ nav a {
     text-decoration: none;
     font-size: small;
    // text-align: center;
-    padding: 5px 15px 5px;
+    padding: 15px 15px ;
 }
 
 nav a:hover {
-    text-decoration: none;
-    color: #7EEFE6;
+   /* text-decoration: none;
+    color: #7EEFE6;*/
 }
 
 .container-fluid{
