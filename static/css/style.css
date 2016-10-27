@@ -21,6 +21,14 @@ body {
     border-left: 1px solid #e7e7e7;
   }
 }
+#header-text{
+  display: inline-block;
+}
+#header-logo{
+  height: 60px;
+  width: 60px;
+  margin-bottom: 25px;
+  }
 .gi-2x{font-size: 2em;}
 .gi-3x{font-size: 3em;}
 .gi-4x{font-size: 4em;}

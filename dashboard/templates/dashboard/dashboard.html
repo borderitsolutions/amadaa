@@ -3,13 +3,16 @@
 
 {% load static %}
 {% block css %}
-<link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+    <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+    <link href="../../../static/css/style.css" rel="stylesheet" type="text/css">
+    <link href="../../../STATIC_ROOT/metisMenu/metisMenu.min.css" rel="stylesheet" type="text/css">
 {% endblock %}
 
 {% block body %}
-<nav class="navbar navbar-default dashboard">
-<h3 class="app">Applications</h3>
-</nav>
+<div class="row ">
+<span><img src="../../../static/img/logo2.jpg" id="header-logo"/></span>
+<h1 class="page-header" id="header-text">Applications</h1>
+</div>
 
 
 <div class="row">
@@ -73,7 +76,7 @@
     <div class="panel panel-info">
     <a href="#">
      <div class="panel-heading app-5">
-      {% bootstrap_icon 'user' %}
+      <span><i class="glyphicon glyphicon-user app-5"></i></span>
      </div>      
       <div class="panel-footer text-center">
        <span>Manage Account</span>
