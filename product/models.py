@@ -1,8 +1,8 @@
 from django.db import models
 from django.urls import reverse
-from ckeditor.fields import RichTextField
 import moneyed
 from djmoney.models.fields import MoneyField
+from django.forms import Textarea
 
 # Create your models here.
 
@@ -38,7 +38,7 @@ class SellableItem(models.Model):
     internal_ref = models.CharField(max_length=100, default='', blank=True)
     item_type = models.ForeignKey(ProductType, default=0)
     category = models.ForeignKey(ProductCategory)
-    description = RichTextField(blank=True, default='')
+    description = models.TextField(blank=True, default='')
 
     def __str__(self):
         return "{}".format(self.name)
