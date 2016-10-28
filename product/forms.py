@@ -12,20 +12,33 @@ class ProductEditForm(ModelForm):
         self.helper.form_class = 'blueForms'
         self.helper.form_method = 'post'
         self.helper.form_action = ''
-        self.helper.add_input(Submit('submit', 'OK'))
         self.helper.layout = Layout(
                 Div(
-                    Div('name', css_class='col-xs-6'),
-                    Div('internal_ref', css_class='col-xs-6'),
-                    Div('item_type', css_class='col-xs-6'),
-                    Div('category', css_class='col-xs-6'),
-                    css_class='row_fluid'),
-                Div('description', css_class='row-fluid'),
+                    Div('name', css_class='col-xs-2 col-lg-4'),
+                    Div('internal_ref', css_class='col-xs-2 col-lg-4'),
+                    Div('item_type', css_class='col-xs-2 col-lg-4'),          
+                    css_class='row_fluid input-sm'),
+              
+                
                 Div(
-                    Div('purchase_units_of_measurement', css_class='col-xs-6'),
-                    Div('sale_units_of_measurement', css_class='col-xs-6'),
-                    css_class='row-fluid'),
+                    Div('category', css_class='col-xs-2 col-lg-4'),
+                    Div('purchase_units_of_measurement', css_class='col-xs-2 col-lg-4'),
+                    Div('sale_units_of_measurement', css_class='col-xs-2 col-lg-4'),
+                    css_class='row-fluid input-sm'),
+                
+                Div(
+                Div('description', css_class='col-xs-2 col-lg-4 input-sm'),
+                css_class='textfieldsize'),
+                Div(Submit('submit', 'Add', css_class='btn btn-default'),
+                   css_class='col-lg-offset-11 col-lg-4'),
                 )
+
+        self.fields['description'].widget.attrs['rows'] = 2
+        self.fields['purchase_units_of_measurement'].widget.attrs['size'] = 2
+        self.fields['sale_units_of_measurement'].widget.attrs['size'] = 2
+        self.fields['category'].widget.attrs['size'] = 1
+
+
     class Meta:
         model = Product
         exclude = []

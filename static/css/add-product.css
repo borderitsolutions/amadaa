@@ -1,24 +1,26 @@
 
 .form-bg1 {
-    margin-top: 20px;
-    margin-bottom: 30px;
-    width: 900px;
-    height: 750px;
-    margin-left: 14%;
-    box-shadow: 0 0 5px #E0E0F0;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    width: 1200px;
+    height: 300px;
+    margin-left: 65px;
+    box-shadow: 0 0 20px #E0E0F0;
     float: center;
-    background-color: #F2F2FA;
+  //  background-color: #F2F2FA;
 }
 
 
 .form-bg2 {
     margin-left: 15px;
-    padding-top: 20px;
+    padding-top: 10px;
 }
 
+.col-lg-4{
+    padding-bottom: 12px;
+}
 
-.productbase {
-    margin-left: 17%;
-  //  padding: 0px 0px 12px;
-  margin-top: 40px;
+.textfieldsize{
+    padding-left: 15px;
+    width: 1140px;
 }
