@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 from ckeditor.fields import RichTextField
 
 # Create your models here.
@@ -14,6 +15,9 @@ class Contact(models.Model):
 class Person(Contact):
     first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50)
+
+    def get_absolute_url(self):
+        return reverse('person-list')
     
     def __str__(self):
         return "{} {}".format(self.first_name, self.last_name)
