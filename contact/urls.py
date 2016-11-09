@@ -3,13 +3,15 @@ from contact.views import PersonList, PersonDetail, PersonCreate, PersonUpdate, 
 
 
 urlpatterns = [
-    url(r'^$', PersonList.as_view(), name='person-list'),
-    url(r'^detail/(?P<pk>[0-9]*)/$', PersonDetail.as_view(),
+    url(r'^person/$', PersonList.as_view(), name='person-list'),
+    url(r'^person/detail/(?P<pk>[0-9]*)/$', PersonDetail.as_view(),
         name='person-detail'),
-    url(r'^add/$', PersonCreate.as_view(), name='person-add'),
-    url(r'^update/(?P<pk>[0-9]*)/$', PersonUpdate.as_view(),
+    url(r'^person/add/$', PersonCreate.as_view(), name='person-add'),
+    url(r'^person/update/(?P<pk>[0-9]*)/$', PersonUpdate.as_view(),
         name='person-update'),
-    url(r'^delete/(?P<pk>[0-9]*)/$', PersonDelete.as_view(),
+    url(r'^person/delete/(?P<pk>[0-9]*)/$', PersonDelete.as_view(),
         name="person-delete"),
+
+    
 
 ]
