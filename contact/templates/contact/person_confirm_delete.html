@@ -1,0 +1,17 @@
+{% extends "app_base.html" %}
+
+{% block content %}
+  <p>You are about to delete the following person</p>
+  <ol>
+    <li>{{ person.first_name }}</li>
+  </ol>
+
+  <p>Are you sure?</p>
+
+  <form method="post" action="">
+    {% csrf_token %}
+
+    <input type="submit" value="Yes" name="confirm_delete">
+    <input type="submit" value="No" name="cancel">
+  </form>
+{% endblock %}

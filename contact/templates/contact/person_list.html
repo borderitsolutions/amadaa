@@ -1,0 +1,38 @@
+{% extends "contact/person_base.html" %}
+{% load bootstrap3 %}
+
+
+{% block content %}
+  <h2>Persons</h2>
+
+    {% for person in persons %}
+      {% if forloop.first %}
+        <table>
+          <tr>
+            <th>First name</th>
+            <th>Last name</th>
+            <th>Edit</th>
+            <th>Delete</th>
+          </tr>
+      {% endif %}
+
+      <tr>
+        <td><a href="{% url 'person-detail' person.id %}">{{ person.first_name }}</a></td>
+        <td><a href="{% url 'person-detail' person.id %}">{{ person.last_name }}</a></td>
+        <td><a href="{% url 'person-update' person.id %}">{% bootstrap_icon 'pencil' %}</a></td>
+        <td><a href="{% url 'person-delete' person.id %}">{% bootstrap_icon 'minus' %}</a></td>
+      </tr>
+
+      {% if forloop.last %}
+        </table>
+      {% endif %}
+    {% endfor %}
+{% endblock %}
+
+{% block action_top %}
+<p><a href="{% url 'person-add' %}">{% bootstrap_icon 'plus' %}</a></p>
+{% endblock %}
+
+{% block action_bottom %}
+<p><a href="{% url 'person-add' %}">{% bootstrap_icon 'plus' %}</a></p>
+{% endblock %}
