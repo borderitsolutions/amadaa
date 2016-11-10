@@ -29,6 +29,9 @@ class Organization(Contact):
             through='Membership',
             through_fields=('organization', 'person'))
 
+    def get_absolute_url(self):
+        return reverse('organization-list')
+
     def __str__(self):
         return "{}".format(self.name)
 

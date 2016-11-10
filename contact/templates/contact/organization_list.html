@@ -1,0 +1,36 @@
+{% extends "contact/organization_base.html" %}
+{% load bootstrap3 %}
+
+
+{% block content %}
+  <h2>Organizations</h2>
+
+    {% for organization in organizations %}
+      {% if forloop.first %}
+        <table>
+          <tr>
+            <th>Name</th>
+            <th>Edit</th>
+            <th>Delete</th>
+          </tr>
+      {% endif %}
+
+      <tr>
+        <td><a href="{% url 'organization-detail' organization.id %}">{{ organization.name }}</a></td>
+        <td><a href="{% url 'organization-update' organization.id %}">{% bootstrap_icon 'pencil' %}</a></td>
+        <td><a href="{% url 'organization-delete' organization.id %}">{% bootstrap_icon 'minus' %}</a></td>
+      </tr>
+
+      {% if forloop.last %}
+        </table>
+      {% endif %}
+    {% endfor %}
+{% endblock %}
+
+{% block action_top %}
+<p><a href="{% url 'organization-add' %}">{% bootstrap_icon 'plus' %}</a></p>
+{% endblock %}
+
+{% block action_bottom %}
+<p><a href="{% url 'organization-add' %}">{% bootstrap_icon 'plus' %}</a></p>
+{% endblock %}
