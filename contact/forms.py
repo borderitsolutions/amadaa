@@ -23,3 +23,39 @@ class PersonEditForm(ModelForm):
     class Meta:
         model = Person
         exclude = []
+
+
+
+class OrganizationEditForm(ModelForm):
+    def __init__(self, *args, **kwargs):
+        super(OrganizationEditForm, self).__init__(*args, **kwargs)
+        self.helper = FormHelper()
+        self.helper.form_method = 'post'
+        self.helper.form_action = ''
+       	self.helper.layout = Layout(
+       		Div(
+                    Div('name', css_class='col-xs-2 col-lg-4'),       
+                    css_class='row_fluid input-sm'),
+
+            Div(
+                    Div('members', css_class='col-xs-2 col-lg-4'),
+                    css_class='row-fluid input-sm'),
+            
+	        Div(Submit('submit', 'Add', css_class='btn btn-default'),
+                   css_class='col-lg-offset-11 col-lg-4'),
+        	)
+        self.fields['members'].widget.attrs['size'] = 2
+
+    class Meta:
+        model = Organization
+        exclude = []
+
+    def save(self, commit=True):
+        members = self.cleaned_data.pop('members')
+        organization = super(OrganizationEditForm, self).save()
+        for m in members:
+            Membership.objects.create(
+                    organization=organization,
+                    person=m)
+
+        return organization

@@ -9,7 +9,7 @@ from django.contrib import messages
 from django.contrib.messages.views import SuccessMessageMixin
 from contact.models import Person, Organization, Membership, PhoneType, PhoneNumber, WebsiteType, Website
 from django.forms import modelformset_factory
-from .forms import PersonEditForm
+from .forms import PersonEditForm, OrganizationEditForm
 
 # Create your views here.
 
@@ -49,3 +49,42 @@ class PersonDelete(LoginRequiredMixin, DeleteView):
         else:
             messages.success(self.request, self.success_message)
             return super(PersonDelete, self).delete(request, *args, **kwargs)
+
+
+
+class OrganizationList(LoginRequiredMixin, ListView):
+    model = Organization
+    context_object_name = 'organizations'
+
+class OrganizationDetail(LoginRequiredMixin, DetailView):
+    model = Organization
+    context_object_name = 'organization'
+
+class OrganizationCreate(LoginRequiredMixin, SuccessMessageMixin, CreateView):
+    model = Organization
+    form_class = OrganizationEditForm
+    raise_exception = True
+    success_message = "Organization %(name)s created"
+
+class OrganizationUpdate(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
+    model = Organization
+    form_class = OrganizationEditForm
+    raise_exception = True
+    success_message = "Organization %(name)s updated"
+
+class OrganizationDelete(LoginRequiredMixin, DeleteView):
+    model = Organization
+    context_object_name = 'organization'
+    raise_exception = True
+    success_url = reverse_lazy('organization-list')
+    success_message = "Organization deleted"
+    cancel_message = "Delete cancelled"
+
+    def post(self, request, *args, **kwargs):
+        if 'cancel' in request.POST:
+            url = self.success_url
+            messages.success(self.request, self.cancel_message)
+            return HttpResponseRedirect(url)
+        else:
+            messages.success(self.request, self.success_message)
+            return super(OrganizationDelete, self).delete(request, *args, **kwargs)

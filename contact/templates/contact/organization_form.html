@@ -1,0 +1,16 @@
+{% extends "contact/organization_base.html" %}
+{% load crispy_forms_tags %}
+{% crispy organization_form organization_form.helper %}
+
+{% load static %}
+
+
+{% block content %}
+<div class="form-container">
+<div class="form-bg1">
+  <div class="form-bg2">
+    {% crispy form %}
+  </div>
+</div>
+</div>
+{% endblock %}
