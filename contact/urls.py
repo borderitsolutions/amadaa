@@ -1,5 +1,5 @@
 from django.conf.urls import url
-from contact.views import PersonList, PersonDetail, PersonCreate, PersonUpdate, PersonDelete, OrganizationList, OrganizationDetail, OrganizationCreate, OrganizationUpdate, OrganizationDelete
+from contact.views import PersonList, PersonDetail, PersonCreate, PersonUpdate, PersonDelete, OrganizationList, OrganizationDetail, OrganizationCreate, OrganizationUpdate, OrganizationDelete, manage_memberships, manage_phone_types
 
 
 urlpatterns = [
@@ -20,5 +20,8 @@ urlpatterns = [
         name='organization-update'),
     url(r'^organization/delete/(?P<pk>[0-9]*)/$', OrganizationDelete.as_view(),
         name="organization-delete"),
+
+    url(r'^membership/$', manage_memberships, name='membership-list'),
+    url(r'^phonetype/$', manage_phone_types, name='phonetype-list'),
 
 ]

@@ -59,3 +59,4 @@ class OrganizationEditForm(ModelForm):
                     person=m)
 
         return organization
+
