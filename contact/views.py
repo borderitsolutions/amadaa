@@ -88,3 +88,35 @@ class OrganizationDelete(LoginRequiredMixin, DeleteView):
         else:
             messages.success(self.request, self.success_message)
             return super(OrganizationDelete, self).delete(request, *args, **kwargs)
+
+
+@login_required
+# @permission_required('contact.manage_contacts', raise_exception=True)
+def manage_memberships(request):
+    MembershipFormSet = modelformset_factory(Membership,
+            can_delete=True, fields=['organization', 'person',])
+    if request.method == 'POST':
+        formset = MembershipFormSet(request.POST, request.FILES)
+        if formset.is_valid():
+            formset.save()
+            return HttpResponseRedirect(reverse_lazy('membership-list'))
+    else:
+        formset = MembershipFormSet()
+    return render(request, 'contact/membership_manage.html',
+            {'formset': formset})
+
+
+@login_required
+# @permission_required('contact.manage_contacts', raise_exception=True)
+def manage_phone_types(request):
+    PhoneTypeFormSet = modelformset_factory(PhoneType,
+            can_delete=True, fields=['phone_type',])
+    if request.method == 'POST':
+        formset = PhoneTypeFormSet(request.POST, request.FILES)
+        if formset.is_valid():
+            formset.save()
+            return HttpResponseRedirect(reverse_lazy('phonetype-list'))
+    else:
+        formset = PhoneTypeFormSet()
+    return render(request, 'contact/phonetype_manage.html',
+            {'formset': formset})
