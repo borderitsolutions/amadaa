@@ -120,3 +120,19 @@ def manage_phone_types(request):
         formset = PhoneTypeFormSet()
     return render(request, 'contact/phonetype_manage.html',
             {'formset': formset})
+
+
+@login_required
+# @permission_required('contact.manage_contacts', raise_exception=True)
+def manage_website_types(request):
+    WebsiteTypeFormSet = modelformset_factory(WebsiteType,
+            can_delete=True, fields=['website_type',])
+    if request.method == 'POST':
+        formset = WebsiteTypeFormSet(request.POST, request.FILES)
+        if formset.is_valid():
+            formset.save()
+            return HttpResponseRedirect(reverse_lazy('websitetype-list'))
+    else:
+        formset = WebsiteTypeFormSet()
+    return render(request, 'contact/websitetype_manage.html',
+            {'formset': formset})
