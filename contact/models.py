@@ -53,6 +53,9 @@ class PhoneNumber(models.Model):
     phone_type = models.ForeignKey(PhoneType)
     phone_number = models.CharField(max_length=30)
 
+    def get_absolute_url(self):
+        return reverse('phonenumber-list')
+
     def __str__(self):
         return "{}".format(self.phone_number)
 

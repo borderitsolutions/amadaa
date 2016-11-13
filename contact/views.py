@@ -9,7 +9,7 @@ from django.contrib import messages
 from django.contrib.messages.views import SuccessMessageMixin
 from contact.models import Person, Organization, Membership, PhoneType, PhoneNumber, WebsiteType, Website
 from django.forms import modelformset_factory
-from .forms import PersonEditForm, OrganizationEditForm
+from .forms import PersonEditForm, OrganizationEditForm, PhoneNumberEditForm
 
 # Create your views here.
 
@@ -136,3 +136,41 @@ def manage_website_types(request):
         formset = WebsiteTypeFormSet()
     return render(request, 'contact/websitetype_manage.html',
             {'formset': formset})
+
+
+class PhoneNumberList(LoginRequiredMixin, ListView):
+    model = PhoneNumber
+    context_object_name = 'phone_numbers'
+
+class PhoneNumberDetail(LoginRequiredMixin, DetailView):
+    model = PhoneNumber
+    context_object_name = 'phone_number'
+
+class PhoneNumberCreate(LoginRequiredMixin, SuccessMessageMixin, CreateView):
+    model = PhoneNumber
+    form_class = PhoneNumberEditForm
+    raise_exception = True
+    success_message = "Phone number %(phone_number)s created"
+
+class PhoneNumberUpdate(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
+    model = PhoneNumber
+    form_class = PhoneNumberEditForm
+    raise_exception = True
+    success_message = "Phone number %(phone_number)s updated"
+
+class PhoneNumberDelete(LoginRequiredMixin, DeleteView):
+    model = PhoneNumber
+    context_object_name = 'phone-number'
+    raise_exception = True
+    success_url = reverse_lazy('phonenumber-list')
+    success_message = "Phone number deleted"
+    cancel_message = "Delete cancelled"
+
+    def post(self, request, *args, **kwargs):
+        if 'cancel' in request.POST:
+            url = self.success_url
+            messages.success(self.request, self.cancel_message)
+            return HttpResponseRedirect(url)
+        else:
+            messages.success(self.request, self.success_message)
+            return super(PhoneNumberDelete, self).delete(request, *args, **kwargs)

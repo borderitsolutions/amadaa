@@ -60,3 +60,24 @@ class OrganizationEditForm(ModelForm):
 
         return organization
 
+
+class PhoneNumberEditForm(ModelForm):
+    def __init__(self, *args, **kwargs):
+        super(PhoneNumberEditForm, self).__init__(*args, **kwargs)
+        self.helper = FormHelper()
+        self.helper.form_method = 'post'
+        self.helper.form_action = ''
+        self.helper.layout = Layout(
+            Div(
+                    Div('contact', css_class='col-xs-2 col-lg-4'),
+                    Div('phone_type', css_class='col-xs-2 col-lg-4'), 
+                    Div('phone_number', css_class='col-xs-2 col-lg-4'),       
+                    css_class='row_fluid input-sm'),
+            
+            Div(Submit('submit', 'Add', css_class='btn btn-default'),
+                   css_class='col-lg-offset-11 col-lg-4'),
+        )
+
+    class Meta:
+        model = PhoneNumber
+        exclude = []
