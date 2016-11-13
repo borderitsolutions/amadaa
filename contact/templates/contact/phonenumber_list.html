@@ -1,0 +1,40 @@
+{% extends "contact/person_base.html" %}
+{% load bootstrap3 %}
+
+
+{% block content %}
+  <h2>Phone numbers</h2>
+
+    {% for phone_number in phone_numbers %}
+      {% if forloop.first %}
+        <table>
+          <tr>
+            <th>Contact</th>
+            <th>Phone Type</th>
+            <th>Phone Number</th>
+            <th>Edit</th>
+            <th>Delete</th>
+          </tr>
+      {% endif %}
+
+      <tr>
+        <td><a href="{% url 'phonenumber-detail' phone_number.id %}">{{ phone_number.contact }}</a></td>
+        <td><a href="{% url 'phonenumber-detail' phone_number.id %}">{{ phone_number.phone_type }}</a></td>
+        <td><a href="{% url 'phonenumber-detail' phonenumber.id %}">{{ phone_number.phone_number }}</a></td>
+        <td><a href="{% url 'phonenumber-update' phone_number.id %}">{% bootstrap_icon 'pencil' %}</a></td>
+        <td><a href="{% url 'phonenumber-delete' phone_number.id %}">{% bootstrap_icon 'minus' %}</a></td>
+      </tr>
+
+      {% if forloop.last %}
+        </table>
+      {% endif %}
+    {% endfor %}
+{% endblock %}
+
+{% block action_top %}
+<p><a href="{% url 'phonenumber-add' %}">{% bootstrap_icon 'plus' %}</a></p>
+{% endblock %}
+
+{% block action_bottom %}
+<p><a href="{% url 'phonenumber-add' %}">{% bootstrap_icon 'plus' %}</a></p>
+{% endblock %}
