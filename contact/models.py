@@ -70,6 +70,9 @@ class Website(models.Model):
     website_type = models.ForeignKey(WebsiteType)
     url = models.URLField()
 
+    def get_absolute_url(self):
+        return reverse('website-list')
+
     def __str__(self):
         return "{}".format(self.url)
 

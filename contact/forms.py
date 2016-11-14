@@ -81,3 +81,25 @@ class PhoneNumberEditForm(ModelForm):
     class Meta:
         model = PhoneNumber
         exclude = []
+
+
+class WebsiteEditForm(ModelForm):
+    def __init__(self, *args, **kwargs):
+        super(WebsiteEditForm, self).__init__(*args, **kwargs)
+        self.helper = FormHelper()
+        self.helper.form_method = 'post'
+        self.helper.form_action = ''
+        self.helper.layout = Layout(
+            Div(
+                    Div('contact', css_class='col-xs-2 col-lg-4'),
+                    Div('website_type', css_class='col-xs-2 col-lg-4'), 
+                    Div('url', css_class='col-xs-2 col-lg-4'),       
+                    css_class='row_fluid input-sm'),
+            
+            Div(Submit('submit', 'Add', css_class='btn btn-default'),
+                   css_class='col-lg-offset-11 col-lg-4'),
+        )
+
+    class Meta:
+        model = Website
+        exclude = []
