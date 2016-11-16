@@ -1,0 +1,20 @@
+{% extends "sales/sales_base.html" %}
+
+{% load bootstrap3 %}
+{% load bootstrap_dynamic_formsets %}
+
+{% block content %}
+<form method="post" action="" class="form-bg">
+<div class="form-bg2">
+  {% csrf_token %}
+
+  <fieldset>
+    <h3 class="pc">Payment Terms</h3>
+
+    {% bootstrap_dynamic_formset formset can_delete=True layout="horizontal" %}
+
+    <button type="submit" id="form-submit" class="btn btn-success">Done</button>
+  </fieldset>
+  </div>
+</form>
+{% endblock %}
