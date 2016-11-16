@@ -26,4 +26,5 @@ urlpatterns = [
     url('^product/', include('product.urls')),
     url('^supplier/', include('supplier.urls')),
     url('^contact/', include('contact.urls')),
+    url('^sales/', include('sales.urls')),
 ]

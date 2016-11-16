@@ -1,0 +1,38 @@
+{% extends "product/product_base.html" %}
+{% load bootstrap3 %}
+
+
+{% block content %}
+  <h2>Sales Orders</h2>
+
+    {% for sales_order in sales_orders %}
+      {% if forloop.first %}
+        <table>
+          <tr>
+            <th>Customer</th>
+            <th>Order Date</th>
+            <th>Edit</th>
+            <th>Delete</th>
+          </tr>
+      {% endif %}
+
+      <tr>
+        <td><a href="{% url 'sales-order-detail' product.id %}">{{ sales_order.customer }}</a></td>
+        <td>{{ sales_order.order_date }}</td>
+        <td><a href="{% url 'sales-order-update' product.id %}">{% bootstrap_icon 'pencil' %}</a></td>
+        <td><a href="{% url 'sales-order-delete' product.id %}">{% bootstrap_icon 'minus' %}</a></td>
+      </tr>
+
+      {% if forloop.last %}
+        </table>
+      {% endif %}
+    {% endfor %}
+{% endblock %}
+
+{% block action_top %}
+<p><a href="{% url 'sales-order-add' %}">{% bootstrap_icon 'plus' %}</a></p>
+{% endblock %}
+
+{% block action_bottom %}
+<p><a href="{% url 'sales-order-add' %}">{% bootstrap_icon 'plus' %}</a></p>
+{% endblock %}
