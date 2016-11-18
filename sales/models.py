@@ -1,8 +1,10 @@
 from django.db import models
+from django.urls import reverse
 from django.contrib.auth.models import User
 from product.models import SellableItem
 from customer.models import Customer
 from product.models import Product
+from contact.models import Contact
 
 # Create your models here.
 
@@ -23,7 +25,7 @@ class SalesOrder(models.Model):
 	    ('Quotation', 'Quotation'),
 	    ('SalesOrder', 'Sales Order'),
 	)
-	customer = models.ForeignKey(Customer)
+	customer = models.ForeignKey(Contact)
 	order_date = models.DateTimeField()
 	payment_term = models.ForeignKey(PaymentTerm)
 	product = models.ManyToManyField(Product)

@@ -1,0 +1,13 @@
+{% extends "app_base.html" %}
+
+{% block content %}
+<p><b>Customer:</b> {{ sales_order.customer }}</p>
+<p><b>Order Date:</b> {{ sales_order.order_date }}</p>
+<p><b>Payment Term:</b> {{ sales_order.payment_term }}</p>
+<p><b>Product:</b> {{ sales_order.product }} </p>
+<p>{{ sales_order.note | safe }}</p>
+{% endblock %}
+
+{% block action_bottom %}
+<p><a href="{% url 'sales-order-list' %}">Back to list</a></p>
+{% endblock %}
