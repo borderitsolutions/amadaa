@@ -40,3 +40,4 @@ class SalesOrderEditForm(ModelForm):
     class Meta:
         model = SalesOrder
         exclude = ['confirm_sale']
+
