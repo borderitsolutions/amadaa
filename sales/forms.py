@@ -41,3 +41,13 @@ class SalesOrderEditForm(ModelForm):
         model = SalesOrder
         exclude = ['confirm_sale']
 
+    def save(self, commit=True):
+        products = self.cleaned_data.pop('product')
+        sales_order = super(SalesOrderEditForm, self).save(commit=False)
+        for p in products:
+            PurchaseUnitOfMeasurement.objects.create(
+                    product=product,
+                    unit_of_measurement=p)
+
+
+        return sales_order
