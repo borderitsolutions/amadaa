@@ -11,6 +11,7 @@
           <tr>
             <th>Customer</th>
             <th>Order Date</th>
+            <th>Confirm Sale</th>
             <th>Edit</th>
             <th>Delete</th>
           </tr>
@@ -19,6 +20,7 @@
       <tr>
         <td><a href="{% url 'sales-order-detail' sales_order.id %}">{{ sales_order.customer }}</a></td>
         <td>{{ sales_order.order_date }}</td>
+        <td><a href="{% url 'sales-order-detail' sales_order.id %}">{% bootstrap_icon 'plus' %}</a></td>
         <td><a href="{% url 'sales-order-update' sales_order.id %}">{% bootstrap_icon 'pencil' %}</a></td>
         <td><a href="{% url 'sales-order-delete' sales_order.id %}">{% bootstrap_icon 'minus' %}</a></td>
       </tr>

@@ -4,7 +4,7 @@
 <p><b>Customer:</b> {{ sales_order.customer }}</p>
 <p><b>Order Date:</b> {{ sales_order.order_date }}</p>
 <p><b>Payment Term:</b> {{ sales_order.payment_term }}</p>
-
+<p><b>Sales Confirmation:</b> {{ sales_order.confirm_sale }}</p>
 
 {% if sales_order.products %}
 	<ul>
@@ -22,6 +22,20 @@ Nothing HERE
 
 
 <p>{{ sales_order.note | safe }}</p>
+
+{% if sales_order.confirm_sale == "Quotation" %}
+
+	<p>Want to confirm this sale?</p>
+
+	<form method="post" action="">
+	{% csrf_token %}
+
+	<input type="submit" value="Yes" name="confirm_sale">
+	<input type="submit" value="No" name="cancel">
+	</form>
+
+{% endif %}
+
 {% endblock %}
 
 {% block action_bottom %}
