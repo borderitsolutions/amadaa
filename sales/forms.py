@@ -1,6 +1,7 @@
 from django import forms
 from django.forms import ModelForm
 from .models import SalesOrder
+from product.models import Product
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Layout, Div, Submit
 
@@ -44,14 +45,7 @@ class SalesOrderEditForm(ModelForm):
     def save(self, commit=True):
         products = self.cleaned_data.pop('products')
         sales_order = super(SalesOrderEditForm, self).save()
-        print "-------------"
-        print products
-        print sales_order
-        print "-------------"
-        # for p in products:
-        #     PurchaseUnitOfMeasurement.objects.create(
-        #             product=product,
-        #             unit_of_measurement=p)
-
-
+        sales_order.products = products 
+        sales_order.save()
+            
         return sales_order
