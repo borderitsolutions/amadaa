@@ -23,7 +23,7 @@ class SalesOrderEditForm(ModelForm):
               
                 
                 Div(
-                    Div('product', css_class='col-xs-2 col-lg-4'),
+                    Div('products', css_class='col-xs-2 col-lg-4'),
                     css_class='row-fluid input-sm'),
                 
                 Div(
@@ -34,10 +34,24 @@ class SalesOrderEditForm(ModelForm):
                 )
 
         self.fields['note'].widget.attrs['rows'] = 2
-        self.fields['product'].widget.attrs['size'] = 2
+        self.fields['products'].widget.attrs['size'] = 2
 
 
     class Meta:
         model = SalesOrder
         exclude = ['confirm_sale']
 
+    def save(self, commit=True):
+        products = self.cleaned_data.pop('products')
+        sales_order = super(SalesOrderEditForm, self).save()
+        print "-------------"
+        print products
+        print sales_order
+        print "-------------"
+        # for p in products:
+        #     PurchaseUnitOfMeasurement.objects.create(
+        #             product=product,
+        #             unit_of_measurement=p)
+
+
+        return sales_order

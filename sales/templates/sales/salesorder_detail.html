@@ -4,7 +4,24 @@
 <p><b>Customer:</b> {{ sales_order.customer }}</p>
 <p><b>Order Date:</b> {{ sales_order.order_date }}</p>
 <p><b>Payment Term:</b> {{ sales_order.payment_term }}</p>
-<p><b>Product:</b> {{ sales_order.product }} </p>
+<!-- <p><b>Products:</b> {{ sales_order.products.name }}</p> -->
+
+
+{% if sales_order.products %}
+	<ul>
+	{% for product in sales_order.products.all %}
+		<li> {{ product.name }} </li>
+	{% empty %}
+		No products
+	{% endfor %}
+	</ul>
+{% else %}
+
+Nothing HERE
+
+{% endif %}
+
+
 <p>{{ sales_order.note | safe }}</p>
 {% endblock %}
 
