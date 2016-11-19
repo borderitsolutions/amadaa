@@ -28,7 +28,7 @@ class SalesOrder(models.Model):
 	customer = models.ForeignKey(Contact)
 	order_date = models.DateTimeField()
 	payment_term = models.ForeignKey(PaymentTerm)
-	product = models.ManyToManyField(Product)
+	products = models.ManyToManyField(Product)
 	note = models.TextField(blank=True, default='')
 	confirm_sale = models.CharField(max_length=12, choices=CONFIRM_SALE,default='Quotation')
 	sales_person = models.ForeignKey(User)

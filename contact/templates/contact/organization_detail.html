@@ -1,0 +1,11 @@
+{% extends "app_base.html" %}
+
+{% block content %}
+<p><b>Organization Name:</b> {{ organization.name }}</p>
+<p><b>Members:</b> {{ organization.members }}</p>
+
+{% endblock %}
+
+{% block action_bottom %}
+<p><a href="{% url 'organization-list' %}">Back to list</a></p>
+{% endblock %}
