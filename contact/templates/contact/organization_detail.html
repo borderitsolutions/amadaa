@@ -2,7 +2,20 @@
 
 {% block content %}
 <p><b>Organization Name:</b> {{ organization.name }}</p>
-<p><b>Members:</b> {{ organization.members }}</p>
+
+{% if organization.members %}
+	<ul>
+	{% for org in organization.members.all %}
+		<li> {{ org.name }} </li>
+	{% empty %}
+		No products
+	{% endfor %}
+	</ul>
+{% else %}
+
+Nothing HERE
+
+{% endif %}
 
 {% endblock %}
 

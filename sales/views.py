@@ -34,6 +34,23 @@ class SalesOrderList(LoginRequiredMixin, ListView):
 class SalesOrderDetail(LoginRequiredMixin, DetailView):
     model = SalesOrder
     context_object_name = 'sales_order'
+    raise_exception = True
+    success_url = reverse_lazy('sales-order-list')
+    success_message = "Sales Order confirmed"
+    cancel_message = "Sales confirmation cancelled"
+
+    def post(self, request, *args, **kwargs):
+        if 'cancel' in request.POST:
+            url = self.success_url
+            messages.success(self.request, self.cancel_message)
+            return HttpResponseRedirect(url)
+        else:
+            url = self.success_url
+            messages.success(self.request, self.success_message)
+            sales_order = super(SalesOrderDetail, self).get_object()
+            sales_order.confirm_sale = 'SalesOrder'
+            sales_order.save()
+            return HttpResponseRedirect(url)
 
 class SalesOrderCreate(LoginRequiredMixin, SuccessMessageMixin, CreateView):
     model = SalesOrder
