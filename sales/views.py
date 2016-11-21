@@ -27,9 +27,15 @@ def manage_payment_terms(request):
             {'formset': formset})
 
 
-class SalesOrderList(LoginRequiredMixin, ListView):
-    model = SalesOrder
+class QuotationList(LoginRequiredMixin, ListView):
     context_object_name = 'sales_orders'
+    queryset = SalesOrder.objects.filter(confirm_sale='Quotation')
+    template_name = 'sales/quotation_list.html'
+
+    
+class SalesOrderList(LoginRequiredMixin, ListView):
+    context_object_name = 'sales_orders'
+    queryset = SalesOrder.objects.filter(confirm_sale='SalesOrder')
 
 class SalesOrderDetail(LoginRequiredMixin, DetailView):
     model = SalesOrder
