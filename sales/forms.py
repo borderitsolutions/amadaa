@@ -1,9 +1,10 @@
 from django import forms
 from django.forms import ModelForm
 from .models import SalesOrder
-from product.models import Product
+from product.models import Product, Price, SaleUnitOfMeasurement
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Layout, Div, Submit
+from decimal import Decimal
 
 
 class SalesOrderEditForm(ModelForm):
@@ -40,12 +41,18 @@ class SalesOrderEditForm(ModelForm):
 
     class Meta:
         model = SalesOrder
-        exclude = ['confirm_sale']
+        exclude = ['confirm_sale', 'total_price']
 
     def save(self, commit=True):
         products = self.cleaned_data.pop('products')
+        total = 0
+        for product in products:
+            suom = SaleUnitOfMeasurement.objects.get(product=product)
+            product_price = Price.objects.get(product=suom)
+            total = total + product_price.price
         sales_order = super(SalesOrderEditForm, self).save()
         sales_order.products = products 
+        sales_order.total_price = total
         sales_order.save()
             
         return sales_order
