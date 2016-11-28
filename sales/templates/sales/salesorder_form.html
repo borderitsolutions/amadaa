@@ -1,6 +1,7 @@
 {% extends "sales/sales_base.html" %}
 {% load crispy_forms_tags %}
 {% crispy sales_order_form sales_order_form.helper %}
+{% crispy sales_order_line_form sales_order_line_form.helper %}
 
 {% load static %}
 
@@ -10,6 +11,7 @@
 <div class="form-bg1">
   <div class="form-bg2">
     {% crispy form %}
+    {% crispy second_form %}
   </div>
 </div>
 </div>

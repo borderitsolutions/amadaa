@@ -9,7 +9,7 @@ from django.contrib import messages
 from django.contrib.messages.views import SuccessMessageMixin
 from sales.models import PaymentTerm, SalesOrder
 from django.forms import modelformset_factory
-from .forms import SalesOrderEditForm
+from .forms import SalesOrderEditForm, SalesOrderLineEditForm
 # Create your views here.
 
 @login_required
@@ -67,6 +67,7 @@ class SalesOrderCreate(LoginRequiredMixin, SuccessMessageMixin, CreateView):
 class SalesOrderUpdate(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
     model = SalesOrder
     form_class = SalesOrderEditForm
+    # form_class = SalesOrderEditForm, SalesOrderLineEditForm
     raise_exception = True
     success_message = "Sales Order %(customer)s updated"
 
