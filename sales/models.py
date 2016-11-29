@@ -30,7 +30,7 @@ class SalesOrder(models.Model):
 	customer = models.ForeignKey(Contact)
 	order_date = models.DateTimeField()
 	payment_term = models.ForeignKey(PaymentTerm)
-	products = models.ManyToManyField(Product)
+	products = models.ManyToManyField(Product, through='SalesOrderLine')
 	note = models.TextField(blank=True, default='')
 	total_price = MoneyField(max_digits=10, decimal_places=2, default_currency='GHS', default=0.0)
 	confirm_sale = models.CharField(max_length=12, choices=CONFIRM_SALE, default='Quotation')
@@ -42,3 +42,15 @@ class SalesOrder(models.Model):
 
 	def __str__(self):
 		return "{}".format(self.customer)
+
+
+class SalesOrderLine(models.Model):
+	sales_order = models.ForeignKey(SalesOrder, on_delete=models.CASCADE)
+	product = models.ForeignKey(Product, on_delete=models.CASCADE)
+	description = models.TextField(blank=True, default='')
+	quantity = models.IntegerField(default=1)
+	unit_price = MoneyField(max_digits=10, decimal_places=2, default_currency='GHS', default=0.0)
+	sub_total = MoneyField(max_digits=10, decimal_places=2, default_currency='GHS', default=0.0)
+
+	def __str__(self):
+		return "{}".format(self.sales_order)

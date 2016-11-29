@@ -1,6 +1,6 @@
 from django import forms
 from django.forms import ModelForm
-from .models import SalesOrder
+from .models import SalesOrder, SalesOrderLine
 from product.models import Product, Price, SaleUnitOfMeasurement
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Layout, Div, Submit
@@ -43,16 +43,45 @@ class SalesOrderEditForm(ModelForm):
         model = SalesOrder
         exclude = ['confirm_sale', 'total_price']
 
-    def save(self, commit=True):
-        products = self.cleaned_data.pop('products')
-        total = 0
-        for product in products:
-            suom = SaleUnitOfMeasurement.objects.get(product=product)
-            product_price = Price.objects.get(product=suom)
-            total = total + product_price.price
-        sales_order = super(SalesOrderEditForm, self).save()
-        sales_order.products = products 
-        sales_order.total_price = total
-        sales_order.save()
+    # def save(self, commit=True):
+    #     products = self.cleaned_data.pop('products')
+    #     total = 0
+    #     for product in products:
+    #         suom = SaleUnitOfMeasurement.objects.get(product=product)
+    #         product_price = Price.objects.get(product=suom)
+    #         total = total + product_price.price
+    #     sales_order = super(SalesOrderEditForm, self).save()
+    #     sales_order.products = products 
+    #     sales_order.total_price = total
+    #     sales_order.save()
             
-        return sales_order
+    #     return sales_order
+
+
+
+class SalesOrderLineEditForm(ModelForm):
+    def __init__(self, *args, **kwargs):
+        super(SalesOrderEditLineForm, self).__init__(*args, **kwargs)
+        self.helper = FormHelper()
+        self.helper.form_id = 'id-productform'
+        self.helper.form_class = 'blueForms'
+        self.helper.form_method = 'post'
+        self.helper.form_action = ''
+        self.helper.layout = Layout(
+                Div(
+                    Div('quantity', css_class='col-xs-2 col-lg-4'),         
+                    css_class='row_fluid input-sm'),
+                
+                Div(
+                Div('description', css_class='col-xs-2 col-lg-4 input-sm'),
+                css_class='textfieldsize'),
+                Div(Submit('submit', 'Add', css_class='btn btn-default'),
+                   css_class='col-lg-offset-11 col-lg-4'),
+                )
+
+        self.fields['description'].widget.attrs['rows'] = 1
+
+
+    class Meta:
+        model = SalesOrderLine
+        exclude = ['sub_total', 'unit_price', 'sales_order', 'product']
