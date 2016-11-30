@@ -1,4 +1,4 @@
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, HttpResponse
 from django.views.generic import DetailView, ListView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView, ModelFormMixin
 from django.urls import reverse_lazy
@@ -9,7 +9,8 @@ from django.contrib import messages
 from django.contrib.messages.views import SuccessMessageMixin
 from sales.models import PaymentTerm, SalesOrder
 from django.forms import modelformset_factory
-from .forms import SalesOrderEditForm, SalesOrderLineEditForm
+from django.forms.models import inlineformset_factory
+from .forms import SalesOrderEditForm, SalesOrderLineEditForm, SOLFormSet
 # Create your views here.
 
 @login_required
@@ -64,10 +65,39 @@ class SalesOrderCreate(LoginRequiredMixin, SuccessMessageMixin, CreateView):
     raise_exception = True
     success_message = "Sales Order %(customer)s created"
 
+    def get(self, request, *args, **kwargs):
+        """
+        Handles GET requests and instantiates blank versions of the form
+        and its inline formsets.
+        """
+        self.object = None
+        form_class = self.get_form_class()
+        form = self.get_form(form_class)
+        salesorderline_form = SOLFormSet()
+        return self.render_to_response(
+            self.get_context_data(form=form,
+                                  salesorderline_form=salesorderline_form))
+
+    def post(self, request, *args, **kwargs):
+        soform = SalesOrderEditForm(request.POST)
+        solformset = SOLFormSet(request.POST, request.FILES)
+
+        if soform.is_valid():
+            print "soform is valid"
+            sales_order = soform.save(commit=False)
+            print sales_order
+            solformset = SOLFormSet(request.POST, request.FILES, instance=sales_order)
+
+            if solformset.is_valid():
+                print "solformset is valid"
+
+        return HttpResponse("tested well?")
+
+            
+
 class SalesOrderUpdate(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
     model = SalesOrder
     form_class = SalesOrderEditForm
-    # form_class = SalesOrderEditForm, SalesOrderLineEditForm
     raise_exception = True
     success_message = "Sales Order %(customer)s updated"
 
