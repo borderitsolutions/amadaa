@@ -1,7 +1,7 @@
 {% extends "sales/sales_base.html" %}
 {% load crispy_forms_tags %}
 {% crispy sales_order_form sales_order_form.helper %}
-{% crispy sales_order_line_form sales_order_line_form.helper %}
+{% crispy salesorderline_form salesorderline_form.helper %}
 
 {% load static %}
 
@@ -11,7 +11,24 @@
 <div class="form-bg1">
   <div class="form-bg2">
     {% crispy form %}
-    {% crispy second_form %}
+
+
+    {{ salesorderline_form.management_form }}
+    {{ salesorderline_form.non_form_errors }}
+    {% for form2 in salesorderline_form %}
+
+        <div class="inline">
+        	{{ form2.product.label_tag }}
+	        {{ form2.product }}
+
+	        {{ form2.description.label_tag }}
+	        {{ form2.description }}
+
+	        {{ form2.quantity.label_tag }}
+	        {{ form2.quantity }}
+    	</div>
+    {% endfor %}
+
   </div>
 </div>
 </div>
