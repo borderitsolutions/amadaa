@@ -83,13 +83,13 @@ class SalesOrderCreate(LoginRequiredMixin, SuccessMessageMixin, CreateView):
         solformset = SOLFormSet(request.POST, request.FILES)
 
         if soform.is_valid():
-            print "soform is valid"
+            print("soform is valid")
             sales_order = soform.save(commit=False)
-            print sales_order
+            print(sales_order)
             solformset = SOLFormSet(request.POST, request.FILES, instance=sales_order)
 
             if solformset.is_valid():
-                print "solformset is valid"
+                print("solformset is valid")
 
         return HttpResponse("tested well?")
 
