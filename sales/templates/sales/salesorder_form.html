@@ -10,24 +10,30 @@
 <div class="form-container">
 <div class="form-bg1">
   <div class="form-bg2">
-    {% crispy form %}
+
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        
+        {{form}}
 
 
-    {{ salesorderline_form.management_form }}
-    {{ salesorderline_form.non_form_errors }}
-    {% for form2 in salesorderline_form %}
+        {{ salesorderline_form.management_form|crispy }}
+        {{ salesorderline_form.non_form_errors }}
+        {% for form2 in salesorderline_form %}
 
-        <div class="inline">
-        	{{ form2.product.label_tag }}
-	        {{ form2.product }}
+            <div class="inline">
+            	{{ form2.product.label_tag }}
+    	        {{ form2.product }}
 
-	        {{ form2.description.label_tag }}
-	        {{ form2.description }}
+    	        {{ form2.description.label_tag }}
+    	        {{ form2.description }}
 
-	        {{ form2.quantity.label_tag }}
-	        {{ form2.quantity }}
-    	</div>
-    {% endfor %}
+    	        {{ form2.quantity.label_tag }}
+    	        {{ form2.quantity }}
+        	</div>
+        {% endfor %}
+        <input type="submit" value="Add"/>
+    </form>
 
   </div>
 </div>

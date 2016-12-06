@@ -80,4 +80,4 @@ class SalesOrderLineEditForm(ModelForm):
         exclude = ['sub_total', 'unit_price', 'sales_order']
 
 
-SOLFormSet = inlineformset_factory(SalesOrder, SalesOrderLine, fk_name='sales_order', fields=('product', 'description', 'quantity',), extra=2)
+SOLFormSet = inlineformset_factory(SalesOrder, SalesOrderLine, SalesOrderLineEditForm, extra=2)

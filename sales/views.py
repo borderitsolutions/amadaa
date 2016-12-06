@@ -7,10 +7,13 @@ from django.contrib.auth.decorators import login_required, permission_required
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 from django.contrib import messages
 from django.contrib.messages.views import SuccessMessageMixin
-from sales.models import PaymentTerm, SalesOrder
+from sales.models import PaymentTerm, SalesOrder, SalesOrderLine
 from django.forms import modelformset_factory
 from django.forms.models import inlineformset_factory
 from .forms import SalesOrderEditForm, SalesOrderLineEditForm, SOLFormSet
+from product.models import Product, Price, SaleUnitOfMeasurement
+from djmoney.models.fields import MoneyPatched
+from decimal import Decimal
 # Create your views here.
 
 @login_required
@@ -83,15 +86,27 @@ class SalesOrderCreate(LoginRequiredMixin, SuccessMessageMixin, CreateView):
         solformset = SOLFormSet(request.POST, request.FILES)
 
         if soform.is_valid():
-            print "soform is valid"
             sales_order = soform.save(commit=False)
-            print sales_order
+            sales_order.save()
             solformset = SOLFormSet(request.POST, request.FILES, instance=sales_order)
 
             if solformset.is_valid():
-                print "solformset is valid"
+                solformset.save()
 
-        return HttpResponse("tested well?")
+                for so in solformset:
+                    product = so.cleaned_data.get('product')
+                    quantity = so.cleaned_data.get('quantity')
+
+                    suom = SaleUnitOfMeasurement.objects.get(product=product)
+                    product_price = Price.objects.get(product=suom)
+                    sol = SalesOrderLine.objects.filter(sales_order=sales_order, product=product)
+                    for item in sol:
+                        # item.unit_price = item.unit_price + product_price
+                        # so.sub_total = quantity * product_price
+                        item.save()
+                        # print so
+                
+                        return HttpResponse("tested well?")
 
             
 
