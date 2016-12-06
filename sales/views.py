@@ -104,7 +104,6 @@ class SalesOrderCreate(LoginRequiredMixin, SuccessMessageMixin, CreateView):
                         # item.unit_price = item.unit_price + product_price
                         # so.sub_total = quantity * product_price
                         item.save()
-                        # print so
                 
                         return HttpResponse("tested well?")
 
