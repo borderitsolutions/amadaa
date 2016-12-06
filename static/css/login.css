@@ -1,14 +1,17 @@
 .login-container {
-    margin-top: 120px;
-    margin-bottom: 80px;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0; 
+    margin: auto; 
     border: 1px solid #6F7D94;
-    width: 35%;
-    height: 60%;
-    margin-left: 32%;
+    max-width: 430px;
+    min-width: 340px;
+    height: 330px;
     box-shadow: 0 0 15px #6F7D94;
     border-radius: 30px;
     background-color: #5bc0de;
-    float: center;
 }
 
 div#label {

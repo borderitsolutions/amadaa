@@ -1,10 +1,15 @@
+.panel {
+	min-width: 150px;
+	max-width: 180px;
+	//margin: 0px 10px 20px;
+}
+
 .row{
     margin-left: 10px;
 }
 
 .col-md-2{
-    margin-left: -12px;
-    width: 178px;
+ //   margin-left: 10px;
 }
 
 .app{
@@ -20,71 +25,81 @@
 }
 
 .app-1, .glyphicon.glyphicon-briefcase {
- padding: 4px 24px 0px;
+ padding: 4px 0px 0px;
  background-color: #428bca;
  font-size: 50px;
  color: white;
+ text-align: center;
 }
 
 .app-2, .glyphicon.glyphicon-grain {
- padding: 4px 24px 0px;
+ padding: 4px 0px 0px;
  background-color: #5cb85c;
  font-size: 50px;
  color: white;
+ text-align: center;
 }
 
 .app-3, .glyphicon.glyphicon-indent-left {
- padding: 4px 24px 0px;
+ padding: 4px 0px 0px;
  background-color: #5bc0de;
  font-size: 50px;
  color: white;
+ text-align: center;
 }
 
 .app-4, .glyphicon.glyphicon-list {
- padding: 4px 24px 0px;
+ padding: 4px 0px 0px;
  background-color: #d9534f;
  font-size: 50px;
  color: white;
+ text-align: center;
 }
 
 .app-5, .glyphicon.glyphicon-user {
- padding: 4px 24px 0px;
+ padding: 4px 0px 0px;
  background-color: olive; //#F7DC6F;
  font-size: 50px;
  color: #F8F9F9;
+ text-align: center;
 }
 
 .app-6, .glyphicon.glyphicon-shopping-cart{
- padding: 4px 24px 0px;
+ padding: 4px 0px 0px;
  background-color: maroon; //#ABEBC6;
  font-size: 50px;
  color: #F8F9F9;
+ text-align: center;
 }
 
 .app-7, .glyphicon.glyphicon-print{
- padding: 4px 24px 0px;
+ padding: 4px 0px 0px;
  background-color: teal;
  font-size: 50px;
  color: #F2F4F4;
+ text-align: center;
 }
 
 .app-8, .glyphicon.glyphicon-pawn{
- padding: 4px 24px 0px;
+ padding: 4px 0px 0px;
  background-color: #85929E;
  font-size: 50px;
  color: white;
+ text-align: center;
 }
 
 .app-9, .glyphicon.glyphicon-envelop{
- padding: 4px 48px 0px;
+ padding: 4px 0px 0px;
  background-color: #45B39D;
  font-size: 50px;
  color: #F2F4F4;
+ text-align: center;
 }
 
 .app-10, .glyphicon.glyphicon-wrench{
- padding: 4px 24px 0px;
+ padding: 4px 0px 0px;
  background-color: #E74D32;
  font-size: 50px;
  color: #F2F4F4;
+ text-align: center;
 }
