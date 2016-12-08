@@ -1,20 +1,26 @@
 
 .productbase {
-  margin-left: 23%;
-  padding: 5px 10px 5px;
+  position: absolute;
+  top: 5px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
   margin-top: 40px;
-  width: 49%;
+  max-width: 900px;
+  min-width: 500px;
+//  min-height: 150px;
 }
 
-
-.btn1{
+.btn{
  //   padding: 5px 10px 5px;
-    margin: 5px 0px 5px;
+    margin: 40px 0px 5px;
+    float: right;
 }
 
 
 .nav-pills{
-background-color: #C8D3DB;
+background-color: white //#C8D3DB;
 }
  
 .nav-pills > li > a{
@@ -34,26 +40,48 @@ border: 1px solid black;
 
 /* Add Product .css */
 .form-container{
-	padding-top: 20px;
-    max-width: 1350px;
-    height: 430px;
+    position: absolute;
+    top: 0;
+    bottom: 20px;
+    left: 0;
+    right: 0;
+    margin-top: 100px;
+    max-width: 100%; 
+    min-width: 900px;
+    max-height: 100% ; 
     background-color: #8f8f8f;
 }
 
+@media (max-width: 800px){
+  .form-container{
+    margin-top: 130px;
+  }
+
+  .productbase {
+    margin-top: 30px;
+  }
+
+}
 
  .form-bg1 {
-    margin-bottom: 10px;
-    width: 80%;
-    height: 75%;
-    margin-left: 130px;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    max-width: 1000px;
+    min-width: 600px;
+    max-height: 68%;
+    min-height: 65%; 
     box-shadow: 0 0 5px #E0E0F0;
     background-color: white;
 }
 
 
 .form-bg2 {
-    margin-left: 15px;
-    padding-top: 10px;
+    margin-left: 10px;
+    padding-top: 15px;
 }
 
 .col-lg-4{
@@ -62,6 +90,5 @@ border: 1px solid black;
 
 .textfieldsize{
     padding-left: 15px;
-    width: 1140px;
+    width: 950px;
 }
-

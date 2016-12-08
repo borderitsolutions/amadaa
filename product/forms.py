@@ -17,10 +17,7 @@ class ProductEditForm(ModelForm):
                     Div('name', css_class='col-xs-2 col-lg-4'),
                     Div('internal_ref', css_class='col-xs-2 col-lg-4'),
                     Div('item_type', css_class='col-xs-2 col-lg-4'),          
-                    css_class='row_fluid input-sm'),
-              
-                
-                Div(
+                 
                     Div('category', css_class='col-xs-2 col-lg-4'),
                     Div('purchase_units_of_measurement', css_class='col-xs-2 col-lg-4'),
                     Div('sale_units_of_measurement', css_class='col-xs-2 col-lg-4'),
@@ -29,11 +26,13 @@ class ProductEditForm(ModelForm):
                 Div(
                 Div('description', css_class='col-xs-2 col-lg-4 input-sm'),
                 css_class='textfieldsize'),
+
+
                 Div(Submit('submit', 'Add', css_class='btn btn-default'),
-                   css_class='col-lg-offset-11 col-lg-4'),
+                   css_class=' col-lg-8'),
                 )
 
-        self.fields['description'].widget.attrs['rows'] = 2
+        self.fields['description'].widget.attrs['rows'] = 3
         self.fields['purchase_units_of_measurement'].widget.attrs['size'] = 2
         self.fields['sale_units_of_measurement'].widget.attrs['size'] = 2
         self.fields['category'].widget.attrs['size'] = 1

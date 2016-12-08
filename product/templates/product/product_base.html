@@ -9,6 +9,7 @@
 {% block appmenu %}
 
 <ul class="nav nav-pills productbase">
+
   <li><a href="{% url 'product-list' %}">Products</a></li>
   <li><a href="{% url 'product-category-list' %}">Product Categories</a></li>
   <li><a href="{% url 'product-type-list' %}">Product Types</a></li>
@@ -16,6 +17,7 @@
   <li><a href="{% url 'pricelist' %}">Pricelist</a></li>
   <li><a href="{% url 'sales-order-list' %}">Sales Orders</a></li>
   <li><a href="{% url 'quotation-list' %}">Quotations</a></li>
+
 </ul>
 
 {% endblock %}
