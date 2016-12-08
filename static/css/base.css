@@ -23,11 +23,15 @@ th, td {
 }
 
 .action-bar {
-    margin: 10px;
+   // margin: 10px;
     border-width: 1px 0 1px 0;
     border-color: #c0c0c0;
     border-style: solid;
     background-color: #f0f0f0;
+}
+
+.topbar{
+    margin: 150px 0px -5px;
 }
 
 .action-bar p {
@@ -55,7 +59,6 @@ nav a {
     color: #f0f0f0;
     text-decoration: none;
     font-size: small;
-   // text-align: center;
     padding: 5px 15px 5px;
 }
 
@@ -64,10 +67,6 @@ nav a:hover {
     color: #7EEFE6;
 }
 
-.container-fluid{
-  //  padding: 0px;
-  //  height: 10px;
-}
 
 .appmenu {
     margin-right: 20px;
