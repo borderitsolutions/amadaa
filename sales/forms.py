@@ -77,7 +77,7 @@ class SalesOrderLineEditForm(ModelForm):
 
     class Meta:
         model = SalesOrderLine
-        exclude = ['sub_total', 'unit_price', 'sales_order']
+        exclude = ['sub_total', 'sales_order']
 
 
 SOLFormSet = inlineformset_factory(SalesOrder, SalesOrderLine, SalesOrderLineEditForm, extra=2)
