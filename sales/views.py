@@ -66,6 +66,7 @@ class SalesOrderCreate(LoginRequiredMixin, SuccessMessageMixin, CreateView):
     model = SalesOrder
     form_class = SalesOrderEditForm
     raise_exception = True
+    success_url = reverse_lazy('sales-order-list')
     success_message = "Sales Order %(customer)s created"
 
     def get(self, request, *args, **kwargs):
@@ -93,19 +94,8 @@ class SalesOrderCreate(LoginRequiredMixin, SuccessMessageMixin, CreateView):
             if solformset.is_valid():
                 solformset.save()
 
-                for so in solformset:
-                    product = so.cleaned_data.get('product')
-                    quantity = so.cleaned_data.get('quantity')
-
-                    suom = SaleUnitOfMeasurement.objects.get(product=product)
-                    product_price = Price.objects.get(product=suom)
-                    sol = SalesOrderLine.objects.filter(sales_order=sales_order, product=product)
-                    for item in sol:
-                        # item.unit_price = item.unit_price + product_price
-                        # so.sub_total = quantity * product_price
-                        item.save()
+            return HttpResponseRedirect(success_url)
                 
-                        return HttpResponse("tested well?")
 
             
 

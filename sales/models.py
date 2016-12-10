@@ -3,7 +3,7 @@ from django.urls import reverse
 from django.contrib.auth.models import User
 from product.models import SellableItem
 from customer.models import Customer
-from product.models import Product
+from product.models import Product, UnitOfMeasurement
 from contact.models import Contact
 import moneyed
 from djmoney.models.fields import MoneyField
@@ -50,6 +50,8 @@ class SalesOrderLine(models.Model):
 	description = models.TextField(blank=True, default='')
 	quantity = models.IntegerField(default=1)
 	unit_price = MoneyField(max_digits=10, decimal_places=2, default_currency='GHS', default=0.0)
+	unit_of_measurement = models.ForeignKey(UnitOfMeasurement)
+	discount = models.PositiveIntegerField(blank=True, default=0)
 	sub_total = MoneyField(max_digits=10, decimal_places=2, default_currency='GHS', default=0.0)
 
 	def __str__(self):
