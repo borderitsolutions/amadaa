@@ -1,17 +1,20 @@
 {% extends "app_base.html" %}
 
 {% block content %}
-  <p>You are about to delete the following product</p>
+
+<div class="confirm_del">
+  <p class="txt1">You are about to delete the following product</p>
   <ol>
-    <li>{{ product.name }}</li>
+    <li class="txt2">{{ product.name }}</li>
   </ol>
 
-  <p>Are you sure?</p>
+  <p  class="txt1">Are you sure?</p>
 
   <form method="post" action="">
     {% csrf_token %}
 
-    <input type="submit" value="Yes" name="confirm_delete">
-    <input type="submit" value="No" name="cancel">
+    <input type="submit" value="Yes" name="confirm_delete" class="btn btn-danger btn2">
+    <input type="submit" value="No" name="cancel" class="btn btn-success btn3">
   </form>
+  </div>
 {% endblock %}

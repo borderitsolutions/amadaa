@@ -12,8 +12,48 @@
 //  min-height: 150px;
 }
 
+.product-header{
+ font-size: x-large;
+ font-weight: bold;
+ color: #006994;
+ margin-bottom: 15px;
+}
+
+.add-product, .glyphicon.glyphicon-plus{
+ background-color: #006994;
+ border-radius: 5px; 
+ color: white; 
+ font-size: large;
+ font-weight: bold;
+ padding: 5px 5px 5px;
+ margin-bottom: 15px;
+}
+
+.add-product:hover{
+  color: white;
+}
+
+table {
+  width: 100%;
+}
+
+table, td {
+  text-align: center;
+}
+
+tr:nth-child(odd) {
+  background-color: rgba(102,153,204,0.5); //#6699cc;
+}
+
+th {
+  border: 2px solid white;
+  text-align: center;
+  background-color: #3399ff;
+}
+
+
+
 .btn{
- //   padding: 5px 10px 5px;
     margin: 40px 0px 5px;
     float: right;
 }

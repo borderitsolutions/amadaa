@@ -2,22 +2,29 @@
 {% load bootstrap3 %}
 
 {% block content %}
-  <h2>Products</h2>
+  <div class="col-lg-10 product-header">Products</div>
+  <div class="col-lg-2"><a href="{% url 'product-add' %}" class="add-product">{% bootstrap_icon 'plus' %} Add Products</a></div>
 
     {% for product in products %}
       {% if forloop.first %}
         <table>
           <tr>
             <th>Product name</th>
+            <th>Type</th>
             <th>Category</th>
+            <th>Purchase Unit of Measurement</th>
+            <th>Description</th>
             <th>Edit</th>
             <th>Delete</th>
           </tr>
       {% endif %}
 
       <tr>
-        <td><a href="{% url 'product-detail' product.id %}">{{ product.name }}</a></td>
+        <td>{{ product.name }}</td>
+        <td>{{ product.item_type }}</td>
         <td>{{ product.category }}</td>
+        <td>{{ product.purchase_units_of_measurement }}</td>
+        <td>{{ product.description | safe }}</td>
         <td><a href="{% url 'product-update' product.id %}">{% bootstrap_icon 'pencil' %}</a></td>
         <td><a href="{% url 'product-delete' product.id %}">{% bootstrap_icon 'minus' %}</a></td>
       </tr>
@@ -28,6 +35,7 @@
     {% endfor %}
 {% endblock %}
 
+{% comment %}
 {% block action_top %}
 <p><a href="{% url 'product-add' %}">{% bootstrap_icon 'plus' %}</a></p>
 {% endblock %}
@@ -35,3 +43,4 @@
 {% block action_bottom %}
 <p><a href="{% url 'product-add' %}">{% bootstrap_icon 'plus' %}</a></p>
 {% endblock %}
+{% endcomment %}
