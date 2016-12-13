@@ -3,7 +3,7 @@
 
 
 {% block content %}
-  <h2>Organizations</h2>
+<div class="col-lg-12"><a href="{% url 'organization-add' %}" class="add-product">{% bootstrap_icon 'plus' %}</a><h2>Organizations</h2></div>
 
     {% for organization in organizations %}
       {% if forloop.first %}
@@ -27,6 +27,7 @@
     {% endfor %}
 {% endblock %}
 
+{% comment %}
 {% block action_top %}
 <p><a href="{% url 'organization-add' %}">{% bootstrap_icon 'plus' %}</a></p>
 {% endblock %}
@@ -34,3 +35,4 @@
 {% block action_bottom %}
 <p><a href="{% url 'organization-add' %}">{% bootstrap_icon 'plus' %}</a></p>
 {% endblock %}
+{% endcomment %}
