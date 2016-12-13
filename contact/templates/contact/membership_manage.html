@@ -6,13 +6,16 @@
 {% block content %}
 <form method="post" action="">
   {% csrf_token %}
+  <div class="form-container">
+  <div class="form-bgm">
+  <fieldset class="form-bgm2">
+    <h3>Memberships</h3>
 
-  <fieldset>
-    <legend>Memberships</legend>
+    {% bootstrap_dynamic_formset formset can_delete=True %}
 
-    {% bootstrap_dynamic_formset formset can_delete=True layout="horizontal" %}
-
-    <button type="submit" id="form-submit" class="btn btn-success">Done</button>
+    <button type="submit" id="form-submit" class="btn btn-success btn2">Done</button>
   </fieldset>
+  </div>
+  </div>
 </form>
 {% endblock %}

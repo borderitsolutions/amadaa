@@ -34,17 +34,16 @@ class OrganizationEditForm(ModelForm):
         self.helper.form_action = ''
        	self.helper.layout = Layout(
        		Div(
-                    Div('name', css_class='col-xs-2 col-lg-4'),       
-                    css_class='row_fluid input-sm'),
+                    Div('name', css_class='col-xs-2 col-lg-6'),       
 
-            Div(
-                    Div('members', css_class='col-xs-2 col-lg-4'),
+                    Div('members', css_class='col-xs-2 col-lg-6'),
                     css_class='row-fluid input-sm'),
             
-	        Div(Submit('submit', 'Add', css_class='btn btn-default'),
-                   css_class='col-lg-offset-11 col-lg-4'),
+	        Div(Submit('submit', 'Add', css_class='btn btn-default btn1'),
+                   css_class='col-lg-12'),
         	)
-        self.fields['members'].widget.attrs['size'] = 2
+        self.fields['members'].widget.attrs['size'] = 1
+        self.fields['name'].widget.attrs['size'] = 1
 
     class Meta:
         model = Organization
