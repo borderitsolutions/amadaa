@@ -20,8 +20,7 @@ class SalesOrderEditForm(ModelForm):
                 Div(
                     Div('customer', css_class='col-xs-2 col-lg-4'),
                     Div('order_date', css_class='col-xs-2 col-lg-4 datepicker'),
-                    Div('payment_term', css_class='col-xs-2 col-lg-4'),
-                    Div('sales_person', css_class='col-xs-2 col-lg-4'),          
+                    Div('payment_term', css_class='col-xs-2 col-lg-4'),         
                     css_class='row_fluid input-sm'),
                 
                 
@@ -37,7 +36,7 @@ class SalesOrderEditForm(ModelForm):
 
     class Meta:
         model = SalesOrder
-        exclude = ['confirm_sale', 'total_price', 'products']
+        exclude = ['confirm_sale', 'total_price', 'products', 'sales_person']
 
     # def save(self, commit=True):
     #     products = self.cleaned_data.pop('products')

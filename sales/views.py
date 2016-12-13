@@ -88,6 +88,7 @@ class SalesOrderCreate(LoginRequiredMixin, SuccessMessageMixin, CreateView):
 
         if soform.is_valid():
             sales_order = soform.save(commit=False)
+            sales_order.sales_person = request.user
             sales_order.save()
             solformset = SOLFormSet(request.POST, request.FILES, instance=sales_order)
 
