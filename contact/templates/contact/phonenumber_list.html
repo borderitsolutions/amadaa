@@ -3,8 +3,8 @@
 
 
 {% block content %}
-  <h2>Phone numbers</h2>
-
+<div class="col-lg-12"><a href="{% url 'phonenumber-add' %}" class="add-product">{% bootstrap_icon 'plus' %}</a><h2>Phone numbers</h2></div>
+  
     {% for phone_number in phone_numbers %}
       {% if forloop.first %}
         <table>
@@ -31,6 +31,7 @@
     {% endfor %}
 {% endblock %}
 
+{% comment %}
 {% block action_top %}
 <p><a href="{% url 'phonenumber-add' %}">{% bootstrap_icon 'plus' %}</a></p>
 {% endblock %}
@@ -38,3 +39,4 @@
 {% block action_bottom %}
 <p><a href="{% url 'phonenumber-add' %}">{% bootstrap_icon 'plus' %}</a></p>
 {% endblock %}
+{% endcomment %}
