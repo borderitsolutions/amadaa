@@ -2,6 +2,25 @@
 {% load bootstrap3 %}
 
 {% block content %}
+
+<div id ="overlay">
+ <div class="confirm_del">
+  <p class="txt1">You are about to delete the following product</p>
+  <ol>
+    <li class="txt2">{{ product.name }}</li>
+  </ol>
+
+  <p  class="txt1">Are you sure?</p>
+
+  <form method="post" action="{% url 'product-delete' product.id %}">
+    {% csrf_token %}
+
+    <input type="submit" value="Yes" name="confirm_delete" class="btn btn-danger btn2">
+    <input type="submit" value="No" name="cancel" class="btn btn-success btn3">
+  </form>
+  </div>
+</div>
+
   <div class="col-lg-10 product-header">Products</div>
   <div class="col-lg-2"><a href="{% url 'product-add' %}" class="add-product">{% bootstrap_icon 'plus' %} Add Products</a></div>
 
@@ -26,13 +45,16 @@
         <td>{{ product.purchase_units_of_measurement }}</td>
         <td>{{ product.description | safe }}</td>
         <td><a href="{% url 'product-update' product.id %}">{% bootstrap_icon 'pencil' %}</a></td>
-        <td><a href="{% url 'product-delete' product.id %}">{% bootstrap_icon 'minus' %}</a></td>
+        <td><a href="#" onclick="deleteproduct()">{% bootstrap_icon 'minus' %}</a></td>
       </tr>
 
       {% if forloop.last %}
         </table>
       {% endif %}
     {% endfor %}
+
+
+
 {% endblock %}
 
 {% comment %}
