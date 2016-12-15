@@ -132,3 +132,52 @@ border: 1px solid black;
     padding-left: 15px;
     width: 950px;
 }
+
+#overlay {
+  visibility: hidden;
+  left: 0px;
+  top: 0px;
+  width: 100%
+  height: 100%;
+  text-align: center;
+}
+
+
+.confirm_del{
+    position: absolute;
+    top: -100px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: 450px;
+    height: 200px;
+    box-shadow: 0 0 15px #006994;
+    border-radius: 20px;
+    z-index: 9999;
+    background-color: white;
+}
+
+
+.txt1{
+    margin-top: 15px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.txt2{
+    margin: 15px 165px 0px;
+    color: #006994;
+}
+
+.btn2 {
+    float: left;
+    margin-top: 20px;
+    margin-left: 20px;
+}
+
+.btn3 {
+    float: right;
+    margin-top: 20px;
+    margin-right: 20px;
+}

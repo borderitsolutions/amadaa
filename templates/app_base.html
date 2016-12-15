@@ -2,6 +2,9 @@
 {% extends "base.html" %}
 {% load static %}
 {% load bootstrap3 %}
+{% block js %}
+{{ block.super }}
+{% endblock %}
 
 {% block header %}
 <nav class="navbar navbar-xs navbar-inverse navbar-fixed-top">
